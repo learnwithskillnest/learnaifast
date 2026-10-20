@@ -14,7 +14,7 @@ Keep each file under 100 MB (a GitHub limit). Most scanned papers are 1–5 MB.
 
 ## 2. Make the paper page
 
-1. Copy `papers/example-btech-machine-learning-2024.html` and rename it to match the PDF, e.g. `aktu-btech-machine-learning-2024.html`.
+1. Copy `papers/_template.html` (or a finished page like `aktu-btech-machine-learning-techniques-kcs055-2023-24.html`) and rename it to match the PDF, e.g. `aktu-btech-machine-learning-2024.html`.
 2. In the copy:
    - **Delete** the line `<meta name="robots" content="noindex">` so Google can list the page.
    - **Delete** the yellow `<div class="banner">…</div>` example notice.
@@ -37,7 +37,7 @@ Open `papers/data.js` and add one line inside `PAPERS`:
 
 `subject` must match a name in `SUBJECTS` exactly. To add a new subject, add it to `SUBJECTS` too.
 
-Once you have real papers, delete the example line (the one with `sample: true`) and the example page.
+To list a paper without its own page (PDF only), leave out `page` and add `pdf: "link to the PDF"`.
 
 ## 4. Publish
 

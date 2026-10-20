@@ -90,9 +90,11 @@
               items.length + (items.length === 1 ? " paper" : " papers") + '</span></div>';
       if (items.length){
         html += '<ul class="plist">' + items.map(function(p){
-          return '<li><a href="' + esc(p.page) + '"><span class="t">' + esc(p.university) + ' ' + esc(p.course) + ' ' + esc(p.subject) +
-                 (p.sample ? '<span class="badge">Example</span>' : '') + '</span><span class="m">' +
-                 esc(p.code) + ' · ' + esc(p.semester) + ' sem · ' + esc(p.session) + '</span></a></li>';
+          var ext = !p.page;
+          return '<li><a href="' + esc(p.page || p.pdf) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '><span class="t">' +
+                 esc(p.university) + ' ' + esc(p.course) + ' ' + esc(p.subject) + ' ' + esc(p.session.split(' ')[0]) +
+                 (ext ? '<span class="badge pdf">PDF only</span>' : '<span class="badge">Questions + topics</span>') + '</span><span class="m">' +
+                 esc(p.code) + ' · ' + esc(p.semester) + ' sem' + '</span></a></li>';
         }).join("") + '</ul>';
       } else {
         html += '<p class="empty">Papers coming soon. Email us to request one.</p>';
