@@ -12,6 +12,10 @@ Source for [learnaifast.in](https://learnaifast.in): practical, beginner-friendl
 
 Pages switch with links like `#about` and `#prompts`.
 
+## Question papers
+
+The `papers/` folder holds the previous year question papers section. To add a paper, follow `papers/HOW-TO-ADD.md`.
+
 ## Run locally
 
 Open `index.html` in any browser. No server needed.

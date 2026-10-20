@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI & ML Previous Year Question Papers (B.Tech, M.Tech) · LearnAIFast</title>
+<meta name="description" content="Free previous year question papers for B.Tech and M.Tech AI and ML subjects: Machine Learning, Deep Learning, AI, Data Science, NLP and more, with important topics and answer hints.">
+<link rel="canonical" href="https://learnaifast.in/papers/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0E7A6A">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:opsz,wght@7..72,400;7..72,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="papers.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/">Learn<b>AI</b><i>Fast</i></a>
+    <nav aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/#guides">Guides</a>
+      <a href="/papers/" aria-current="page">Papers</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="eyebrow">Question Papers</div>
+  <h1>AI &amp; ML previous year question papers</h1>
+  <p class="lede">Free B.Tech and M.Tech papers for AI and ML subjects. Each paper comes with the questions as text, the topics that repeat most, and answer hints.</p>
+
+  <div class="filters" role="search">
+    <div class="search"><label for="f-q">Search</label><input id="f-q" type="search" placeholder="Subject, code or year, e.g. KCS-055"></div>
+    <div><label for="f-uni">University</label><select id="f-uni"><option value="">All</option></select></div>
+    <div><label for="f-course">Course</label><select id="f-course"><option value="">All</option><option>B.Tech</option><option>M.Tech</option></select></div>
+    <div><label for="f-year">Year</label><select id="f-year"><option value="">All</option></select></div>
+  </div>
+  <p class="count" id="count"></p>
+
+  <div id="list"></div>
+
+  <h2>Can't find your paper?</h2>
+  <p>Email the university, subject, course and year to <strong>learnwithskillnest@gmail.com</strong> and we'll try to add it. If you have a paper to share, send it too and we'll credit you.</p>
+
+  <p class="note">Papers are collected from publicly available university sources and shared by students, for study purposes only. If you own the copyright to a paper and want it removed, email learnwithskillnest@gmail.com and we will take it down.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 learnaifast.in · Learn AI the fast, practical way.</span>
+    <nav aria-label="Footer"><a href="/#about">About</a><a href="/#contact">Contact</a><a href="/#privacy">Privacy Policy</a><a href="/#disclaimer">Disclaimer</a></nav>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  var P = window.PAPERS || [], S = window.SUBJECTS || [];
+  var q = document.getElementById("f-q"), uni = document.getElementById("f-uni"),
+      course = document.getElementById("f-course"), year = document.getElementById("f-year");
+
+  function uniq(a){ return a.filter(function(v,i){ return a.indexOf(v) === i; }); }
+  uniq(P.map(function(p){ return p.university; })).sort().forEach(function(u){ uni.add(new Option(u, u)); });
+  uniq(P.map(function(p){ return String(p.year); })).sort().reverse().forEach(function(y){ year.add(new Option(y, y)); });
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  function render(){
+    var term = q.value.trim().toLowerCase();
+    var hits = P.filter(function(p){
+      if (uni.value && p.university !== uni.value) return false;
+      if (course.value && p.course !== course.value) return false;
+      if (year.value && String(p.year) !== year.value) return false;
+      if (term){
+        var hay = [p.university, p.course, p.subject, p.code, p.year, p.session].join(" ").toLowerCase();
+        if (hay.indexOf(term) === -1) return false;
+      }
+      return true;
+    });
+    var filtering = term || uni.value || course.value || year.value;
+    var html = "";
+    S.forEach(function(sub){
+      var items = hits.filter(function(p){ return p.subject === sub; })
+                      .sort(function(a,b){ return b.year - a.year; });
+      if (filtering && !items.length) return;
+      html += '<section class="subject"><div class="subject-head"><h2>' + esc(sub) + '</h2><span class="code">' +
+              items.length + (items.length === 1 ? " paper" : " papers") + '</span></div>';
+      if (items.length){
+        html += '<ul class="plist">' + items.map(function(p){
+          return '<li><a href="' + esc(p.page) + '"><span class="t">' + esc(p.university) + ' ' + esc(p.course) + ' ' + esc(p.subject) +
+                 (p.sample ? '<span class="badge">Example</span>' : '') + '</span><span class="m">' +
+                 esc(p.code) + ' · ' + esc(p.semester) + ' sem · ' + esc(p.session) + '</span></a></li>';
+        }).join("") + '</ul>';
+      } else {
+        html += '<p class="empty">Papers coming soon. Email us to request one.</p>';
+      }
+      html += '</section>';
+    });
+    document.getElementById("list").innerHTML = html || '<p class="empty">No papers match these filters. Try clearing the search.</p>';
+    document.getElementById("count").textContent = hits.length + (hits.length === 1 ? " paper" : " papers") + " found";
+  }
+  [q, uni, course, year].forEach(function(el){ el.addEventListener("input", render); });
+  render();
+})();
+</script>
+</body>
+</html>
