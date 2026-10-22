@@ -94,7 +94,7 @@
           return '<li><a href="' + esc(p.page || p.pdf) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '><span class="t">' +
                  esc(p.university) + ' ' + esc(p.course) + ' ' + esc(p.subject) + ' ' + esc(p.session.split(' ')[0]) +
                  (ext ? '<span class="badge pdf">PDF only</span>' : '<span class="badge">Questions + topics</span>') + '</span><span class="m">' +
-                 esc(p.code) + ' · ' + esc(p.semester) + ' sem' + '</span></a></li>';
+                 (p.code ? esc(p.code) + ' · ' : '') + esc(p.semester) + ' sem' + '</span></a></li>';
         }).join("") + '</ul>';
       } else {
         html += '<p class="empty">Papers coming soon. Email us to request one.</p>';
