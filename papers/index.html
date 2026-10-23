@@ -30,7 +30,7 @@
 <main class="wrap">
   <div class="eyebrow">Question Papers</div>
   <h1>AI &amp; ML previous year question papers</h1>
-  <p class="lede">Free B.Tech and M.Tech papers for AI and ML subjects. Each paper comes with the questions as text, the topics that repeat most, and answer hints.</p>
+  <p class="lede">Free AKTU B.Tech papers for AI, ML and data subjects, from 2020-21 to 2025-26. Every paper has its full questions as text, and selected papers add the most repeated topics and answer hints.</p>
 
   <div class="filters" role="search">
     <div class="search"><label for="f-q">Search</label><input id="f-q" type="search" placeholder="Subject, code or year, e.g. KCS-055"></div>
@@ -75,7 +75,7 @@
       if (course.value && p.course !== course.value) return false;
       if (year.value && String(p.year) !== year.value) return false;
       if (term){
-        var hay = [p.university, p.course, p.subject, p.code, p.year, p.session].join(" ").toLowerCase();
+        var hay = [p.university, p.course, p.subject, p.title || '', p.code, p.year, p.session].join(" ").toLowerCase();
         if (hay.indexOf(term) === -1) return false;
       }
       return true;
@@ -92,8 +92,8 @@
         html += '<ul class="plist">' + items.map(function(p){
           var ext = !p.page;
           return '<li><a href="' + esc(p.page || p.pdf) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '><span class="t">' +
-                 esc(p.university) + ' ' + esc(p.course) + ' ' + esc(p.subject) + ' ' + esc(p.session.split(' ')[0]) +
-                 (ext ? '<span class="badge pdf">PDF only</span>' : '<span class="badge">Questions + topics</span>') + '</span><span class="m">' +
+                 esc(p.university) + ' ' + esc(p.course) + ' ' + esc(p.title || p.subject) + ' ' + esc(p.session.split(' ')[0]) +
+                 (ext ? '<span class="badge pdf">PDF only</span>' : '<span class="badge">Full paper</span>') + '</span><span class="m">' +
                  (p.code ? esc(p.code) + ' · ' : '') + esc(p.semester) + ' sem' + '</span></a></li>';
         }).join("") + '</ul>';
       } else {

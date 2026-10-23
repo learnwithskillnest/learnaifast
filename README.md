@@ -14,7 +14,7 @@ Pages switch with links like `#about` and `#prompts`.
 
 ## Question papers
 
-The `papers/` folder holds the previous year question papers section. To add a paper, follow `papers/HOW-TO-ADD.md`.
+The `papers/` folder holds the previous year question papers section: 130+ AKTU B.Tech AI/ML/data papers (2020-21 to 2025-26), each as a full page with every question. Most papers come from the ABESIT question paper bank. To add a paper by hand, follow `papers/HOW-TO-ADD.md`.
 
 ## Run locally
 
