@@ -20,6 +20,10 @@ The `papers/` folder holds the previous year question papers section: 200 AKTU B
 
 `resume/index.html` is a free one-page resume maker. Visitors paste or upload (.docx, .pdf, .txt) a long resume; it keeps the strongest bullets, drops filler (hobbies, declaration, personal details), fits the result on one A4 page, and lets them edit and save it as PDF. Everything runs in the browser; nothing is uploaded.
 
+## PDF compressor
+
+`compress-pdf/index.html` compresses PDFs in the browser (pdf.js legacy build + pdf-lib): Light / Recommended / Strong presets, or a target size (50 KB, 100 KB, 200 KB, 500 KB, 1 MB) found by stepping resolution and binary-searching JPEG quality. Pages become images, so text is not selectable afterwards. Files are never uploaded.
+
 ## Run locally
 
 Open `index.html` in any browser. No server needed.

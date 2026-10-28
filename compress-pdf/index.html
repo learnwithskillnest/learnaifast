@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Compress PDF to 100 KB, 200 KB or Smaller · LearnAIFast</title>
+<meta name="description" content="Free PDF compressor. Reduce PDF size for exam forms, job applications and email, or compress to under 100 KB, 200 KB or 500 KB. Works in your browser; files are never uploaded.">
+<link rel="canonical" href="https://learnaifast.in/compress-pdf/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0E7A6A">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:opsz,wght@7..72,400;7..72,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/papers/papers.css">
+<style>
+/* Layout: one centred tool card; drop zone, then options, then the result row. */
+:root{ --ok:#1E7B4C; --warn:#B4432E; }
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){ --ok:#5FD39A; --warn:#F08C74 }}
+:root[data-theme="dark"]{ --ok:#5FD39A; --warn:#F08C74 }
+main.tool{max-width:820px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:22px}
+.drop{border:2px dashed var(--line);border-radius:12px;padding:34px 16px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s;position:relative}
+.drop:hover,.drop.on{border-color:var(--accent);background:var(--soft)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop strong{font-family:var(--display);font-size:20px;display:block}
+.drop span{color:var(--muted);font-size:15px}
+.fileinfo{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px;font-family:var(--mono);font-size:14px}
+.fileinfo b{font-family:var(--display);font-size:16px;word-break:break-all}
+fieldset{border:0;padding:0;margin:18px 0 0}
+legend{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0}
+.choice label{display:block;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;background:var(--bg);height:100%}
+.choice label b{display:block;font-family:var(--display)}
+.choice label small{color:var(--muted);font-size:13px}
+.choice input:checked + label{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
+.choice input:focus-visible + label{outline:2px solid var(--accent);outline-offset:2px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.bar{height:8px;background:var(--soft);border-radius:4px;overflow:hidden;margin-top:14px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.status{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:8px;min-height:1.3em}
+.status.err{color:var(--warn)}
+.result{display:none;margin-top:18px;padding:16px;border-radius:12px;background:var(--soft)}
+.result.show{display:block}
+.sizes{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-family:var(--display);font-size:22px;font-weight:700}
+.sizes .arrow{color:var(--muted)}
+.sizes .saved{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--ok)}
+.sizes .saved.bad{color:var(--warn)}
+.note-s{font-size:14px;color:var(--muted);margin:8px 0 0}
+.faq b{font-family:var(--display)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/">Learn<b>AI</b><i>Fast</i></a>
+    <nav aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/#guides">Guides</a>
+      <a href="/papers/">Papers</a>
+      <a href="/resume/">Resume</a>
+      <a href="/compress-pdf/" aria-current="page">Compress PDF</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap tool">
+  <div class="eyebrow">Free tool</div>
+  <h1>Compress PDF</h1>
+  <p class="lede">Shrink a PDF for exam forms, job portals or email. Pick a strength, or ask for a target like "under 200 KB". Your file stays on your device.</p>
+
+  <section class="card" aria-label="PDF compressor">
+    <div class="drop" id="drop">
+      <input id="file" type="file" accept="application/pdf,.pdf" aria-label="Choose a PDF file">
+      <strong>Choose a PDF or drop it here</strong>
+      <span>Up to about 100 MB · nothing is uploaded</span>
+    </div>
+    <div class="fileinfo" id="fileinfo" hidden><b id="fname"></b><span id="fmeta"></span></div>
+
+    <fieldset>
+      <legend>Compression</legend>
+      <div class="choices">
+        <div class="choice"><input type="radio" name="mode" id="m-low" value="low"><label for="m-low"><b>Light</b><small>Best quality, smaller file</small></label></div>
+        <div class="choice"><input type="radio" name="mode" id="m-med" value="med" checked><label for="m-med"><b>Recommended</b><small>Good quality, much smaller</small></label></div>
+        <div class="choice"><input type="radio" name="mode" id="m-high" value="high"><label for="m-high"><b>Strong</b><small>Smallest, lower quality</small></label></div>
+        <div class="choice"><input type="radio" name="mode" id="m-target" value="target"><label for="m-target"><b>Target size</b><small>Get under a size limit</small></label></div>
+      </div>
+    </fieldset>
+
+    <fieldset id="targets" hidden>
+      <legend>Make it smaller than</legend>
+      <div class="choices">
+        <div class="choice"><input type="radio" name="tgt" id="t50" value="50"><label for="t50"><b>50 KB</b></label></div>
+        <div class="choice"><input type="radio" name="tgt" id="t100" value="100"><label for="t100"><b>100 KB</b></label></div>
+        <div class="choice"><input type="radio" name="tgt" id="t200" value="200" checked><label for="t200"><b>200 KB</b></label></div>
+        <div class="choice"><input type="radio" name="tgt" id="t500" value="500"><label for="t500"><b>500 KB</b></label></div>
+        <div class="choice"><input type="radio" name="tgt" id="t1000" value="1000"><label for="t1000"><b>1 MB</b></label></div>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button class="btn" id="go" type="button" disabled>Compress PDF</button>
+      <label style="display:flex;gap:6px;align-items:center;font-size:15px;cursor:pointer"><input type="checkbox" id="gray"> Black &amp; white (smaller)</label>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <p class="status" id="status" role="status"></p>
+
+    <div class="result" id="result" aria-live="polite">
+      <div class="sizes"><span id="s-before"></span><span class="arrow">→</span><span id="s-after"></span><span class="saved" id="s-saved"></span></div>
+      <div class="actions"><a class="btn" id="dl" href="#" download>Download compressed PDF</a><button class="btn ghost" id="again" type="button">Compress another</button></div>
+      <p class="note-s" id="r-note"></p>
+    </div>
+  </section>
+
+  <h2>Good to know</h2>
+  <div class="faq">
+    <p><b>How does it compress?</b><br>Each page is redrawn as an image at a lower resolution and quality, then rebuilt into a new PDF. This works best for scanned documents, photos, certificates and mark sheets, which are usually the files that are too big.</p>
+    <p><b>Will text still be selectable?</b><br>No. The compressed file is image-based, so text can't be copied or searched. If you need selectable text, use the original or the Light setting with care.</p>
+    <p><b>Is my file safe?</b><br>Yes. Compression runs inside your browser. The file is never uploaded to any server.</p>
+    <p><b>Which size should I choose for exam forms?</b><br>Check the form's limit first. Many government and university portals ask for documents under 100 KB, 200 KB or 500 KB, so use Target size for those.</p>
+    <p><b>The result is bigger than my file?</b><br>That happens with PDFs that are already small or text-only. In that case, keep your original file.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 learnaifast.in · Learn AI the fast, practical way.</span>
+    <nav aria-label="Footer"><a href="/papers/">Question Papers</a><a href="/resume/">Resume Maker</a><a href="/#about">About</a><a href="/#contact">Contact</a><a href="/#privacy">Privacy Policy</a><a href="/#disclaimer">Disclaimer</a></nav>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script type="module">
+const $ = id => document.getElementById(id);
+const PDFJS = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/legacy/build/';
+let pdfjs = null, srcFile = null, srcBuf = null, outUrl = null, busy = false;
+
+const PRESETS = { low:{dpi:150, q:0.8}, med:{dpi:110, q:0.62}, high:{dpi:80, q:0.45} };
+const fmt = b => b >= 1048576 ? (b/1048576).toFixed(2)+' MB' : Math.max(1, Math.round(b/1024))+' KB';
+const setStatus = (t, err=false) => { $('status').textContent=t; $('status').classList.toggle('err', err); };
+const setBar = f => { $('bar').style.width = Math.round(f*100)+'%'; };
+
+async function loadPdfjs(){
+  if (pdfjs) return pdfjs;
+  pdfjs = await import(PDFJS + 'pdf.min.mjs');
+  pdfjs.GlobalWorkerOptions.workerSrc = PDFJS + 'pdf.worker.min.mjs';
+  return pdfjs;
+}
+
+function pickFile(f){
+  if (!f) return;
+  if (!/pdf$/i.test(f.type) && !/\.pdf$/i.test(f.name)){ setStatus('That is not a PDF. Choose a .pdf file.', true); return; }
+  srcFile = f; srcBuf = null;
+  $('fileinfo').hidden = false; $('fname').textContent = f.name; $('fmeta').textContent = fmt(f.size);
+  $('result').classList.remove('show'); setBar(0);
+  $('go').disabled = false; setStatus('Ready. Choose a setting and click Compress PDF.');
+}
+$('file').addEventListener('change', e => pickFile(e.target.files[0]));
+const drop = $('drop');
+['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('on'); }));
+['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('on'); }));
+drop.addEventListener('drop', e => pickFile(e.dataTransfer.files[0]));
+document.querySelectorAll('input[name=mode]').forEach(r => r.addEventListener('change', () => { $('targets').hidden = $('m-target').checked ? false : true; }));
+
+// Render every page once at a given dpi, then encode at a given quality.
+async function renderPages(doc, dpi, gray, onProg){
+  const pages = [];
+  for (let i=1; i<=doc.numPages; i++){
+    const page = await doc.getPage(i);
+    const vp1 = page.getViewport({scale:1});
+    const scale = dpi/72;
+    const vp = page.getViewport({scale});
+    const c = document.createElement('canvas');
+    c.width = Math.max(1, Math.round(vp.width)); c.height = Math.max(1, Math.round(vp.height));
+    const ctx = c.getContext('2d', {willReadFrequently: gray});
+    ctx.fillStyle = '#fff'; ctx.fillRect(0,0,c.width,c.height);
+    await page.render({canvasContext: ctx, canvas: c, viewport: vp}).promise;
+    if (gray){
+      const img = ctx.getImageData(0,0,c.width,c.height), d = img.data;
+      for (let j=0;j<d.length;j+=4){ const y = 0.299*d[j]+0.587*d[j+1]+0.114*d[j+2]; d[j]=d[j+1]=d[j+2]=y; }
+      ctx.putImageData(img,0,0);
+    }
+    pages.push({canvas:c, w:vp1.width, h:vp1.height});
+    page.cleanup();
+    onProg && onProg(i/doc.numPages);
+  }
+  return pages;
+}
+const toJpeg = (c, q) => new Promise(r => c.toBlob(b => b.arrayBuffer().then(r), 'image/jpeg', q));
+async function build(pages, q, onProg){
+  const out = await PDFLib.PDFDocument.create();
+  for (let i=0;i<pages.length;i++){
+    const p = pages[i];
+    const img = await out.embedJpg(await toJpeg(p.canvas, q));
+    const pg = out.addPage([p.w, p.h]);
+    pg.drawImage(img, {x:0, y:0, width:p.w, height:p.h});
+    onProg && onProg((i+1)/pages.length);
+  }
+  return await out.save({useObjectStreams:true});
+}
+
+async function compress(){
+  if (!srcFile || busy) return;
+  busy = true; $('go').disabled = true; $('result').classList.remove('show'); setBar(0);
+  try{
+    setStatus('Loading PDF tools…');
+    const lib = await loadPdfjs();
+    srcBuf = srcBuf || await srcFile.arrayBuffer();
+    let doc;
+    try { doc = await lib.getDocument({data: srcBuf.slice(0)}).promise; }
+    catch(e){ if (/password/i.test(e.name+e.message)) throw new Error('This PDF is password-protected. Remove the password and try again.'); throw new Error('This file could not be opened as a PDF.'); }
+    const gray = $('gray').checked;
+    const mode = document.querySelector('input[name=mode]:checked').value;
+    let bytes, used;
+    if (mode !== 'target'){
+      const ps = PRESETS[mode];
+      setStatus(`Compressing ${doc.numPages} page${doc.numPages>1?'s':''}…`);
+      const pages = await renderPages(doc, ps.dpi, gray, f => setBar(f*0.7));
+      bytes = await build(pages, ps.q, f => setBar(0.7+f*0.3)); used = ps;
+    } else {
+      const target = +document.querySelector('input[name=tgt]:checked').value * 1024;
+      if (srcFile.size <= target){ bytes = new Uint8Array(srcBuf); used = {same:true}; }
+      else {
+        // Try resolutions from high to low; at each, binary-search JPEG quality to get under target.
+        const dpis = [150, 120, 96, 80, 66, 56, 48];
+        let best = null;
+        for (let k=0; k<dpis.length && !best; k++){
+          setStatus(`Trying ${dpis[k]} dpi to get under ${fmt(target)}…`);
+          const pages = await renderPages(doc, dpis[k], gray, f => setBar((k + f*0.5)/dpis.length));
+          let lo=0.2, hi=0.85, found=null;
+          let b = await build(pages, lo);
+          if (b.length <= target){
+            found = {b, q:lo};
+            for (let it=0; it<5; it++){
+              const mid=(lo+hi)/2; const bm = await build(pages, mid);
+              if (bm.length <= target){ found={b:bm, q:mid}; lo=mid; } else hi=mid;
+              setBar((k + 0.5 + (it+1)*0.1)/dpis.length);
+            }
+            best = {bytes:found.b, dpi:dpis[k], q:found.q};
+          }
+        }
+        if (!best) throw new Error(`Could not get this PDF under ${fmt(target)} while keeping it readable. Try a larger target, Black & white, or split the PDF.`);
+        bytes = best.bytes; used = best;
+      }
+    }
+    setBar(1);
+    const before = srcFile.size, after = bytes.length;
+    if (outUrl) URL.revokeObjectURL(outUrl);
+    outUrl = URL.createObjectURL(new Blob([bytes], {type:'application/pdf'}));
+    const dl = $('dl'); dl.href = outUrl; dl.download = srcFile.name.replace(/\.pdf$/i,'') + '-compressed.pdf';
+    $('s-before').textContent = fmt(before); $('s-after').textContent = fmt(after);
+    const saved = Math.round((1 - after/before)*100);
+    const sv = $('s-saved');
+    if (used.same){ sv.textContent = 'already under the limit'; sv.classList.remove('bad'); $('r-note').textContent = 'Your file is already smaller than the target, so this is your original file.'; }
+    else if (after >= before){ sv.textContent = 'bigger than the original'; sv.classList.add('bad'); $('r-note').textContent = 'This PDF is already well compressed (often a text-only PDF). Keep your original file instead.'; }
+    else { sv.textContent = `${saved}% smaller`; sv.classList.remove('bad'); $('r-note').textContent = 'Open the file and check that it is readable before you submit it.' + (used.dpi ? ` Made at ${used.dpi} dpi.` : '') + (used.dpi && used.dpi <= 56 ? ' Small text may look blurry at this size; try a larger target if the portal allows it.' : ''); }
+    dl.textContent = (after >= before && !used.same) ? 'Download anyway' : 'Download compressed PDF';
+    dl.classList.toggle('ghost', after >= before && !used.same);
+    $('result').classList.add('show');
+    setStatus('Done.');
+  } catch(e){
+    setStatus(e.message || 'Something went wrong. Try another setting.', true);
+  } finally { busy = false; $('go').disabled = !srcFile; }
+}
+$('go').addEventListener('click', compress);
+$('again').addEventListener('click', () => { srcFile=null; srcBuf=null; $('file').value=''; $('fileinfo').hidden=true; $('result').classList.remove('show'); setBar(0); $('go').disabled=true; setStatus(''); });
+</script>
+</body>
+</html>
