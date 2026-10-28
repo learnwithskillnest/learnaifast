@@ -16,6 +16,10 @@ Pages switch with links like `#about` and `#prompts`.
 
 The `papers/` folder holds the previous year question papers section: 200 AKTU B.Tech and MCA AI/ML/data papers (2016-17 to 2025-26), each as a full page with every question. Most papers come from the ABESIT question paper bank. To add a paper by hand, follow `papers/HOW-TO-ADD.md`.
 
+## Resume maker
+
+`resume/index.html` is a free one-page resume maker. Visitors paste or upload (.docx, .pdf, .txt) a long resume; it keeps the strongest bullets, drops filler (hobbies, declaration, personal details), fits the result on one A4 page, and lets them edit and save it as PDF. Everything runs in the browser; nothing is uploaded.
+
 ## Run locally
 
 Open `index.html` in any browser. No server needed.

@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>One-Page Resume Maker · LearnAIFast</title>
+<meta name="description" content="Free one-page resume maker. Paste or upload a long resume and get a clean, one-page A4 resume you can edit and download as PDF. Runs in your browser; nothing is uploaded.">
+<link rel="canonical" href="https://learnaifast.in/resume/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0E7A6A">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:opsz,wght@7..72,400;7..72,600&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="/papers/papers.css">
+<style>
+/* Layout: two panes on desktop (input left, A4 preview right), stacked on phones. */
+:root{ --paper:#FFFFFF; --paper-ink:#1B1F1D; --paper-muted:#5A635F; --paper-rule:#0E7A6A; --warn:#B4432E; }
+main.tool{max-width:1240px}
+.intro{max-width:70ch}
+.steps{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.steps span{background:var(--soft);padding:4px 10px;border-radius:999px}
+.panes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px;margin-top:22px;align-items:start}
+.panes > *{min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h2{margin:0 0 10px;font-size:20px}
+textarea#src{width:100%;min-height:420px;resize:vertical;font:14px/1.5 var(--mono);padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.btn.small{font-size:14px;padding:8px 14px}
+.file{position:relative;overflow:hidden}
+.file input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.hint{font-size:14px;color:var(--muted);margin:8px 0 0}
+.opts{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:15px}
+.opts label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.status{font-family:var(--mono);font-size:13px;color:var(--muted);min-height:1.4em;margin-top:10px}
+.status.err{color:var(--warn)}
+.changes{font-size:14px;margin:10px 0 0;padding-left:18px;color:var(--muted)}
+.changes li{margin:2px 0}
+
+/* A4 preview */
+.preview-wrap{background:var(--soft);border-radius:14px;padding:16px;overflow:auto}
+.scaler{transform-origin:top left}
+#sheet,.r-sheet{width:794px;height:1123px;background:var(--paper);color:var(--paper-ink);box-shadow:0 10px 30px -12px rgba(0,0,0,.35);
+  padding:44px 50px;box-sizing:border-box;overflow:hidden;font-family:"Source Sans 3","Segoe UI",Arial,sans-serif;line-height:1.32;position:relative}
+.r-sheet *{color:inherit}
+.r-sheet .r-name{font-size:2.1em;font-weight:700;letter-spacing:-.01em;margin:0;line-height:1.1}
+.r-sheet .r-headline{font-size:1.05em;color:var(--paper-muted);margin:2px 0 0}
+.r-sheet .r-contact{font-size:.92em;color:var(--paper-muted);margin:6px 0 0;word-break:break-word}
+.r-sheet .r-sec{margin-top:.85em}
+.r-sheet .r-sec h3{font-family:inherit;font-size:.95em;letter-spacing:.09em;text-transform:uppercase;color:var(--paper-rule);margin:0 0 .3em;padding-bottom:2px;border-bottom:1.5px solid var(--paper-rule);font-weight:700}
+.r-sheet .r-entry{margin:.35em 0 0}
+.r-sheet .r-eh{display:flex;justify-content:space-between;gap:12px;font-weight:600}
+.r-sheet .r-eh .d{font-weight:400;color:var(--paper-muted);white-space:nowrap}
+.r-sheet .r-sub{color:var(--paper-muted);font-style:italic}
+.r-sheet ul{margin:.15em 0 0;padding-left:1.1em}
+.r-sheet li{margin:.08em 0}
+.r-sheet p{margin:.15em 0}
+.r-sheet [contenteditable]:focus{outline:2px dashed var(--paper-rule);outline-offset:2px}
+.r-sheet.over::after{content:"Over one page";position:absolute;bottom:8px;right:12px;font:600 11px var(--mono);color:#fff;background:var(--warn);padding:2px 8px;border-radius:999px}
+.fitbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.fitbar .meta{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.empty-sheet{display:flex;align-items:center;justify-content:center;height:100%;text-align:center;color:#8A938F;font-size:18px;padding:40px}
+
+@media (max-width:900px){ .panes{grid-template-columns:1fr} textarea#src{min-height:260px} }
+#printroot{display:none}
+@media print{
+  @page{size:A4;margin:0}
+  html,body{background:#fff!important;margin:0;padding:0}
+  body > *:not(#printroot){display:none!important}
+  #printroot{display:block}
+  #printroot .r-sheet{box-shadow:none;margin:0}
+  #printroot .r-sheet::after{display:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/">Learn<b>AI</b><i>Fast</i></a>
+    <nav aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/#guides">Guides</a>
+      <a href="/papers/">Papers</a>
+      <a href="/resume/" aria-current="page">Resume</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap tool">
+  <div class="eyebrow">Free tool</div>
+  <h1>One-page resume maker</h1>
+  <p class="lede intro">Paste or upload a long resume. We keep your strongest points, drop the filler, and fit everything on one A4 page that you can edit and download as a PDF.</p>
+  <div class="steps"><span>1 · Add your resume</span><span>2 · Make it one page</span><span>3 · Edit and download</span></div>
+
+  <div class="panes">
+    <section class="card" aria-labelledby="in-h">
+      <h2 id="in-h">Your resume</h2>
+      <label for="src" class="hint" style="display:block;margin:0 0 8px">Paste the full text, or upload a .docx, .pdf or .txt file.</label>
+      <textarea id="src" spellcheck="false" placeholder="Paste your resume here…"></textarea>
+      <div class="row">
+        <span class="btn ghost small file">Upload file<input id="file" type="file" accept=".txt,.docx,.pdf,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-label="Upload resume file"></span>
+        <button class="btn ghost small" id="sample" type="button">Try a sample</button>
+        <button class="btn ghost small" id="clear" type="button">Clear</button>
+      </div>
+      <div class="opts">
+        <label><input type="checkbox" id="o-personal" checked> Remove personal details (DOB, father's name, address)</label>
+        <label><input type="checkbox" id="o-hobbies" checked> Remove hobbies and declaration</label>
+      </div>
+      <div class="row">
+        <button class="btn" id="go" type="button">Make it one page</button>
+      </div>
+      <p class="status" id="status" role="status"></p>
+      <ul class="changes" id="changes"></ul>
+      <p class="hint">Privacy: your resume never leaves this browser. Nothing is uploaded or stored.</p>
+    </section>
+
+    <section aria-labelledby="out-h">
+      <div class="fitbar">
+        <h2 id="out-h" style="margin:0;font-size:20px">One-page result</h2>
+        <span class="meta" id="meta"></span>
+      </div>
+      <div class="row" style="margin:0 0 12px">
+        <button class="btn small" id="pdf" type="button" disabled>Download PDF</button>
+        <button class="btn ghost small" id="copy" type="button" disabled>Copy text</button>
+        <button class="btn ghost small" id="refit" type="button" disabled>Re-fit after edits</button>
+      </div>
+      <div class="preview-wrap" id="pw"><div class="scaler" id="scaler"><div id="sheet" class="r-sheet"><div class="empty-sheet">Your one-page resume will appear here.<br>Click any text on it to edit.</div></div></div></div>
+      <p class="hint">Tip: click any line on the page to edit it. In the print dialog, choose "Save as PDF" and turn off headers and footers.</p>
+    </section>
+  </div>
+
+  <h2>How it works</h2>
+  <ul>
+    <li><strong>Finds your sections</strong>: summary, experience, projects, education, skills, certifications and achievements.</li>
+    <li><strong>Keeps the strongest bullets</strong>: points with numbers and results ("cut load time by 40%") are kept first, and long bullets are shortened.</li>
+    <li><strong>Drops filler</strong>: hobbies, declarations, references and personal details that recruiters skip.</li>
+    <li><strong>Fits one page</strong>: adjusts font size and trims older entries until everything fits on one A4 page.</li>
+  </ul>
+  <p>Check the result before you send it. The tool keeps your own words but cannot judge which project matters most for a specific job, so edit freely.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 learnaifast.in · Learn AI the fast, practical way.</span>
+    <nav aria-label="Footer"><a href="/papers/">Question Papers</a><a href="/#about">About</a><a href="/#contact">Contact</a><a href="/#privacy">Privacy Policy</a><a href="/#disclaimer">Disclaimer</a></nav>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const src=$('src'), sheet=$('sheet'), status=$('status'), changes=$('changes');
+
+const SAMPLE = `RAHUL SHARMA
+Software Engineer | Machine Learning
+Lucknow, Uttar Pradesh | +91 98765 43210 | rahul.sharma@example.com | linkedin.com/in/rahulsharma-example | github.com/rahul-example
+
+CAREER OBJECTIVE
+To work in a challenging environment where I can use my skills and knowledge for the growth of the organization and also improve myself. I am a hardworking, sincere and dedicated person who believes in continuous learning. Software engineer with 3 years of experience building machine learning systems and web APIs in Python.
+
+WORK EXPERIENCE
+Software Engineer, Example Analytics Pvt Ltd, Noida | Jul 2023 – Present
+• Built a demand forecasting model in Python (XGBoost) that reduced stock-outs by 18% across 120 stores.
+• Designed REST APIs in FastAPI serving 2 million predictions per day with 99.9% uptime.
+• Cut model training time from 6 hours to 45 minutes by moving feature pipelines to Spark.
+• Mentored 3 junior engineers and ran weekly code reviews.
+• Attended team meetings and daily stand-ups.
+• Worked on various tasks as assigned by the manager.
+• Wrote documentation for internal tools.
+
+Associate Software Engineer, Sample Tech Solutions, Bengaluru | Jun 2022 – Jun 2023
+• Developed a resume screening tool using NLP (spaCy) that cut manual screening time by 60%.
+• Migrated 40+ cron jobs to Airflow, reducing failed runs by 70%.
+• Fixed bugs and handled support tickets.
+• Participated in hackathons organised by the company.
+
+Intern, Demo Startup, Lucknow | Jan 2022 – May 2022
+• Created dashboards in Power BI for sales data.
+• Learned about agile methodology.
+
+PROJECTS
+Crop Disease Detection (CNN, TensorFlow)
+• Trained a CNN on 50,000 leaf images reaching 94% accuracy; deployed as an Android app used by 2,000 farmers.
+• Used data augmentation to handle class imbalance.
+Movie Recommendation System
+• Built a collaborative filtering recommender on MovieLens 1M with RMSE 0.86.
+• Made a Streamlit front end.
+College Library Management System
+• Made a library system in Java and MySQL for my college.
+
+EDUCATION
+B.Tech in Computer Science and Engineering, Dr. A.P.J. Abdul Kalam Technical University (AKTU) | 2018 – 2022 | CGPA: 8.4/10
+Class XII (CBSE), Example Public School, Lucknow | 2018 | 91%
+Class X (CBSE), Example Public School, Lucknow | 2016 | 9.6 CGPA
+
+TECHNICAL SKILLS
+Languages: Python, SQL, Java, JavaScript
+ML/AI: scikit-learn, TensorFlow, PyTorch, XGBoost, spaCy, Hugging Face
+Data & Cloud: Pandas, Spark, Airflow, AWS (S3, SageMaker), Docker, Git
+Soft skills: Team player, quick learner, good communication, hardworking
+
+CERTIFICATIONS
+• AWS Certified Machine Learning – Specialty (2024)
+• Microsoft Certified: Azure AI Fundamentals (AI-900)
+• Python for Everybody – Coursera
+
+ACHIEVEMENTS
+• Winner, Smart India Hackathon 2021 (software edition).
+• Published "Leaf Disease Detection with Lightweight CNNs" at an IEEE conference, 2022.
+• Secured 98.2 percentile in GATE CSE 2022.
+
+HOBBIES
+Reading books, playing cricket, listening to music, travelling.
+
+PERSONAL DETAILS
+Father's Name: Mr. Example Sharma
+Date of Birth: 01/01/2000
+Gender: Male
+Marital Status: Single
+Nationality: Indian
+Languages Known: English, Hindi
+
+DECLARATION
+I hereby declare that all the information given above is true to the best of my knowledge and belief.
+Place: Lucknow
+Date:`;
+
+// ---------- section detection ----------
+const SECTIONS = [
+  ['summary', /^(professional\s+|career\s+)?(summary|profile|objective|about\s+me|overview)$/],
+  ['experience', /^((work|professional|relevant)\s+)?(experience|employment(\s+history)?|work\s+history|internships?|experience\s*&?\s*internships?)$/],
+  ['projects', /^((academic|key|personal|major)\s+)?projects?$/],
+  ['education', /^(education(al)?(\s+(qualifications?|background|details))?|academics?|academic\s+(qualifications?|details)|qualifications?)$/],
+  ['skills', /^((technical|key|core|it|professional)\s+)?(skills?(\s*(&|and)\s*\w+)?|competencies|expertise|technologies|tech\s+stack)$/],
+  ['certifications', /^(certifications?|certificates?|licen[cs]es?(\s*(&|and)\s*certifications?)?|courses?|trainings?|online\s+courses?|training\s*(&|and)\s*certifications?)$/],
+  ['achievements', /^(achievements?|awards?(\s*(&|and)\s*achievements?)?|accomplishments?|honou?rs?(\s*(&|and)\s*awards?)?|extra[-\s]?curricular(\s+activities)?|positions?\s+of\s+responsibility|leadership|activities|publications?|volunteer(ing)?(\s+experience)?)$/],
+  ['languages', /^languages?(\s+known)?$/],
+  ['hobbies', /^(hobbies(\s*(&|and)\s*interests)?|interests|personal\s+interests)$/],
+  ['personal', /^(personal\s+(details|information|profile|data)|personal)$/],
+  ['declaration', /^declaration$/],
+  ['references', /^references?$/],
+];
+const TITLES = {summary:'Summary',experience:'Experience',projects:'Projects',education:'Education',skills:'Skills',certifications:'Certifications',achievements:'Achievements',languages:'Languages'};
+const ORDER = ['summary','experience','projects','skills','education','certifications','achievements','languages'];
+
+function headingKey(line){
+  const t = line.replace(/[:\-–—_|•*#=]+$/,'').replace(/^[#*•\-–\s]+/,'').trim().toLowerCase().replace(/\s+/g,' ');
+  if (!t || t.length > 45) return null;
+  for (const [k, re] of SECTIONS) if (re.test(t)) return k;
+  return null;
+}
+const BULLET = /^\s*([•●▪■◦○◆►▸✓✔➢➤\-–—*·]|\d{1,2}[.)])\s+/;
+const DATE = /((jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s*,?\s*)?(19|20)\d{2}\s*(–|-|—|to)\s*((jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s*,?\s*)?((19|20)\d{2}|present|current|now|till\s+date|ongoing)|((jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s*(19|20)\d{2})|\b(19|20)\d{2}\b/i;
+
+function parse(text){
+  const lines = text.replace(/\r/g,'').split('\n').map(l=>l.replace(/\t/g,' ').replace(/\s+$/,''));
+  const header=[]; const secs={}; let cur=null;
+  for (const raw of lines){
+    const line = raw.trim();
+    if (!line){ if(cur) secs[cur].push(''); continue; }
+    const k = headingKey(line);
+    if (k){ cur=k; secs[k]=secs[k]||[]; continue; }
+    // inline "Skills: a, b" heading
+    const m = line.match(/^([A-Za-z &]{3,30}):\s*(.+)$/);
+    if (m){ const k2=headingKey(m[1]); if(k2 && !['skills'].includes(cur)){ cur=k2; secs[k2]=secs[k2]||[]; secs[k2].push(m[2]); continue; } }
+    if (!cur) header.push(line); else secs[cur].push(line);
+  }
+  return {header, secs};
+}
+
+// ---------- header ----------
+const EMAIL=/[\w.+-]+@[\w-]+\.[\w.]+/, PHONE=/(\+?\d[\d\s-]{8,}\d)/, URL=/((https?:\/\/)?(www\.)?(linkedin\.com|github\.com|gitlab\.com|behance\.net|leetcode\.com|kaggle\.com)\/[^\s|,]+|https?:\/\/[^\s|,]+)/i;
+function buildHeader(h){
+  const name = (h[0]||'Your Name').replace(/^(name|resume|curriculum vitae|cv)\s*[:\-]?\s*/i,'').trim() || 'Your Name';
+  const bits=[]; let headline='';
+  h.slice(1).forEach(l=>{
+    const parts=l.split(/\s*[|•·]\s*|\s{2,}/).map(s=>s.trim()).filter(Boolean);
+    let isContact = EMAIL.test(l)||PHONE.test(l)||URL.test(l);
+    if(!isContact && !headline && l.length<80){ headline=l; return; }
+    parts.forEach(p=>{ if(p && !/^(email|phone|mobile|contact|address)\s*:?$/i.test(p)) bits.push(p.replace(/^(email|e-mail|phone|mobile|contact|linkedin|github)\s*:\s*/i,'')); });
+  });
+  return {name, headline, contact:[...new Set(bits)]};
+}
+
+// ---------- entries ----------
+function isBullet(l){ return BULLET.test(l); }
+function stripBullet(l){ return l.replace(BULLET,'').trim(); }
+function entries(lines){
+  const out=[]; let e=null;
+  const headish = l => DATE.test(l) || (l.length<75 && !VERB.test(l) && !WEAK.test(l) && !/[.;]$/.test(l) && l.split(' ').length<12);
+  for (const l of lines){
+    if (!l) continue;
+    if (isBullet(l)){ if(!e){ e={head:'',sub:'',bullets:[]}; out.push(e);} e.bullets.push(stripBullet(l)); continue; }
+    if (headish(l) && (!e || e.bullets.length>0 || (DATE.test(l) && e.head && !DATE.test(e.head) && e.sub))){
+      e={head:l,sub:'',bullets:[]}; out.push(e); continue;
+    }
+    if (e && !e.bullets.length && !e.sub && headish(l)){
+      if (DATE.test(l) && !DATE.test(e.head)) { e.sub=l; continue; }
+      if (!DATE.test(l)) { e.sub=l; continue; }
+    }
+    if (!e){ e={head:'',sub:'',bullets:[]}; out.push(e); }
+    if (e.bullets.length && /^[a-z(]/.test(l)) e.bullets[e.bullets.length-1]+=' '+l; else e.bullets.push(l);
+  }
+  return out;
+}
+function splitDate(head){
+  const m = head.match(/\s*[|,–—-]?\s*((((jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s*,?\s*)?(19|20)\d{2}\s*(–|-|—|to)\s*(((jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s*,?\s*)?((19|20)\d{2})|present|current|now|till\s+date|ongoing))|((jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s*(19|20)\d{2})|((19|20)\d{2}))\s*$/i);
+  if (!m) return [head,''];
+  return [head.slice(0,m.index).replace(/[|,–—-]\s*$/,'').trim(), m[1].trim()];
+}
+const WEAK = /^(responsible for|worked on|involved in|participated|attended|helped|assisted|learned|learnt|handled|did|various|duties included|tasks included|fixed bugs|wrote documentation)/i;
+const VERB = /^(built|led|designed|developed|created|launched|reduced|increased|improved|cut|grew|saved|automated|migrated|optimi[sz]ed|implemented|deployed|delivered|trained|mentored|managed|architected|won|published|achieved|scaled|analy[sz]ed|streamlined)/i;
+function scoreBullet(b){
+  let s=0;
+  if (/\d/.test(b)) s+=3; if (/%|₹|\$|lakh|crore|million|\bk\b|x\b/i.test(b)) s+=2;
+  if (VERB.test(b)) s+=2; if (WEAK.test(b)) s-=3;
+  if (b.length<35) s-=1; if (b.length>220) s-=1;
+  return s;
+}
+function trimText(t, max){
+  if (t.length<=max) return t;
+  const cut = t.slice(0,max); const i = Math.max(cut.lastIndexOf('; '), cut.lastIndexOf(', '), cut.lastIndexOf(' – '));
+  return (i>max*0.6 ? cut.slice(0,i) : cut.slice(0,cut.lastIndexOf(' '))).replace(/[,;:\s]+$/,'') + '.';
+}
+function pick(bullets, n, max, log, where){
+  const idx = bullets.map((b,i)=>({b,i,s:scoreBullet(b)}));
+  let pool = idx.filter(x=>x.s>=0); if (!pool.length) pool = idx.slice().sort((a,b)=>b.s-a.s).slice(0,1);
+  const keep = pool.slice().sort((a,b)=>b.s-a.s || a.i-b.i).slice(0,n).sort((a,b)=>a.i-b.i);
+  const dropped = bullets.length - keep.length; if (dropped>0) log.bulletsDropped += dropped;
+  return keep.map(k=>{ const t=trimText(k.b, max); if(t!==k.b) log.trimmed++; return t; });
+}
+
+// ---------- condensation levels ----------
+const LEVELS = [
+  {exp:4, expB:4, proj:3, projB:3, cert:4, ach:4, max:190, sumS:3},
+  {exp:3, expB:3, proj:3, projB:2, cert:3, ach:3, max:160, sumS:2},
+  {exp:3, expB:3, proj:2, projB:2, cert:3, ach:3, max:140, sumS:2},
+  {exp:3, expB:2, proj:2, projB:1, cert:2, ach:2, max:125, sumS:2},
+  {exp:2, expB:2, proj:2, projB:1, cert:2, ach:2, max:110, sumS:1},
+];
+const FLUFF = /(challenging (environment|position|role)|growth of the (organi[sz]ation|company)|hard[-\s]?working|sincere|dedicated person|best of my (knowledge|ability)|continuous learning|team player|quick learner|self[-\s]motivated)/i;
+
+function condense(parsed, L, opts){
+  const log={removed:[], bulletsDropped:0, trimmed:0, entriesDropped:0};
+  const s=parsed.secs, out={header:buildHeader(parsed.header), secs:[]};
+  for (const k of ['hobbies','personal','declaration','references']){
+    if (!s[k]) continue;
+    if ((k==='hobbies'||k==='declaration'||k==='references') && opts.hobbies){ log.removed.push(k==='hobbies'?'Hobbies':k==='declaration'?'Declaration':'References'); continue; }
+    if (k==='personal' && opts.personal){ log.removed.push('Personal details'); const lang=s[k].find(l=>/languages?\s*(known)?\s*:/i.test(l)); if(lang && !s.languages) s.languages=[lang.replace(/^.*?:\s*/,'')]; continue; }
+  }
+  for (const k of ORDER){
+    const lines=(s[k]||[]).filter(x=>x!==undefined);
+    if (!lines.some(Boolean)) continue;
+    if (k==='summary'){
+      let txt=lines.filter(Boolean).map(stripBullet).join(' ');
+      let sents=txt.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[txt];
+      const before=sents.length; sents=sents.map(x=>x.trim()).filter(x=>x && !FLUFF.test(x));
+      if (sents.length<before) log.fluff=(log.fluff||0)+(before-sents.length);
+      if (!sents.length) continue;
+      out.secs.push({k, title:TITLES[k], type:'para', text:trimText(sents.slice(0,L.sumS).join(' '), 330)});
+    } else if (k==='experience' || k==='projects'){
+      let es=entries(lines).filter(e=>e.head||e.bullets.length);
+      const n = k==='experience'?L.exp:L.proj, nb = k==='experience'?L.expB:L.projB;
+      if (es.length>n){ log.entriesDropped += es.length-n; es=es.slice(0,n); }
+      out.secs.push({k, title:TITLES[k], type:'entries', entries:es.map(e=>{ const [h,d]=splitDate(e.head); return {head:h, date:d, sub:e.sub, bullets:pick(e.bullets, nb, L.max, log, k)}; })});
+    } else if (k==='skills'){
+      const items = lines.filter(Boolean).map(stripBullet).filter(l=>!/^soft\s*skills?\s*:/i.test(l) || !opts.hobbies);
+      out.secs.push({k, title:TITLES[k], type:'lines', lines:items.map(l=>l.replace(FLUFF,'').trim()).filter(Boolean).slice(0,6)});
+    } else if (k==='education'){
+      const es=entries(lines).filter(e=>e.head||e.bullets.length).slice(0,3);
+      out.secs.push({k, title:TITLES[k], type:'entries', entries:es.map(e=>{ const [h,d]=splitDate(e.head||e.bullets[0]||''); return {head:h, date:d, sub:e.sub, bullets:e.head?e.bullets.slice(0,1).map(b=>trimText(b,120)):[]}; })});
+    } else {
+      const items=lines.filter(Boolean).map(stripBullet);
+      const n = k==='certifications'?L.cert:k==='achievements'?L.ach:1;
+      const ranked = pick(items, n, L.max, log, k);
+      out.secs.push({k, title:TITLES[k], type: k==='languages'?'para':'bullets', items:ranked, text:ranked.join(', ')});
+    }
+  }
+  return {out, log};
+}
+
+// ---------- render ----------
+const esc = s => String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function render(r){
+  const h=r.header;
+  let html=`<h1 class="r-name" contenteditable="true">${esc(h.name)}</h1>`;
+  if (h.headline) html+=`<p class="r-headline" contenteditable="true">${esc(h.headline)}</p>`;
+  if (h.contact.length) html+=`<p class="r-contact" contenteditable="true">${h.contact.map(esc).join(' &nbsp;|&nbsp; ')}</p>`;
+  for (const s of r.secs){
+    html+=`<section class="r-sec"><h3 contenteditable="true">${esc(s.title)}</h3>`;
+    if (s.type==='para') html+=`<p contenteditable="true">${esc(s.text)}</p>`;
+    if (s.type==='lines') html+=s.lines.map(l=>{ const m=l.match(/^([^:]{2,30}):\s*(.+)$/); return `<p contenteditable="true">${m?`<strong>${esc(m[1])}:</strong> ${esc(m[2])}`:esc(l)}</p>`; }).join('');
+    if (s.type==='bullets') html+=`<ul>${s.items.map(i=>`<li contenteditable="true">${esc(i)}</li>`).join('')}</ul>`;
+    if (s.type==='entries') html+=s.entries.map(e=>`<div class="r-entry"><div class="r-eh"><span contenteditable="true">${esc(e.head)}</span>${e.date?`<span class="d" contenteditable="true">${esc(e.date)}</span>`:''}</div>${e.sub?`<div class="r-sub" contenteditable="true">${esc(e.sub)}</div>`:''}${e.bullets.length?`<ul>${e.bullets.map(b=>`<li contenteditable="true">${esc(b)}</li>`).join('')}</ul>`:''}</div>`).join('');
+    html+=`</section>`;
+  }
+  sheet.innerHTML=html;
+}
+const fits = () => sheet.scrollHeight <= sheet.clientHeight + 1;
+function fitFont(maxPt=11.5, minPt=8.75){
+  for (let pt=maxPt; pt>=minPt; pt-=0.25){ sheet.style.fontSize=pt+'pt'; if (fits()) return pt; }
+  return null;
+}
+
+let lastPt=null;
+function run(){
+  const text=src.value.trim();
+  changes.innerHTML=''; status.classList.remove('err');
+  if (text.length<80){ status.textContent='Paste a resume first (at least a few lines), or click "Try a sample".'; status.classList.add('err'); return; }
+  const parsed=parse(text);
+  const found=Object.keys(parsed.secs).filter(k=>TITLES[k]);
+  if (!found.length){ status.textContent="Couldn't find sections like Experience, Education or Skills. Put each section heading on its own line and try again."; status.classList.add('err'); return; }
+  const opts={personal:$('o-personal').checked, hobbies:$('o-hobbies').checked};
+  // Prefer the richest version that still fits at a readable size (10.25pt+);
+  // otherwise use whichever level gives the largest font.
+  let res=null, pt=null, best=null;
+  for (let level=0; level<LEVELS.length; level++){
+    const r=condense(parse(text), LEVELS[level], opts); render(r.out); const p=fitFont();
+    if (p && (!best || p>best.pt)) best={r, pt:p, level};
+    if (p && p>=10.25) break;
+  }
+  if (best){ res=best.r; render(res.out); pt=fitFont(); }
+  else { res=condense(parse(text), LEVELS[LEVELS.length-1], opts); render(res.out); sheet.style.fontSize='8.75pt'; }
+  lastPt=pt;
+  sheet.classList.toggle('over', !fits());
+  const lg=res.log, items=[];
+  if (lg.removed.length) items.push('Removed: '+lg.removed.join(', '));
+  if (lg.fluff) items.push(`Removed ${lg.fluff} generic sentence${lg.fluff>1?'s':''} from the summary`);
+  if (lg.entriesDropped) items.push(`Left out ${lg.entriesDropped} older role${lg.entriesDropped>1?'s':''} or project${lg.entriesDropped>1?'s':''}`);
+  if (lg.bulletsDropped) items.push(`Kept the strongest points, left out ${lg.bulletsDropped} weaker bullet${lg.bulletsDropped>1?'s':''}`);
+  if (lg.trimmed) items.push(`Shortened ${lg.trimmed} long bullet${lg.trimmed>1?'s':''}`);
+  changes.innerHTML=items.map(i=>`<li>${esc(i)}</li>`).join('');
+  status.textContent = fits() ? 'Done. Your resume fits on one page. Click any text on it to edit.' : 'Almost there. It is still slightly over one page, so remove a line or two on the preview.';
+  $('meta').textContent = fits() ? `1 page · ${(pt||8.75).toFixed(2).replace(/\.?0+$/,'')} pt text` : 'Over one page';
+  ['pdf','copy','refit'].forEach(id=>$(id).disabled=false);
+  scale();
+}
+
+function refit(){ const pt=fitFont(); sheet.classList.toggle('over', !pt); $('meta').textContent = pt?`1 page · ${pt.toFixed(2).replace(/\.?0+$/,'')} pt text`:'Over one page'; status.textContent = pt?'Re-fitted to one page.':'Still over one page. Remove a line or two.'; }
+
+function scale(){
+  const w = $('pw').clientWidth - 32; const s = Math.min(1, w/794);
+  $('scaler').style.transform = `scale(${s})`; $('scaler').style.height = (1123*s)+'px'; $('scaler').style.width=(794*s)+'px';
+}
+window.addEventListener('resize', scale);
+
+// ---------- file input ----------
+async function readPdf(file){
+  const pdfjs = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.min.mjs');
+  pdfjs.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.mjs';
+  const doc = await pdfjs.getDocument({data: await file.arrayBuffer()}).promise;
+  const out=[];
+  for (let i=1;i<=doc.numPages;i++){
+    const tc = await (await doc.getPage(i)).getTextContent(); const rows={};
+    tc.items.forEach(it=>{ if(!it.str.trim()) return; const y=Math.round(it.transform[5]/2)*2; (rows[y]=rows[y]||[]).push(it); });
+    Object.keys(rows).map(Number).sort((a,b)=>b-a).forEach(y=>out.push(rows[y].sort((a,b)=>a.transform[4]-b.transform[4]).map(t=>t.str).join(' ').replace(/\s+/g,' ').trim()));
+  }
+  return out.join('\n');
+}
+$('file').addEventListener('change', async e=>{
+  const f=e.target.files[0]; if(!f) return;
+  status.classList.remove('err'); status.textContent='Reading '+f.name+'…';
+  try{
+    let text='';
+    if (/\.pdf$/i.test(f.name)) text=await readPdf(f);
+    else if (/\.docx$/i.test(f.name)) text=(await mammoth.extractRawText({arrayBuffer: await f.arrayBuffer()})).value;
+    else text=await f.text();
+    src.value=text.replace(/\n{3,}/g,'\n\n'); status.textContent='Loaded '+f.name+'. Check the text, then click "Make it one page".';
+  }catch(err){ status.textContent="Couldn't read that file. Try saving it as .docx or .pdf, or paste the text instead."; status.classList.add('err'); }
+  e.target.value='';
+});
+$('sample').onclick=()=>{ src.value=SAMPLE; run(); };
+$('clear').onclick=()=>{ src.value=''; changes.innerHTML=''; status.textContent=''; sheet.classList.remove('over'); sheet.innerHTML='<div class="empty-sheet">Your one-page resume will appear here.<br>Click any text on it to edit.</div>'; ['pdf','copy','refit'].forEach(id=>$(id).disabled=true); $('meta').textContent=''; };
+$('go').onclick=run;
+$('refit').onclick=refit;
+function makePrintCopy(){
+  let root=document.getElementById('printroot'); if(root) root.remove();
+  root=document.createElement('div'); root.id='printroot';
+  const c=sheet.cloneNode(true); c.removeAttribute('id'); c.querySelectorAll('[contenteditable]').forEach(e=>e.removeAttribute('contenteditable'));
+  c.classList.remove('over'); root.appendChild(c); document.body.appendChild(root);
+}
+window.addEventListener('beforeprint', makePrintCopy);
+window.addEventListener('afterprint', ()=>{ const r=document.getElementById('printroot'); if(r) r.remove(); });
+$('pdf').onclick=()=>{ refit(); makePrintCopy(); window.print(); };
+$('copy').onclick=async()=>{
+  const t=sheet.innerText;
+  try{ await navigator.clipboard.writeText(t); status.textContent='Copied the resume text.'; }
+  catch(e){ const r=document.createRange(); r.selectNodeContents(sheet); const s=getSelection(); s.removeAllRanges(); s.addRange(r); status.textContent='Text selected. Press Ctrl+C to copy.'; }
+};
+sheet.addEventListener('input', ()=>{ sheet.classList.toggle('over', !fits()); $('meta').textContent = fits()? $('meta').textContent.replace('Over one page','1 page') : 'Over one page — click Re-fit'; });
+scale();
+})();
+</script>
+</body>
+</html>
