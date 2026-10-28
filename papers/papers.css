@@ -99,3 +99,5 @@ footer nav a{font-size:14px;padding:2px 8px}
   .topic{grid-template-columns:1fr auto}
   .topic .bar{grid-column:1/-1;grid-row:2}
 }
+
+@media (max-width:640px){header.top nav{flex-wrap:nowrap;overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-inline:-4px}header.top nav::-webkit-scrollbar{display:none}header.top nav a{white-space:nowrap;flex:0 0 auto}}

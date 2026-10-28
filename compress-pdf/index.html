@@ -49,6 +49,7 @@ legend{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:
 .sizes .saved.bad{color:var(--warn)}
 .note-s{font-size:14px;color:var(--muted);margin:8px 0 0}
 .faq b{font-family:var(--display)}
+input[type=range],input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 </style>
 </head>
 <body>
@@ -61,6 +62,7 @@ legend{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:
       <a href="/papers/">Papers</a>
       <a href="/resume/">Resume</a>
       <a href="/compress-pdf/" aria-current="page">Compress PDF</a>
+      <a href="/convert/">Convert</a>
       <a href="/#about">About</a>
       <a href="/#contact">Contact</a>
     </nav>
@@ -128,7 +130,7 @@ legend{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:
 <footer>
   <div class="wrap">
     <span>© 2026 learnaifast.in · Learn AI the fast, practical way.</span>
-    <nav aria-label="Footer"><a href="/papers/">Question Papers</a><a href="/resume/">Resume Maker</a><a href="/#about">About</a><a href="/#contact">Contact</a><a href="/#privacy">Privacy Policy</a><a href="/#disclaimer">Disclaimer</a></nav>
+    <nav aria-label="Footer"><a href="/papers/">Question Papers</a><a href="/resume/">Resume Maker</a><a href="/convert/">Convert Files</a><a href="/#about">About</a><a href="/#contact">Contact</a><a href="/#privacy">Privacy Policy</a><a href="/#disclaimer">Disclaimer</a></nav>
   </div>
 </footer>
 
@@ -268,5 +270,6 @@ async function compress(){
 $('go').addEventListener('click', compress);
 $('again').addEventListener('click', () => { srcFile=null; srcBuf=null; $('file').value=''; $('fileinfo').hidden=true; $('result').classList.remove('show'); setBar(0); $('go').disabled=true; setStatus(''); });
 </script>
+<script>try{var a=document.querySelector('header.top nav a[aria-current="page"]');if(a&&innerWidth<=640)a.parentNode.scrollLeft=a.offsetLeft-a.parentNode.offsetLeft-16;}catch(e){}</script>
 </body>
 </html>

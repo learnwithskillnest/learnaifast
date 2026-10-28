@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JPG to PDF, PDF to JPG, PNG to JPG Converter · LearnAIFast</title>
+<meta name="description" content="Free file converter: PDF to JPG or PNG, JPG/PNG to PDF, JPG ↔ PNG ↔ WEBP, merge PDFs and resize photos to under 20, 50 or 100 KB for exam forms. Runs in your browser; files are never uploaded.">
+<link rel="canonical" href="https://learnaifast.in/convert/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0E7A6A">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:opsz,wght@7..72,400;7..72,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/papers/papers.css">
+<style>
+/* Layout: one tool card (files, then "convert to", then options, then results) under a row of quick-preset chips. */
+:root{ --ok:#1E7B4C; --warn:#B4432E; }
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){ --ok:#5FD39A; --warn:#F08C74 }}
+:root[data-theme="dark"]{ --ok:#5FD39A; --warn:#F08C74 }
+main.tool{max-width:900px}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
+.presets a{font-family:var(--display);font-weight:600;font-size:14px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.presets a:hover,.presets a[aria-current="true"]{border-color:var(--accent);color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:18px}
+.drop{border:2px dashed var(--line);border-radius:12px;padding:30px 16px;text-align:center;cursor:pointer;position:relative;transition:border-color .15s,background .15s}
+.drop:hover,.drop.on{border-color:var(--accent);background:var(--soft)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop strong{font-family:var(--display);font-size:20px;display:block}
+.drop span{color:var(--muted);font-size:15px}
+.files{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.files li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.thumb{width:48px;height:48px;border-radius:6px;background:var(--soft) center/cover no-repeat;display:flex;align-items:center;justify-content:center;font:600 11px var(--mono);color:var(--accent)}
+.fn{min-width:0}
+.fn b{display:block;font-family:var(--display);font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fn small{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.fbtns{display:flex;gap:4px}
+.fbtns button{font:600 14px var(--display);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;width:32px;height:32px;cursor:pointer}
+.fbtns button:hover{border-color:var(--accent)}
+.fbtns button:disabled{opacity:.35;cursor:default}
+fieldset{border:0;padding:0;margin:18px 0 0;min-width:0}
+legend{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0}
+.choice label{display:block;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;background:var(--bg);height:100%}
+.choice label b{display:block;font-family:var(--display)}
+.choice label small{color:var(--muted);font-size:13px}
+.choice input:checked + label{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
+.choice input:focus-visible + label{outline:2px solid var(--accent);outline-offset:2px}
+.choice input:disabled + label{opacity:.4;cursor:not-allowed}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:6px}
+.opt label{display:block;font-size:14px;font-weight:600;font-family:var(--display);margin-bottom:4px}
+.opt select,.opt input[type=number]{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.opt input[type=range]{width:100%}
+.opt small{display:block;color:var(--muted);font-size:13px;margin-top:3px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.bar{height:8px;background:var(--soft);border-radius:4px;overflow:hidden;margin-top:14px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.status{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:8px;min-height:1.3em}
+.status.err{color:var(--warn)}
+.result{display:none;margin-top:18px;padding:16px;border-radius:12px;background:var(--soft)}
+.result.show{display:block}
+.result h3{margin:0 0 6px}
+.outs{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:6px}
+.outs li{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;font-size:15px}
+.outs li span{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.outs a{font-family:var(--display);font-weight:600;word-break:break-all}
+.warnline{color:var(--warn);font-size:14px;margin:8px 0 0}
+.faq b{font-family:var(--display)}
+input[type=range],input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/">Learn<b>AI</b><i>Fast</i></a>
+    <nav aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/#guides">Guides</a>
+      <a href="/papers/">Papers</a>
+      <a href="/resume/">Resume</a>
+      <a href="/compress-pdf/">Compress PDF</a>
+      <a href="/convert/" aria-current="page">Convert</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap tool">
+  <div class="eyebrow">Free tool</div>
+  <h1>Convert PDF and images</h1>
+  <p class="lede">PDF to JPG, JPG to PDF, PNG to JPG, merge PDFs, or shrink a photo to under 50 KB for a form. Add files, pick what you want, and download. Your files stay on your device.</p>
+
+  <nav class="presets" aria-label="Quick conversions">
+    <a href="#jpg-to-pdf" data-to="pdf">JPG to PDF</a>
+    <a href="#pdf-to-jpg" data-to="jpg">PDF to JPG</a>
+    <a href="#pdf-to-png" data-to="png">PDF to PNG</a>
+    <a href="#png-to-jpg" data-to="jpg">PNG to JPG</a>
+    <a href="#jpg-to-png" data-to="png">JPG to PNG</a>
+    <a href="#webp-to-jpg" data-to="jpg">WEBP to JPG</a>
+    <a href="#jpg-to-webp" data-to="webp">JPG to WEBP</a>
+    <a href="#merge-pdf" data-to="pdf">Merge PDFs</a>
+    <a href="#photo-50kb" data-to="jpg" data-kb="50">Photo under 50 KB</a>
+    <a href="#signature-20kb" data-to="jpg" data-kb="20">Signature under 20 KB</a>
+  </nav>
+
+  <section class="card" aria-label="File converter">
+    <div class="drop" id="drop">
+      <input id="file" type="file" multiple accept="application/pdf,.pdf,image/*,.jpg,.jpeg,.png,.webp,.gif,.bmp" aria-label="Choose files">
+      <strong>Choose files or drop them here</strong>
+      <span>PDF, JPG, PNG, WEBP, GIF or BMP · add as many as you like</span>
+    </div>
+    <ul class="files" id="files"></ul>
+
+    <fieldset>
+      <legend>Convert to</legend>
+      <div class="choices">
+        <div class="choice"><input type="radio" name="to" id="to-pdf" value="pdf"><label for="to-pdf"><b>PDF</b><small>One combined PDF</small></label></div>
+        <div class="choice"><input type="radio" name="to" id="to-jpg" value="jpg" checked><label for="to-jpg"><b>JPG</b><small>Smallest photos</small></label></div>
+        <div class="choice"><input type="radio" name="to" id="to-png" value="png"><label for="to-png"><b>PNG</b><small>Sharp, keeps transparency</small></label></div>
+        <div class="choice"><input type="radio" name="to" id="to-webp" value="webp"><label for="to-webp"><b>WEBP</b><small>Small, for websites</small></label></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Options</legend>
+      <div class="opts">
+        <div class="opt" data-for="jpg webp pdf"><label for="q">Quality <span id="qv">90</span>%</label><input type="range" id="q" min="40" max="100" value="90"><small>Lower quality gives a smaller file.</small></div>
+        <div class="opt" data-for="jpg webp"><label for="kb">Make each image smaller than</label><select id="kb"><option value="">No limit</option><option value="20">20 KB (signature)</option><option value="50">50 KB (photo)</option><option value="100">100 KB</option><option value="200">200 KB</option><option value="500">500 KB</option><option value="1000">1 MB</option></select><small>For exam and job form uploads.</small></div>
+        <div class="opt" data-for="jpg png webp"><label for="maxw">Resize to width</label><select id="maxw"><option value="">Keep original size</option><option value="2000">2000 px</option><option value="1600">1600 px</option><option value="1200">1200 px</option><option value="800">800 px</option><option value="600">600 px</option><option value="400">400 px</option><option value="200">200 px</option></select><small>Height scales to match.</small></div>
+        <div class="opt" data-for="jpg png webp" data-needs="pdf"><label for="dpi">PDF page quality</label><select id="dpi"><option value="100">Screen (100 dpi)</option><option value="150" selected>Standard (150 dpi)</option><option value="220">High (220 dpi)</option><option value="300">Print (300 dpi)</option></select><small>For PDF pages turned into images.</small></div>
+        <div class="opt" data-for="pdf"><label for="page">Page size</label><select id="page"><option value="fit">Same as each image</option><option value="a4">A4</option><option value="letter">Letter</option></select><small>Applies to images; PDF pages keep their size.</small></div>
+        <div class="opt" data-for="pdf"><label for="margin">Margin</label><select id="margin"><option value="0">None</option><option value="18" selected>Small</option><option value="36">Medium</option></select><small>Used with A4 or Letter.</small></div>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button class="btn" id="go" type="button" disabled>Convert</button>
+      <button class="btn ghost" id="reset" type="button">Clear files</button>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <p class="status" id="status" role="status"></p>
+
+    <div class="result" id="result" aria-live="polite">
+      <h3 id="r-title"></h3>
+      <div class="actions" style="margin-top:6px"><a class="btn" id="dl-main" href="#" download>Download</a></div>
+      <ul class="outs" id="outs"></ul>
+      <p class="warnline" id="r-warn"></p>
+    </div>
+  </section>
+
+  <h2>What you can do</h2>
+  <div class="faq">
+    <p><b>PDF to JPG or PNG</b><br>Every page becomes an image. One page downloads as a single image; more pages download together as a ZIP file.</p>
+    <p><b>JPG or PNG to PDF</b><br>Add photos (for example, scanned pages of an assignment), put them in order with the arrows, and get one PDF. Choose A4 for a neat document.</p>
+    <p><b>Merge PDFs</b><br>Add two or more PDFs, or PDFs and photos together, and choose PDF. They are joined in the order shown.</p>
+    <p><b>JPG, PNG and WEBP</b><br>Switch between formats. PNG keeps transparency; JPG has none, so transparent areas turn white.</p>
+    <p><b>Photo or signature for a form</b><br>Choose JPG and a size limit, like 50 KB for a photo or 20 KB for a signature. The tool lowers quality and size just enough to fit.</p>
+    <p><b>Is my file safe?</b><br>Yes. Everything happens in your browser. Files are never uploaded.</p>
+    <p><b>iPhone HEIC photos?</b><br>Most browsers can't open HEIC. On your iPhone, open Settings → Camera → Formats → "Most Compatible" to save new photos as JPG, or share the photo as JPG first.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 learnaifast.in · Learn AI the fast, practical way.</span>
+    <nav aria-label="Footer"><a href="/papers/">Question Papers</a><a href="/resume/">Resume Maker</a><a href="/compress-pdf/">Compress PDF</a><a href="/convert/">Convert Files</a><a href="/#about">About</a><a href="/#contact">Contact</a><a href="/#privacy">Privacy Policy</a><a href="/#disclaimer">Disclaimer</a></nav>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script type="module">
+const $ = id => document.getElementById(id);
+const PDFJS = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/legacy/build/';
+let pdfjs = null, items = [], busy = false, urls = [];
+const fmt = b => b >= 1048576 ? (b/1048576).toFixed(2)+' MB' : Math.max(1, Math.round(b/1024))+' KB';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const setStatus = (t, err=false) => { $('status').textContent = t; $('status').classList.toggle('err', err); };
+const setBar = f => { $('bar').style.width = Math.round(f*100)+'%'; };
+const isPdf = f => /pdf$/i.test(f.type) || /\.pdf$/i.test(f.name);
+const isImg = f => /^image\//.test(f.type) || /\.(jpe?g|png|webp|gif|bmp|heic|heif|avif)$/i.test(f.name);
+const target = () => document.querySelector('input[name=to]:checked').value;
+const base = n => n.replace(/\.[^.]+$/, '');
+
+async function loadPdfjs(){
+  if (pdfjs) return pdfjs;
+  pdfjs = await import(PDFJS + 'pdf.min.mjs');
+  pdfjs.GlobalWorkerOptions.workerSrc = PDFJS + 'pdf.worker.min.mjs';
+  return pdfjs;
+}
+
+// ---------- file list ----------
+function addFiles(list){
+  const bad = [];
+  for (const f of list){
+    if (isPdf(f) || isImg(f)) items.push({file:f, id:Math.random().toString(36).slice(2), thumb: isImg(f) ? URL.createObjectURL(f) : null});
+    else bad.push(f.name);
+  }
+  if (bad.length) setStatus(`Skipped ${bad.length} file${bad.length>1?'s':''} that ${bad.length>1?'are':'is'} not a PDF or image.`, true); else setStatus('');
+  if (items.length && !document.querySelector('.presets a[aria-current="true"]')) autoTarget();
+  draw();
+}
+function autoTarget(){
+  const anyImg = items.some(i => !isPdf(i.file)), anyPdf = items.some(i => isPdf(i.file));
+  if (anyPdf && !anyImg && items.length === 1) $('to-jpg').checked = true;
+  else if (anyImg && !anyPdf && items.length > 1) $('to-pdf').checked = true;
+  else if (anyPdf && items.length > 1) $('to-pdf').checked = true;
+  syncOpts();
+}
+function draw(){
+  const ul = $('files');
+  ul.innerHTML = items.map((it, i) => `<li data-id="${it.id}">
+    <div class="thumb" ${it.thumb ? `style="background-image:url('${it.thumb}')"` : ''}>${it.thumb ? '' : 'PDF'}</div>
+    <div class="fn"><b title="${esc(it.file.name)}">${esc(it.file.name)}</b><small>${fmt(it.file.size)}</small></div>
+    <div class="fbtns"><button type="button" data-a="up" aria-label="Move ${esc(it.file.name)} up" ${i===0?'disabled':''}>↑</button><button type="button" data-a="down" aria-label="Move ${esc(it.file.name)} down" ${i===items.length-1?'disabled':''}>↓</button><button type="button" data-a="rm" aria-label="Remove ${esc(it.file.name)}">×</button></div>
+  </li>`).join('');
+  $('go').disabled = !items.length;
+  syncOpts();
+}
+$('files').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const id = b.closest('li').dataset.id; const i = items.findIndex(x => x.id === id);
+  if (b.dataset.a === 'rm'){ if (items[i].thumb) URL.revokeObjectURL(items[i].thumb); items.splice(i,1); }
+  if (b.dataset.a === 'up' && i>0) [items[i-1], items[i]] = [items[i], items[i-1]];
+  if (b.dataset.a === 'down' && i<items.length-1) [items[i+1], items[i]] = [items[i], items[i+1]];
+  draw();
+});
+$('file').addEventListener('change', e => { addFiles([...e.target.files]); e.target.value = ''; });
+const drop = $('drop');
+['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('on'); }));
+['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('on'); }));
+drop.addEventListener('drop', e => addFiles([...e.dataTransfer.files]));
+$('reset').addEventListener('click', () => { items.forEach(i => i.thumb && URL.revokeObjectURL(i.thumb)); items = []; draw(); $('result').classList.remove('show'); setBar(0); setStatus(''); });
+
+// ---------- options visibility ----------
+function syncOpts(){
+  const t = target(), anyPdf = items.some(i => isPdf(i.file));
+  document.querySelectorAll('.opt').forEach(o => {
+    let show = o.dataset.for.split(' ').includes(t);
+    if (o.dataset.needs === 'pdf' && !anyPdf) show = false;
+    o.hidden = !show;
+  });
+  $('go').textContent = items.length ? `Convert to ${t.toUpperCase()}` : 'Convert';
+}
+document.querySelectorAll('input[name=to]').forEach(r => r.addEventListener('change', syncOpts));
+$('q').addEventListener('input', () => $('qv').textContent = $('q').value);
+
+// ---------- presets (deep links like /convert/#jpg-to-pdf) ----------
+function applyPreset(hash){
+  const a = document.querySelector(`.presets a[href="#${hash}"]`);
+  document.querySelectorAll('.presets a').forEach(x => x.removeAttribute('aria-current'));
+  if (!a) return;
+  a.setAttribute('aria-current', 'true');
+  $('to-' + a.dataset.to).checked = true;
+  $('kb').value = a.dataset.kb || '';
+  if (a.dataset.kb === '20') $('maxw').value = '400';
+  if (a.dataset.kb === '50') $('maxw').value = '600';
+  syncOpts();
+}
+window.addEventListener('hashchange', () => applyPreset(location.hash.slice(1)));
+applyPreset(location.hash.slice(1));
+
+// ---------- image helpers ----------
+async function decodeImage(file){
+  try { return await createImageBitmap(file); }
+  catch(e){
+    // fallback via <img> (some browsers decode more formats this way)
+    const url = URL.createObjectURL(file);
+    try {
+      const img = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = url; });
+      return img;
+    } catch(e2){ throw new Error(/heic|heif/i.test(file.name) ? `${file.name}: HEIC photos can't be opened in this browser. Save the photo as JPG first.` : `${file.name} could not be opened as an image.`); }
+    finally { URL.revokeObjectURL(url); }
+  }
+}
+function drawTo(src, w, h, opaque){
+  const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(w)); c.height = Math.max(1, Math.round(h));
+  const ctx = c.getContext('2d');
+  if (opaque){ ctx.fillStyle = '#fff'; ctx.fillRect(0,0,c.width,c.height); }
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(src, 0, 0, c.width, c.height);
+  return c;
+}
+const MIME = {jpg:'image/jpeg', png:'image/png', webp:'image/webp'};
+const encode = (c, fmtx, q) => new Promise(r => c.toBlob(r, MIME[fmtx], fmtx === 'png' ? undefined : q));
+async function encodeWithLimit(canvas, fmtx, q, kb){
+  if (!kb || fmtx === 'png') return {blob: await encode(canvas, fmtx, q), note:''};
+  const limit = kb*1024; let c = canvas, blob = await encode(c, fmtx, q);
+  if (blob.size <= limit) return {blob, note:''};
+  for (let round=0; round<12; round++){
+    let lo = 0.3, hi = Math.min(q, 0.95), best = null;
+    const atLo = await encode(c, fmtx, lo);
+    if (atLo.size <= limit){
+      best = atLo;
+      for (let i=0;i<6;i++){ const mid=(lo+hi)/2; const b = await encode(c, fmtx, mid); if (b.size <= limit){ best=b; lo=mid; } else hi=mid; }
+      return {blob: best, note: c !== canvas ? `resized to ${c.width}×${c.height}` : ''};
+    }
+    c = drawTo(c, c.width*0.8, c.height*0.8, fmtx === 'jpg');
+    if (c.width < 60) break;
+  }
+  return {blob: await encode(c, fmtx, 0.3), note:'could not reach the size limit', miss:true};
+}
+function scaledSize(w, h){
+  const mw = +$('maxw').value; if (!mw || w <= mw) return [w, h];
+  return [mw, h * mw / w];
+}
+
+// ---------- PDF pages -> canvases ----------
+async function pdfPages(file, dpi, onPage){
+  const lib = await loadPdfjs();
+  let doc;
+  try { doc = await lib.getDocument({data: await file.arrayBuffer()}).promise; }
+  catch(e){ throw new Error(/password/i.test(e.name + e.message) ? `${file.name} is password-protected. Remove the password first.` : `${file.name} could not be opened as a PDF.`); }
+  for (let i=1; i<=doc.numPages; i++){
+    const page = await doc.getPage(i);
+    const vp = page.getViewport({scale: dpi/72});
+    const c = document.createElement('canvas'); c.width = Math.round(vp.width); c.height = Math.round(vp.height);
+    const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0,0,c.width,c.height);
+    await page.render({canvasContext: ctx, canvas: c, viewport: vp}).promise;
+    await onPage(c, i, doc.numPages);
+    page.cleanup();
+  }
+}
+
+// ---------- conversions ----------
+async function toImages(fmtx){
+  const q = +$('q').value/100, kb = +$('kb').value || 0, dpi = +$('dpi').value;
+  const outs = []; let warned = false; const total = items.length;
+  for (let k=0; k<total; k++){
+    const f = items[k].file;
+    if (isPdf(f)){
+      await pdfPages(f, dpi, async (c, i, n) => {
+        const [w,h] = scaledSize(c.width, c.height);
+        const cc = (w !== c.width) ? drawTo(c, w, h, fmtx === 'jpg') : c;
+        const r = await encodeWithLimit(cc, fmtx, q, kb); if (r.miss) warned = true;
+        outs.push({name: `${base(f.name)}-page-${String(i).padStart(2,'0')}.${fmtx}`, blob: r.blob, note: r.note});
+        setBar((k + i/n)/total); setStatus(`Converting ${f.name}: page ${i} of ${n}…`);
+      });
+    } else {
+      setStatus(`Converting ${f.name}…`);
+      const img = await decodeImage(f);
+      const [w,h] = scaledSize(img.width, img.height);
+      const c = drawTo(img, w, h, fmtx === 'jpg');
+      const r = await encodeWithLimit(c, fmtx, q, kb); if (r.miss) warned = true;
+      outs.push({name: `${base(f.name)}.${fmtx}`, blob: r.blob, note: r.note});
+      setBar((k+1)/total);
+    }
+  }
+  if (fmtx === 'webp' && outs.some(o => o.blob.type !== 'image/webp')) throw new Error('This browser cannot save WEBP files. Choose JPG or PNG, or use Chrome, Edge or Firefox.');
+  return {outs, warned};
+}
+const SIZES = {a4:[595.28, 841.89], letter:[612, 792]};
+async function toPdf(){
+  const q = +$('q').value/100, pageMode = $('page').value, margin = +$('margin').value;
+  const out = await PDFLib.PDFDocument.create(); const total = items.length;
+  for (let k=0; k<total; k++){
+    const f = items[k].file;
+    setStatus(`Adding ${f.name}…`);
+    if (isPdf(f)){
+      let src;
+      try { src = await PDFLib.PDFDocument.load(await f.arrayBuffer(), {ignoreEncryption:false}); }
+      catch(e){ throw new Error(/encrypt/i.test(e.message) ? `${f.name} is password-protected. Remove the password first.` : `${f.name} could not be opened as a PDF.`); }
+      const pages = await out.copyPages(src, src.getPageIndices()); pages.forEach(p => out.addPage(p));
+    } else {
+      const img = await decodeImage(f);
+      const c = drawTo(img, img.width, img.height, true);
+      const jpg = await (await encode(c, 'jpg', q)).arrayBuffer();
+      const emb = await out.embedJpg(jpg);
+      const iw = img.width * 0.75, ih = img.height * 0.75; // px -> pt at 96 dpi
+      if (pageMode === 'fit'){
+        const pg = out.addPage([iw, ih]); pg.drawImage(emb, {x:0, y:0, width:iw, height:ih});
+      } else {
+        let [pw, ph] = SIZES[pageMode]; if (iw > ih) [pw, ph] = [ph, pw];
+        const s = Math.min((pw-2*margin)/iw, (ph-2*margin)/ih);
+        const w = iw*s, h = ih*s; const pg = out.addPage([pw, ph]);
+        pg.drawImage(emb, {x:(pw-w)/2, y:(ph-h)/2, width:w, height:h});
+      }
+    }
+    setBar((k+1)/total);
+  }
+  const bytes = await out.save({useObjectStreams:true});
+  const name = items.length === 1 ? base(items[0].file.name) + '.pdf' : (items.every(i => isPdf(i.file)) ? 'merged.pdf' : 'converted.pdf');
+  return {outs:[{name, blob:new Blob([bytes], {type:'application/pdf'}), note:`${out.getPageCount()} page${out.getPageCount()>1?'s':''}`}], warned:false};
+}
+
+async function run(){
+  if (!items.length || busy) return;
+  busy = true; $('go').disabled = true; $('result').classList.remove('show'); setBar(0);
+  urls.forEach(u => URL.revokeObjectURL(u)); urls = [];
+  try{
+    const t = target();
+    const res = t === 'pdf' ? await toPdf() : await toImages(t);
+    setBar(1);
+    const outs = res.outs;
+    const link = o => { const u = URL.createObjectURL(o.blob); urls.push(u); return u; };
+    let main;
+    if (outs.length === 1){ main = {name: outs[0].name, url: link(outs[0])}; }
+    else {
+      setStatus('Packing ZIP…');
+      const zip = new JSZip(); const used = {};
+      outs.forEach(o => { let n = o.name; while (used[n]) n = n.replace(/(\.\w+)$/, '-' + (++used[o.name]) + '$1'); used[n] = 1; zip.file(n, o.blob); });
+      const zb = await zip.generateAsync({type:'blob'});
+      main = {name: (t === 'pdf' ? 'converted' : 'converted-' + t) + '.zip', url: link({blob: zb}), size: zb.size};
+    }
+    const dl = $('dl-main'); dl.href = main.url; dl.download = main.name;
+    dl.textContent = outs.length === 1 ? `Download ${outs[0].name.split('.').pop().toUpperCase()}` : `Download all (${outs.length} files, ZIP)`;
+    $('r-title').textContent = outs.length === 1 ? 'Your file is ready' : `${outs.length} files ready`;
+    $('outs').innerHTML = outs.map(o => `<li><a href="${link(o)}" download="${esc(o.name)}">${esc(o.name)}</a><span>${fmt(o.blob.size)}${o.note ? ' · ' + esc(o.note) : ''}</span></li>`).join('');
+    $('r-warn').textContent = res.warned ? 'Some images could not get under the size limit without becoming unreadable. Try a larger limit or a smaller width.' : '';
+    $('result').classList.add('show');
+    setStatus('Done.');
+  } catch(e){ setStatus(e.message || 'Something went wrong. Try again with fewer files.', true); }
+  finally { busy = false; $('go').disabled = !items.length; }
+}
+$('go').addEventListener('click', run);
+draw();
+</script>
+<script>try{var a=document.querySelector('header.top nav a[aria-current="page"]');if(a&&innerWidth<=640)a.parentNode.scrollLeft=a.offsetLeft-a.parentNode.offsetLeft-16;}catch(e){}</script>
+</body>
+</html>
