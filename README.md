@@ -28,6 +28,10 @@ The `papers/` folder holds the previous year question papers section: 200 AKTU B
 
 `convert/index.html` converts in the browser: PDF → JPG/PNG/WEBP (multi-page as ZIP), images → PDF (A4/Letter/fit, reorderable), JPG ↔ PNG ↔ WEBP, merging PDFs and images, resize, and per-image size limits (20 KB signature, 50 KB photo, etc.). Quick-preset links like `/convert/#jpg-to-pdf`. Uses pdf.js (legacy), pdf-lib and JSZip. Files are never uploaded.
 
+## Document scanner
+
+`scan/index.html` turns phone photos into scanned PDFs: camera or gallery input, automatic page detection (Otsu threshold + largest region), draggable corners with perspective correction, Clean / Grayscale / Black & white looks with lighting correction, rotate, multi-page reorder, and export to PDF (A4 or fit, optional size limit) or JPG/ZIP. Uses pdf-lib and JSZip. Photos are never uploaded.
+
 ## Run locally
 
 Open `index.html` in any browser. No server needed.
