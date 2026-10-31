@@ -7,7 +7,8 @@ Source for [learnaifast.in](https://learnaifast.in): practical, beginner-friendl
 Plain HTML pages with no build step. Each page has its own URL so Google can index it:
 
 - `/` homepage with newsletter signup
-- `/guides/` plus three guides: `/what-is-ai/`, `/ai-for-students/`, `/how-to-write-ai-prompts/`
+- `/guides/` plus eight guides: `/what-is-ai/`, `/ai-for-students/`, `/how-to-write-ai-prompts/`, `/chatgpt-in-hindi/`, `/chatgpt-resume/`, `/aktu-exam-preparation/`, `/free-ai-tools-for-students/`, `/exam-form-photo-signature-size/`
+- To add a guide: copy a guide folder, change the title, description, canonical, social tags and JSON-LD, then add a card to `guides/index.html` (and the homepage if it's new) and a line to `sitemap.xml`
 - `/about/`, `/contact/`, `/privacy-policy/`, `/disclaimer/`
 - `assets/site.css` and `assets/site.js` are shared by these pages. Old links like `/#prompts` redirect to the new pages.
 
