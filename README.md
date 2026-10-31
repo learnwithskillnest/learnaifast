@@ -48,5 +48,4 @@ Any static host works (GitHub Pages, Netlify, Cloudflare Pages, Hostinger). For 
 
 ## Before going live
 
-- Add your name and a short bio in "Who's behind LearnAIFast" on `about/index.html`
 - Connect the newsletter form to an email tool such as Mailchimp
