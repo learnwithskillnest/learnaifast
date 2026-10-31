@@ -38,6 +38,14 @@ The `papers/` folder holds the previous year question papers section: 200 AKTU B
 
 `scan/index.html` turns phone photos into scanned PDFs: camera or gallery input, automatic page detection (Otsu threshold + largest region), draggable corners with perspective correction, Clean / Grayscale / Black & white looks with lighting correction, rotate, multi-page reorder, and export to PDF (A4 or fit, optional size limit) or JPG/ZIP. Uses pdf-lib and JSZip. Photos are never uploaded.
 
+## Photo and signature resizer
+
+`photo-signature-resizer/index.html` makes exam-ready JPGs in the browser: presets for SSC, IBPS, UPSC, NEET, JEE and RRB (exact pixels and KB range, checked October 2026), drag/zoom crop, rotate, brightness, signature clean-up, optional name and date strip, and a custom size. Files below the minimum KB are padded with a JPEG comment; DPI is set to 200. Presets live in the `P` array in the page script. Nothing is uploaded.
+
+## AKTU CGPA calculator
+
+`aktu-cgpa-calculator/index.html`: SGPA from credits and grades (two grading schemes), credit-weighted CGPA across semesters, and CGPA ↔ percentage with AKTU's (CGPA − 0.75) × 10 formula. Inputs are remembered in the browser.
+
 ## Run locally
 
 Run `python3 -m http.server` in this folder and open http://localhost:8000 (links use root paths like `/about/`, so opening the file directly won't follow them).

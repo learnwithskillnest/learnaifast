@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AKTU CGPA Calculator: SGPA, CGPA &amp; CGPA to Percentage · LearnAIFast</title>
+<meta name="description" content="Free AKTU calculator: work out SGPA from grades and credits, CGPA from all semesters, and convert CGPA to percentage with AKTU&#x27;s (CGPA − 0.75) × 10 formula.">
+<link rel="canonical" href="https://learnaifast.in/aktu-cgpa-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LearnAIFast">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="AKTU CGPA Calculator: SGPA, CGPA &amp; CGPA to Percentage · LearnAIFast">
+<meta property="og:description" content="Free AKTU calculator: work out SGPA from grades and credits, CGPA from all semesters, and convert CGPA to percentage with AKTU&#x27;s (CGPA − 0.75) × 10 formula.">
+<meta property="og:url" content="https://learnaifast.in/aktu-cgpa-calculator/">
+<meta property="og:image" content="https://learnaifast.in/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="LearnAIFast: practical AI guides and free tools for India">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AKTU CGPA Calculator: SGPA, CGPA &amp; CGPA to Percentage · LearnAIFast">
+<meta name="twitter:description" content="Free AKTU calculator: work out SGPA from grades and credits, CGPA from all semesters, and convert CGPA to percentage with AKTU&#x27;s (CGPA − 0.75) × 10 formula.">
+<meta name="twitter:image" content="https://learnaifast.in/og-image.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0E7A6A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://learnaifast.in/#org",
+   "name": "LearnAIFast",
+   "url": "https://learnaifast.in/",
+   "logo": "https://learnaifast.in/icon-512.png",
+   "email": "learnwithskillnest@gmail.com"
+  },
+  {
+   "@type": "WebApplication",
+   "name": "AKTU SGPA, CGPA and Percentage Calculator",
+   "url": "https://learnaifast.in/aktu-cgpa-calculator/",
+   "description": "Free AKTU calculator: work out SGPA from grades and credits, CGPA from all semesters, and convert CGPA to percentage with AKTU's (CGPA − 0.75) × 10 formula.",
+   "applicationCategory": "EducationalApplication",
+   "operatingSystem": "Any (runs in your web browser)",
+   "isAccessibleForFree": true,
+   "inLanguage": "en-IN",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+   },
+   "publisher": {
+    "@id": "https://learnaifast.in/#org"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://learnaifast.in/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "AKTU SGPA, CGPA and Percentage Calculator",
+     "item": "https://learnaifast.in/aktu-cgpa-calculator/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "How do I convert AKTU CGPA to percentage?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Subtract 0.75 from your CGPA and multiply by 10. For example, 8.2 CGPA = (8.2 − 0.75) × 10 = 74.5%."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is the difference between SGPA and CGPA?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "SGPA is your result for one semester. CGPA is the combined average of all semesters so far."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is AKTU CGPA a simple average of SGPAs?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not exactly. It's weighted by each semester's credits. If you enter credits in the CGPA tab, the calculator weights them the same way."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Where can I find previous year AKTU papers?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "On our AKTU question papers page, with 180+ papers for AI, ML, data science and Python subjects. Also see how to prepare for AKTU exams."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9472711790336039" crossorigin="anonymous"></script>
+<style>
+/* AKTU calculator: three tabs (SGPA, CGPA, percentage), each a small table of inputs with a live result box. */
+main.tool{max-width:900px}
+.cg-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px}
+.cg-tabs button{font:700 15px var(--display);background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
+.cg-tabs button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.cg-panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:12px}
+.cg-panel[hidden]{display:none}
+.cg-f label{display:block;font:600 14px var(--display);margin-bottom:4px}
+.cg-panel select,.cg-panel input{font:inherit;font-size:16px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%;min-width:0}
+.cg-rows{display:grid;gap:8px;margin-top:12px}
+.cg-row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1.3fr) 36px;gap:8px;align-items:center}
+.cg-row.sem{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) 36px}
+.cg-head{font:700 12px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.cg-x{font:600 18px var(--display);background:none;border:1px solid var(--line);border-radius:8px;height:38px;color:var(--muted);cursor:pointer}
+.cg-x:hover{border-color:#B4432E;color:#B4432E}
+.cg-add{font:600 14px var(--display);background:var(--surface);color:var(--accent);border:1px dashed var(--accent);border-radius:8px;padding:8px 14px;cursor:pointer;margin-top:10px}
+.cg-res{margin-top:16px;background:var(--soft);border-radius:12px;padding:16px;display:flex;gap:24px;flex-wrap:wrap;align-items:baseline}
+.cg-res div{min-width:0}
+.cg-res b{display:block;font:800 34px var(--display);letter-spacing:-.02em;color:var(--ink)}
+.cg-res span{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.cg-note{font-size:14px;color:var(--muted);margin:10px 0 0}
+.cg-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+@media (max-width:520px){.cg-row{grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr) minmax(0,1.2fr) 34px;gap:6px}.cg-panel{padding:14px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="LearnAIFast home">Learn<b>AI</b><i>Fast</i></a>
+    <nav aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/guides/">Guides</a>
+      <a href="/papers/">Papers</a>
+      <a href="/resume/">Resume</a>
+      <a href="/compress-pdf/">Compress PDF</a>
+      <a href="/convert/">Convert</a>
+      <a href="/scan/">Scanner</a>
+      <a href="/photo-signature-resizer/">Photo Resizer</a>
+      <a href="/aktu-cgpa-calculator/" aria-current="page">CGPA</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap tool">
+<section class="page">
+  <div class="crumbs"><a href="/">Home</a> / <span>AKTU CGPA calculator</span></div>
+  <div class="eyebrow">Free tool</div>
+  <h1>AKTU SGPA, CGPA and percentage calculator</h1>
+  <p class="lede">Work out your semester SGPA from your grades, your overall CGPA from all semesters, and convert CGPA to percentage using AKTU's ordinance formula.</p>
+
+  <div class="cg-tabs" role="tablist" aria-label="Calculators">
+    <button role="tab" id="t-sgpa" aria-controls="p-sgpa" aria-selected="true">SGPA</button>
+    <button role="tab" id="t-cgpa" aria-controls="p-cgpa" aria-selected="false">CGPA</button>
+    <button role="tab" id="t-pct" aria-controls="p-pct" aria-selected="false">CGPA to %</button>
+  </div>
+
+  <section class="cg-panel" id="p-sgpa" role="tabpanel" aria-labelledby="t-sgpa">
+    <div class="cg-two">
+      <div class="cg-f"><label for="scheme">Grading scheme on your marksheet</label>
+        <select id="scheme">
+          <option value="a">Top grade A+ (A+, A, B+, B, C, D, E, F)</option>
+          <option value="b">Top grade O (O, A+, A, B+, B, C, P, F)</option>
+        </select>
+      </div>
+    </div>
+    <p class="cg-note">AKTU's letter grades have changed between batches. Pick the scheme whose letters match your marksheet.</p>
+    <div class="cg-rows" id="s-rows">
+      <div class="cg-row cg-head"><span>Subject (optional)</span><span>Credits</span><span>Grade</span><span></span></div>
+    </div>
+    <button class="cg-add" type="button" id="s-add">+ Add subject</button>
+    <div class="cg-res" aria-live="polite"><div><b id="s-out">–</b><span>SGPA</span></div><div><b id="s-cr">0</b><span>total credits</span></div><div><b id="s-pct">–</b><span>equivalent %</span></div></div>
+    <p class="cg-note">SGPA = Σ(credits × grade points) ÷ Σ credits. Subjects with 0 credits (like some audit courses) don't count.</p>
+  </section>
+
+  <section class="cg-panel" id="p-cgpa" role="tabpanel" aria-labelledby="t-cgpa" hidden>
+    <div class="cg-rows" id="c-rows">
+      <div class="cg-row sem cg-head"><span>Semester</span><span>SGPA</span><span>Credits (optional)</span><span></span></div>
+    </div>
+    <button class="cg-add" type="button" id="c-add">+ Add semester</button>
+    <div class="cg-res" aria-live="polite"><div><b id="c-out">–</b><span>CGPA</span></div><div><b id="c-pct">–</b><span>equivalent %</span></div></div>
+    <p class="cg-note" id="c-how">Enter each semester's credits (from your marksheet) for an exact credit-weighted CGPA. If you leave credits blank, every semester counts equally, which is a close estimate.</p>
+  </section>
+
+  <section class="cg-panel" id="p-pct" role="tabpanel" aria-labelledby="t-pct" hidden>
+    <div class="cg-two">
+      <div class="cg-f"><label for="p-cg">CGPA</label><input id="p-cg" type="number" min="0" max="10" step="0.01" inputmode="decimal" placeholder="e.g. 7.85"></div>
+      <div class="cg-f"><label for="p-pc">or percentage</label><input id="p-pc" type="number" min="0" max="100" step="0.01" inputmode="decimal" placeholder="e.g. 70.5"></div>
+    </div>
+    <div class="cg-res" aria-live="polite"><div><b id="p-out">–</b><span id="p-lbl">percentage</span></div></div>
+    <p class="cg-note">AKTU formula: <strong>Percentage = (CGPA − 0.75) × 10</strong>. Example: CGPA 7.85 → (7.85 − 0.75) × 10 = 71.0%.</p>
+  </section>
+
+  <h2>How AKTU calculates SGPA, CGPA and percentage</h2>
+  <h3>SGPA (Semester Grade Point Average)</h3>
+  <p>Multiply each subject's credits by the grade points you got, add them up, and divide by the total credits for that semester.</p>
+  <p><strong>Example:</strong> 4-credit subject with 8 points, 3-credit with 9, and 3-credit with 7: (4×8 + 3×9 + 3×7) ÷ 10 = 80 ÷ 10 = <strong>8.0 SGPA</strong>.</p>
+  <h3>CGPA (Cumulative Grade Point Average)</h3>
+  <p>CGPA is the credit-weighted average of all your semesters: Σ(SGPA × semester credits) ÷ Σ semester credits. If your semesters had similar credits, a simple average of SGPAs comes very close.</p>
+  <h3>CGPA to percentage</h3>
+  <p>AKTU's B.Tech ordinance gives the conversion as <strong>Percentage = (CGPA − 0.75) × 10</strong>. Some companies and job forms use CGPA × 10 instead, so read what the form asks for.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>CGPA</th><th>Percentage (AKTU formula)</th></tr></thead>
+    <tbody><tr><td>9.0</td><td>82.5%</td></tr><tr><td>8.5</td><td>77.5%</td></tr><tr><td>8.0</td><td>72.5%</td></tr><tr><td>7.5</td><td>67.5%</td></tr><tr><td>7.0</td><td>62.5%</td></tr><tr><td>6.75</td><td>60.0%</td></tr><tr><td>6.5</td><td>57.5%</td></tr><tr><td>6.0</td><td>52.5%</td></tr></tbody>
+  </table></div>
+  <p class="note">This calculator is for estimates. Your official SGPA, CGPA and percentage are the ones on your AKTU marksheet and transcript. If they differ, follow the marksheet and your college's exam cell.</p>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq">
+    <p><b>How do I convert AKTU CGPA to percentage?</b><br>Subtract 0.75 from your CGPA and multiply by 10. For example, 8.2 CGPA = (8.2 − 0.75) × 10 = 74.5%.</p>
+    <p><b>What is the difference between SGPA and CGPA?</b><br>SGPA is your result for one semester. CGPA is the combined average of all semesters so far.</p>
+    <p><b>Is AKTU CGPA a simple average of SGPAs?</b><br>Not exactly. It's weighted by each semester's credits. If you enter credits in the CGPA tab, the calculator weights them the same way.</p>
+    <p><b>Where can I find previous year AKTU papers?</b><br>On our <a href="/papers/">AKTU question papers page</a>, with 180+ papers for AI, ML, data science and Python subjects. Also see <a href="/aktu-exam-preparation/">how to prepare for AKTU exams</a>.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 learnaifast.in · Learn AI the fast, practical way.</span>
+    <nav aria-label="Footer">
+      <a href="/papers/">Question Papers</a><a href="/resume/">Resume Maker</a><a href="/compress-pdf/">Compress PDF</a><a href="/convert/">Convert Files</a><a href="/scan/">Scanner</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/disclaimer/">Disclaimer</a>
+    </nav>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+<script>
+(function(){
+  var SCHEMES={a:[["A+",10],["A",9],["B+",8],["B",7],["C",6],["D",5],["E",4],["F",0]],b:[["O",10],["A+",9],["A",8],["B+",7],["B",6],["C",5],["P",4],["F",0]]};
+  var $=function(id){return document.getElementById(id)};
+  var LS="lafCgpa";function save(){try{localStorage.setItem(LS,JSON.stringify(state()))}catch(e){}}
+  function el(t,a){var e=document.createElement(t);for(var k in a)e.setAttribute(k,a[k]);return e}
+  function f2(n){return (Math.round(n*100)/100).toFixed(2)}
+  function pct(c){return Math.max(0,(c-0.75)*10)}
+
+  // tabs
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  tabs.forEach(function(t){t.addEventListener("click",function(){tabs.forEach(function(x){var on=x===t;x.setAttribute("aria-selected",on);$(x.getAttribute("aria-controls")).hidden=!on});try{history.replaceState(null,"","#"+t.id.slice(2))}catch(e){}})});
+  var h=location.hash.slice(1);if($("t-"+h))$("t-"+h).click();
+
+  // SGPA
+  function gradeOpts(sel,keep){var v=keep!=null?keep:sel.value;sel.innerHTML="";SCHEMES[$("scheme").value].forEach(function(g){var o=el("option",{value:g[1]});o.textContent=g[0]+" ("+g[1]+")";sel.appendChild(o)});sel.value=v!==""&&v!=null?v:"8";if(sel.value==="")sel.value="8"}
+  function sRow(name,cr,gp){
+    var r=el("div",{"class":"cg-row"}),n=el("input",{type:"text",placeholder:"e.g. DBMS","aria-label":"Subject"}),c=el("input",{type:"number",min:"0",max:"10",step:"0.5",inputmode:"decimal","aria-label":"Credits"}),g=el("select",{"aria-label":"Grade"}),x=el("button",{type:"button","class":"cg-x","aria-label":"Remove subject"});
+    n.value=name||"";c.value=cr!=null?cr:4;gradeOpts(g,gp!=null?String(gp):"8");x.textContent="×";
+    x.addEventListener("click",function(){r.remove();calcS()});[n,c,g].forEach(function(i){i.addEventListener("input",calcS)});
+    r.append(n,c,g,x);$("s-rows").appendChild(r);
+  }
+  function calcS(){var tc=0,tp=0;[].slice.call($("s-rows").querySelectorAll(".cg-row:not(.cg-head)")).forEach(function(r){var c=parseFloat(r.children[1].value)||0,g=parseFloat(r.children[2].value)||0;tc+=c;tp+=c*g});
+    $("s-cr").textContent=tc;var s=tc?tp/tc:null;$("s-out").textContent=s==null?"–":f2(s);$("s-pct").textContent=s==null?"–":f2(pct(s))+"%";save()}
+  $("s-add").addEventListener("click",function(){sRow();calcS()});
+  $("scheme").addEventListener("change",function(){[].slice.call($("s-rows").querySelectorAll("select")).forEach(function(s){gradeOpts(s)});calcS()});
+
+  // CGPA
+  function cRow(sg,cr){
+    var rows=$("c-rows").querySelectorAll(".cg-row:not(.cg-head)").length,r=el("div",{"class":"cg-row sem"}),lab=el("span",{}),s=el("input",{type:"number",min:"0",max:"10",step:"0.01",inputmode:"decimal",placeholder:"e.g. 7.6","aria-label":"SGPA"}),c=el("input",{type:"number",min:"0",max:"40",step:"0.5",inputmode:"decimal",placeholder:"e.g. 22","aria-label":"Semester credits"}),x=el("button",{type:"button","class":"cg-x","aria-label":"Remove semester"});
+    lab.textContent="Semester "+(rows+1);s.value=sg!=null?sg:"";c.value=cr!=null?cr:"";x.textContent="×";
+    x.addEventListener("click",function(){r.remove();renum();calcC()});[s,c].forEach(function(i){i.addEventListener("input",calcC)});
+    r.append(lab,s,c,x);$("c-rows").appendChild(r);
+  }
+  function renum(){[].slice.call($("c-rows").querySelectorAll(".cg-row:not(.cg-head)")).forEach(function(r,i){r.children[0].textContent="Semester "+(i+1)})}
+  function calcC(){var rs=[].slice.call($("c-rows").querySelectorAll(".cg-row:not(.cg-head)")).map(function(r){return [parseFloat(r.children[1].value),parseFloat(r.children[2].value)]}).filter(function(x){return !isNaN(x[0])});
+    var all=rs.length&&rs.every(function(x){return x[1]>0}),num=0,den=0;rs.forEach(function(x){var w=all?x[1]:1;num+=x[0]*w;den+=w});
+    var c=den?num/den:null;$("c-out").textContent=c==null?"–":f2(c);$("c-pct").textContent=c==null?"–":f2(pct(c))+"%";
+    $("c-how").textContent=rs.length?(all?"Credit-weighted CGPA across "+rs.length+" semester"+(rs.length>1?"s":"")+".":"Simple average of "+rs.length+" semester"+(rs.length>1?"s":"")+". Add credits for every semester for the exact credit-weighted CGPA."):"Enter each semester's credits (from your marksheet) for an exact credit-weighted CGPA. If you leave credits blank, every semester counts equally, which is a close estimate.";save()}
+  $("c-add").addEventListener("click",function(){cRow();calcC()});
+
+  // percentage
+  $("p-cg").addEventListener("input",function(){$("p-pc").value="";var c=parseFloat(this.value);$("p-lbl").textContent="percentage";$("p-out").textContent=isNaN(c)?"–":f2(pct(Math.min(10,c)))+"%";save()});
+  $("p-pc").addEventListener("input",function(){$("p-cg").value="";var p=parseFloat(this.value);$("p-lbl").textContent="CGPA";$("p-out").textContent=isNaN(p)?"–":f2(Math.min(10,p/10+0.75));save()});
+
+  // restore or seed
+  function state(){return {scheme:$("scheme").value,s:[].slice.call($("s-rows").querySelectorAll(".cg-row:not(.cg-head)")).map(function(r){return [r.children[0].value,r.children[1].value,r.children[2].value]}),
+    c:[].slice.call($("c-rows").querySelectorAll(".cg-row:not(.cg-head)")).map(function(r){return [r.children[1].value,r.children[2].value]})}}
+  var st=null;try{st=JSON.parse(localStorage.getItem(LS)||"null")}catch(e){}
+  if(st&&st.s&&st.s.length){$("scheme").value=st.scheme||"a";st.s.forEach(function(x){sRow(x[0],x[1],x[2])})}else{for(var i=0;i<5;i++)sRow();sRow("",2,"8")}
+  if(st&&st.c&&st.c.length){st.c.forEach(function(x){cRow(x[0],x[1])})}else{for(var j=0;j<2;j++)cRow()}
+  calcS();calcC();
+})();
+</script>
+</body>
+</html>
