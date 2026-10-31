@@ -4,13 +4,18 @@ Source for [learnaifast.in](https://learnaifast.in): practical, beginner-friendl
 
 ## What's here
 
-`index.html` is the whole site in one file, with no build step. It includes:
+Plain HTML pages with no build step. Each page has its own URL so Google can index it:
 
-- Homepage with newsletter signup
-- Three guides: What Is AI?, 10 Ways Students Can Use AI, How to Write Better AI Prompts
-- About, Contact, Privacy Policy and Disclaimer pages
+- `/` homepage with newsletter signup
+- `/guides/` plus three guides: `/what-is-ai/`, `/ai-for-students/`, `/how-to-write-ai-prompts/`
+- `/about/`, `/contact/`, `/privacy-policy/`, `/disclaimer/`
+- `assets/site.css` and `assets/site.js` are shared by these pages. Old links like `/#prompts` redirect to the new pages.
 
-Pages switch with links like `#about` and `#prompts`.
+## SEO
+
+- Every page has a title, meta description, canonical link, social preview tags (`og-image.png`) and structured data (JSON-LD).
+- `sitemap.xml` lists every indexable page and `robots.txt` points to it. **When you add a page, add it to `sitemap.xml`.**
+- After deploying, submit `https://learnaifast.in/sitemap.xml` in Google Search Console.
 
 ## Question papers
 
@@ -34,7 +39,7 @@ The `papers/` folder holds the previous year question papers section: 200 AKTU B
 
 ## Run locally
 
-Open `index.html` in any browser. No server needed.
+Run `python3 -m http.server` in this folder and open http://localhost:8000 (links use root paths like `/about/`, so opening the file directly won't follow them).
 
 ## Deploy
 
@@ -42,6 +47,5 @@ Any static host works (GitHub Pages, Netlify, Cloudflare Pages, Hostinger). For 
 
 ## Before going live
 
-- Replace `[Your Name]` on the About page
-- Replace `[Date]` in the Privacy Policy and Disclaimer
+- Add your name and a short bio in "Who's behind LearnAIFast" on `about/index.html`
 - Connect the newsletter form to an email tool such as Mailchimp

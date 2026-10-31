@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /papers/_template.html
+
+Sitemap: https://learnaifast.in/sitemap.xml
