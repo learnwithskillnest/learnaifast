@@ -46,6 +46,17 @@ The `papers/` folder holds the previous year question papers section: 200 AKTU B
 
 `aktu-cgpa-calculator/index.html`: SGPA from credits and grades (two grading schemes), credit-weighted CGPA across semesters, and CGPA ↔ percentage with AKTU's (CGPA − 0.75) × 10 formula. Inputs are remembered in the browser.
 
+## Important questions
+
+`important-questions/` has one page per AKTU subject (19 subjects with 4+ papers) listing the most repeated long and short questions, the papers they appeared in, other wordings, and unit-wise Section C questions from the latest papers. The pages are generated from the paper pages:
+
+```
+python3 tools/important_questions_extract.py . /tmp/groups.json   # needs node, beautifulsoup4, scikit-learn
+python3 tools/important_questions_generate.py . /tmp/groups.json
+```
+
+Re-run both after adding papers. Subject groups are the `GROUPS` list in the extract script.
+
 ## Run locally
 
 Run `python3 -m http.server` in this folder and open http://localhost:8000 (links use root paths like `/about/`, so opening the file directly won't follow them).
