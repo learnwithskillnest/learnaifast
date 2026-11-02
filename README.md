@@ -17,6 +17,7 @@ Plain HTML pages with no build step. Each page has its own URL so Google can ind
 - Every page has a title, meta description, canonical link, social preview tags (`og-image.png`) and structured data (JSON-LD).
 - `sitemap.xml` lists every indexable page and `robots.txt` points to it. **When you add a page, add it to `sitemap.xml`.**
 - After deploying, submit `https://learnaifast.in/sitemap.xml` in Google Search Console.
+- IndexNow (Bing, DuckDuckGo, Yandex): the key file is `ab93c0f67fd6a2593d4b04a85b0d137b.txt` in the root. To tell Bing about new or changed pages, open `https://api.indexnow.org/indexnow?url=<page-url>&key=ab93c0f67fd6a2593d4b04a85b0d137b` (one URL), or POST a list to `https://api.indexnow.org/indexnow`.
 
 ## Question papers
 
