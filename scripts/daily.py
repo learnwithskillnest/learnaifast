@@ -175,8 +175,8 @@ def card(p):
 def build_hub(posts, header, footer):
     url = f"{SITE}/daily/"
     latest = posts[0]
-    desc = ("Today's AI news in simple words for India: what changed in ChatGPT, Gemini, Claude and other AI tools, "
-            "why it matters, plus a free prompt of the day. Updated every morning.")
+    desc = ("Today's AI news in simple words for India: what's new in ChatGPT, Gemini and Claude, why it matters, "
+            "and a free prompt of the day.")
     ld = {"@context": "https://schema.org", "@graph": [ORG, {
         "@type": "CollectionPage", "name": "Daily AI Update", "url": url, "description": desc,
         "inLanguage": "en-IN", "dateModified": latest["date"], "publisher": {"@id": f"{SITE}/#org"},
