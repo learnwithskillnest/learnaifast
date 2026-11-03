@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>LearnAIFast Daily AI Update</title>
+  <link>https://learnaifast.in/daily/</link>
+  <atom:link href="https://learnaifast.in/daily/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Today's AI news in simple words for India, plus a prompt of the day.</description>
+  <language>en-in</language>
+  <item>
+    <title>Gemini Now Edits PDFs in Chat, IndiaAI Fellowship Deadline and More</title>
+    <link>https://learnaifast.in/daily/2026-11-03-gemini-now-edits-pdfs-in-chat-indiaai-fellowship/</link>
+    <guid isPermaLink="true">https://learnaifast.in/daily/2026-11-03-gemini-now-edits-pdfs-in-chat-indiaai-fellowship/</guid>
+    <pubDate>Tue, 03 Nov 2026 08:00:00 +0530</pubDate>
+    <description>Today&#x27;s AI news in simple words: Gemini can now create and edit PDFs and docs inside chat, IndiaAI Fellowship closes 30 Nov, and Bihar pushes AI in schools.</description>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,35 @@
+{
+ "date": "2026-11-03",
+ "title": "Gemini Now Edits PDFs in Chat, IndiaAI Fellowship Deadline and More",
+ "summary": "Today's AI news in simple words: Gemini can now create and edit PDFs and docs inside chat, IndiaAI Fellowship closes 30 Nov, and Bihar pushes AI in schools.",
+ "intro": "Three AI updates worth your two minutes today: a handy new Gemini feature for notes and assignments, a paid fellowship Indian AI students should not miss, and a state government telling school staff to start using AI.",
+ "news": [
+  {
+   "headline": "Gemini can now create and edit PDFs, docs and slides right inside the chat",
+   "body": "Google has added a way to make a file in Gemini and then keep working on it without leaving the conversation. You can, for example, upload photos of handwritten notes and ask for a PDF study guide, see it previewed in the chat, open it full screen, edit it yourself, or highlight one part and ask Gemini to rewrite it. Google says it works wherever the Gemini app is available. PDFs work on phone and web; Google Docs, Sheets, slides and text or code files are web only for now.",
+  "why": "Students can turn class notes into a clean revision PDF in minutes, and small businesses can draft a price list or flyer and fix it line by line instead of starting again each time.",
+   "source_name": "Yahoo Tech",
+   "source_url": "https://tech.yahoo.com/ai/gemini/articles/google-gemini-now-create-edit-215227658.html"
+  },
+  {
+   "headline": "IndiaAI Fellowship 2026: applications close 30 November",
+   "body": "The IndiaAI Fellowship under MeitY's IndiaAI Mission supports full-time UG, PG and PhD students in India working on AI. Reported support goes up to ₹1 lakh for undergraduates and ₹2 lakh for postgraduates, with monthly support for eligible PhD scholars. Undergraduates usually need a few AI-related courses to qualify. Reports say there is no application fee, so ignore anyone asking for money to 'guarantee' a seat.",
+   "why": "If you are a B.Tech or MCA student taking AI or ML subjects, this is real money for your project. Read the official notice on fellowship.indiaai.gov.in, get your HoD's signature early, and apply well before the last day.",
+   "source_name": "Campus Reality (official portal: fellowship.indiaai.gov.in)",
+   "source_url": "https://campusreality.in/indiaai-fellowship-2026-indian-students/"
+  },
+  {
+   "headline": "Bihar asks school education staff to use ChatGPT, Claude and other AI tools",
+   "body": "On 2 November, Bihar's Education Department wrote to all District Education Officers asking them to encourage officials and staff in government schools and education offices to use AI apps such as ChatGPT and Claude. The suggested uses are office work: reviewing schemes, organising data and cutting down routine paperwork. It is encouragement, not a strict order, and no training plan was mentioned.",
+   "why": "AI skills are moving from 'nice to have' to expected, even in government offices. Learning to use these tools well now gives you an edge in almost any job.",
+   "source_name": "Indian Masterminds",
+   "source_url": "https://indianmasterminds.com/news/bihar-promotes-ai-use-government-schools-chatgpt-claude-education-department-247596/"
+  }
+ ],
+ "tip": {
+  "title": "Turn messy notes into a revision sheet",
+  "body": "Take a clear photo of your handwritten notes, upload it to Gemini, ChatGPT or Claude, and paste this prompt. Always check the answer against your textbook before you trust it.",
+  "prompt": "These are my class notes on [topic] for my [subject] exam. Turn them into a one-page revision sheet: 5 key points, 3 important definitions, 1 simple diagram described in words, and 5 likely exam questions with short answers. Mark anything in my notes that looks wrong or unclear."
+ },
+ "tags": ["Gemini", "IndiaAI", "AIForStudents", "ChatGPT", "Claude", "AINewsIndia"]
+}

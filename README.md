@@ -69,3 +69,12 @@ Any static host works (GitHub Pages, Netlify, Cloudflare Pages, Hostinger). For 
 ## Before going live
 
 - Connect the newsletter form to an email tool such as Mailchimp
+
+## Daily AI Update
+
+`/daily/` is a fresh AI-news post every morning (3-5 news items in plain words, "why it matters for you", source links, and a prompt of the day). Each day:
+
+1. Write `daily/_data/YYYY-MM-DD.json` (format documented at the top of `scripts/daily.py`).
+2. Run `python3 scripts/daily.py daily/_data/YYYY-MM-DD.json`.
+
+The script writes the permanent post page `/daily/<date>-<slug>/`, rebuilds `/daily/` (latest on top, archive below), replaces the "Today's AI update" block at the top of the homepage (between `<!-- DAILY:START -->` and `<!-- DAILY:END -->`), and rebuilds `daily/feed.xml` (RSS) and the daily entries in `sitemap.xml`. A scheduled task runs this automatically every morning.
