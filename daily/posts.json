@@ -1,5 +1,55 @@
 [
  {
+  "date": "2026-11-04",
+  "title": "ChatGPT Lets You Lock Chats With a PIN, Deepfake Curbs and More",
+  "summary": "Today's AI news in simple words: ChatGPT can lock private chats, Centre promises deepfake curbs, an Indian voice AI speaks 14 languages, Gemini AI Plus changes.",
+  "intro": "Four quick AI updates for today: a new privacy feature in ChatGPT, the government's latest word on deepfakes, a Bengaluru startup's multilingual voice AI, and a plan change some Gemini users should know about.",
+  "news": [
+   {
+    "headline": "ChatGPT now lets you lock private chats behind a PIN",
+    "body": "OpenAI is slowly rolling out a feature called Locked Chats, including for Free and Go users. You can lock any single chat with a four-digit PIN, or with Face ID, fingerprint or your phone unlock on supported devices. Locked chats move into a separate 'Locked chats' area and stop showing in your normal history and search. It works on the web, the phone apps and the new desktop apps. Two warnings: if you forget the PIN and reset it, the locked chats are deleted for good, and locking a chat removes it from any project it was in.",
+    "why": "If you share a phone or laptop with family, you can keep chats about your resume, salary talks or business plans private. Write your PIN somewhere safe, because a reset wipes those chats.",
+    "source_name": "Fox News (CyberGuy)",
+    "source_url": "https://www.foxnews.com/tech/chatgpt-lets-lock-private-chats-pin"
+   },
+   {
+    "headline": "Amit Shah promises stronger action against AI deepfakes",
+    "body": "On 2 November, Union Home Minister Amit Shah met actors Chiranjeevi and Ram Charan in Hyderabad, who raised concerns about AI deepfakes being used against artists. Shah said the government will urgently look into the problem, with stronger safeguards and strict penalties, and asked the film industry to send a written representation. Separately, IT Minister Ashwini Vaishnaw has said a consultation paper on AI rules, covering safety and deepfakes, is due in the coming weeks. It is not out yet.",
+    "why": "Fake videos and voice clones are already used in scams. Until new rules arrive, protect yourself: if a 'family member' or 'officer' asks for urgent money on a call or video, hang up and call them back on a number you know. Report fraud on 1930.",
+    "source_name": "Elets CIO",
+    "source_url": "https://cio.eletsonline.com/artificial-intelligence/amit-shah-ai-deepfake-safeguards/76680/"
+   },
+   {
+    "headline": "Bengaluru startup Arrowhead launches Fletch, a voice AI for 14 languages",
+    "body": "Arrowhead AI has launched Fletch, its own text-to-speech model built for customer calls in India and Southeast Asia. It covers 14 languages, including Hindi, Tamil, Telugu, Bengali and English, and can switch languages in the middle of a sentence, the way many Indians speak. The company says it starts speaking in under 100 milliseconds and already handles over a million calls a day for clients such as banks and lenders. The accuracy claims come from the company itself.",
+    "why": "The next call from your bank or loan app may be an AI voice in your own language. For job seekers, this shows rising demand for people who can build, test and train AI in Indian languages.",
+    "source_name": "Dataconomy",
+    "source_url": "https://dataconomy.com/2026/11/02/arrowhead-ai-launches-fletch-multilingual-voice-model/"
+   },
+   {
+    "headline": "Gemini AI Plus users lose Pro models from 13 November",
+    "body": "Google has been emailing people on its lower-priced Gemini AI Plus plan to say that Pro models will no longer be part of that plan from 13 November 2026. After that, Pro models in the Gemini app and in AI Mode will need Google AI Pro or a higher plan. AI Plus will keep the Flash and Flash-Lite models, and old chats that used Pro can carry on with another model. The free plan continues.",
+    "why": "If you pay for AI Plus mainly for Pro answers, check your plan before you renew. For most study notes, emails and everyday questions, the Flash models or the free plan may be enough.",
+    "source_name": "9to5Google",
+    "source_url": "https://9to5google.com/2026/10/14/gemini-ai-plus-loses-pro-november/"
+   }
+  ],
+  "tip": {
+   "title": "Write customer replies in Hinglish",
+   "body": "Inspired by today's multilingual voice AI story: small shop owners can use any free AI chatbot to write friendly WhatsApp replies in the language their customers actually use. Read it once before sending and fix prices or dates yourself.",
+   "prompt": "I run a small [type of business] in [city]. A customer sent this message: \"[paste customer message]\". Write 3 short, polite WhatsApp replies in simple Hinglish (Hindi in English letters). Mention [price/offer/timing] clearly. Keep each reply under 50 words and end with a friendly line asking them to visit or order."
+  },
+  "tags": [
+   "ChatGPT",
+   "Deepfake",
+   "AINewsIndia",
+   "IndianLanguages",
+   "Gemini",
+   "AIPrivacy"
+  ],
+  "slug": "chatgpt-lets-you-lock-chats-with-a-pin-deepfake-curbs"
+ },
+ {
   "date": "2026-11-03",
   "title": "Gemini Now Edits PDFs in Chat, IndiaAI Fellowship Deadline and More",
   "summary": "Today's AI news in simple words: Gemini can now create and edit PDFs and docs inside chat, IndiaAI Fellowship closes 30 Nov, and Bihar pushes AI in schools.",
