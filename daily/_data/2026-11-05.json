@@ -1,0 +1,43 @@
+{
+ "date": "2026-11-05",
+ "title": "IndiaAI Launches EKA-1 and Dhir AI Models, WhatsApp AI Chats and More",
+ "summary": "Today's AI news in simple words: IndiaAI releases 3 homegrown AI models, WhatsApp tests separate Meta AI chats, Guided Learning comes to Google Classroom.",
+ "intro": "Three AI updates for today: India's own new AI models, a handy change coming to Meta AI on WhatsApp, and a Gemini study mode that teachers can now add to homework.",
+ "news": [
+  {
+   "headline": "IndiaAI Mission releases three homegrown AI models: EKA-1, Dhir 2B and Dhir 5B",
+   "body": "On 3 November in New Delhi, MeitY and the IndiaAI Mission unveiled three AI models built in India. EKA-1, from Soket AI Labs, has about 26 billion parameters and covers all 22 scheduled Indian languages plus English. It is meant for maths, coding and reasoning, and for banks that need AI on their own servers, even offline. Dhir 2B and Dhir 5B, from ZenteiQ AiTech, are small models for English and 10 Indian languages. They are built for document search, and can run on a mobile phone offline. Access is through the government's AIKosh platform; Soket says EKA-1's weights will open up within about a month via a waitlist.",
+   "why": "India now has its own AI models that understand Indian languages and can work without internet. Students and developers can try them through AIKosh, and skills in Indian-language AI are becoming a real job area.",
+   "source_name": "Analytics India Magazine",
+   "source_url": "https://analyticsindiamag.com/ai-news/indiaai-mission-releases-3-indigenous-ai-models-developed-by-soket-zenteiq"
+  },
+  {
+   "headline": "WhatsApp is testing separate Meta AI chats you can name",
+   "body": "WhatsApp is rolling out a new option to some Android beta testers (version 2.26.44.6). Instead of one long Meta AI conversation, you can start separate Meta AI chats from the menu, give each one a name and even a picture. Each chat keeps its own context, so what you discuss in one does not mix into another. These chats sit in your normal chat list, and a new optional 'AI' filter helps you find them. You can delete them any time. WhatsApp has not said when everyone will get it, so it may take a few weeks to reach regular users.",
+   "why": "If you use Meta AI on WhatsApp, you will soon be able to keep one chat for exam doubts, one for shop replies and one for trip plans, without them getting mixed up.",
+   "source_name": "WABetaInfo",
+   "source_url": "https://wabetainfo.com/whatsapp-is-rolling-out-chats-powered-by-meta-ai-on-android/"
+  },
+  {
+   "headline": "Teachers can now add Gemini's Guided Learning to Google Classroom homework",
+   "body": "Google says teachers can now attach a Guided Learning activity to any assignment in Google Classroom. Guided Learning is a Gemini mode that explains a topic step by step and asks questions, instead of just giving the final answer. Teachers can choose class materials for it to use, see short AI summaries of how the class and each student did, and read student chats. It is rolling out globally from 3 November, in all Gemini-supported languages, for schools on Google Workspace for Education editions, but only where the school admin has switched Gemini on.",
+   "why": "If your school or college uses Google Classroom, you may soon get homework where AI coaches you instead of doing it for you. You can already use Guided Learning yourself in the Gemini app to understand tough chapters.",
+   "source_name": "Google Workspace Updates",
+   "source_url": "https://workspaceupdates.googleblog.com/2026/11/educators-can-now-add-guided-learning-to-assignments-in-Google-Classroom-to-help-students-get-extra-support.html"
+  }
+ ],
+ "tip": {
+  "title": "Make AI teach you, not just answer",
+  "body": "Inspired by today's Guided Learning story: before an exam, ask any AI chatbot to quiz you step by step instead of giving the answers. You learn faster when you try first.",
+  "prompt": "I am preparing for [exam name, e.g. Class 12 boards / AKTU / SSC]. Teach me [topic] step by step like a patient tutor. Do not give me the full answer at once. Ask me one question at a time, wait for my reply, tell me if I am right, and explain my mistakes in simple English. Start with an easy question and make them harder. After 5 questions, give me a short summary of what I should revise."
+ },
+ "tags": [
+  "IndiaAI",
+  "EKA1",
+  "IndianLanguages",
+  "WhatsApp",
+  "MetaAI",
+  "Gemini",
+  "ExamPrep"
+ ]
+}
