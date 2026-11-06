@@ -1,5 +1,49 @@
 [
  {
+  "date": "2026-11-06",
+  "title": "ChatGPT Can Now Make GIFs, AI Job Hiring Jumps 32% and More",
+  "summary": "Today's AI news in simple words: ChatGPT now turns photos into GIFs, Naukri says AI/ML hiring is up 32%, and India warns banks about AI-powered cyber attacks.",
+  "intro": "Three AI updates for your Friday: a fun new ChatGPT feature anyone can try, good news for AI job seekers, and a safety warning from India's cybercrime agency.",
+  "news": [
+   {
+    "headline": "ChatGPT can now turn your photos and ideas into animated GIFs",
+    "body": "OpenAI has rolled out a new image update called Images 2.6 in ChatGPT. The biggest change: you can now ask for a short animated GIF. Type an idea, like a dancing cat, or upload a photo and ask ChatGPT to animate it. You can change how fast the animation plays and edit single frames. OpenAI also says image making is quicker overall. The update is reaching all ChatGPT users on web, desktop and mobile, including the free plan. OpenAI says people now make more than four billion images a week with its tools.",
+    "why": "Small shops and creators can make simple moving greetings, offer posts and WhatsApp stickers for free, without learning any design software.",
+    "source_name": "The Decoder",
+    "source_url": "https://the-decoder.com/chatgpt-can-now-turn-text-prompts-and-photos-into-animated-gifs-with-openais-images-2-6-model/"
+   },
+   {
+    "headline": "Naukri JobSpeak: AI and machine learning hiring up 32% in October",
+    "body": "Naukri's JobSpeak report for October 2026, released on 3 November, shows white-collar hiring in India grew 14% compared to last year. AI and machine learning roles grew much faster, by 32%. Hyderabad led among cities with 15% growth, followed by Pune and Delhi-NCR. Plain software and testing jobs grew only about 1%. Skills showing up often in AI job posts include GenAI, RAG, vector databases and MLOps. For freshers, entry roles in data operations, QA automation, analyst internships and platform support are said to be the easier way in.",
+    "why": "If you are job hunting, learning to use and build with AI tools is now one of the clearest ways to stand out, even for non-AI roles.",
+    "source_name": "CareerIndia",
+    "source_url": "https://www.careerindia.com/news/india-job-market-2026-ai-ml-hiring-surge-october-report-011-68141.html"
+   },
+   {
+    "headline": "India's cybercrime agency warns banks about AI-powered attacks",
+    "body": "The Indian Cybercrime Coordination Centre (I4C), under the Home Ministry, has warned banks, fintech apps and payment companies that criminals are now using AI agents to break into systems very quickly. CERT-In has also issued related alerts. The warning came days after microfinance lender Spandana Sphoorty reported that nearly Rs 7.8 crore was moved out of one of its bank accounts without permission on 1 November. The advisory asks companies to set transaction limits, check who money is going to, and report attacks within six hours.",
+    "why": "Scammers are getting faster with AI. Never share OTPs or click unknown payment links, and if you lose money, call 1930 or report at cybercrime.gov.in right away.",
+    "source_name": "The Week",
+    "source_url": "https://www.theweek.in/news/sci-tech/2026/11/05/spandana-sphoorty-cyber-fraud-mha-advisory.html"
+   }
+  ],
+  "tip": {
+   "title": "Find the AI skills your dream job wants",
+   "body": "AI jobs are growing fast, but every job post asks for different skills. Paste a real job post into ChatGPT, Gemini or Claude and get a simple learning plan plus resume lines you can honestly use.",
+   "prompt": "Here is a job post I want to apply for: [paste job post]. My current skills are: [your skills]. 1) List the top 5 skills this job wants, in simple words. 2) Tell me which ones I already have and which I am missing. 3) Give me a 30-day free learning plan for the missing ones, 1 hour a day. 4) Suggest 3 resume bullet points I can use once I finish, without adding anything fake."
+  },
+  "tags": [
+   "ChatGPT",
+   "GIF",
+   "AIJobs",
+   "Naukri",
+   "CyberSafety",
+   "I4C",
+   "Career"
+  ],
+  "slug": "chatgpt-can-now-make-gifs-ai-job-hiring-jumps-32-and"
+ },
+ {
   "date": "2026-11-05",
   "title": "IndiaAI Launches EKA-1 and Dhir AI Models, WhatsApp AI Chats and More",
   "summary": "Today's AI news in simple words: IndiaAI releases 3 homegrown AI models, WhatsApp tests separate Meta AI chats, Guided Learning comes to Google Classroom.",
