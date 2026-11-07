@@ -1,5 +1,49 @@
 [
  {
+  "date": "2026-11-07",
+  "title": "Gemini Notebook Flashcards Get Images, Dreambeans Comes to India",
+  "summary": "Today's AI news in simple words: Gemini Notebook flashcards get images and a timer, Google Dreambeans arrives in India, and Claude speeds up a lab study.",
+  "intro": "Good morning! Today we have a handy study upgrade, a new Google app that speaks Indian languages, and a real science story with an honest lesson about AI mistakes.",
+  "news": [
+   {
+    "headline": "Gemini Notebook flashcards now support images, a stopwatch and study reminders",
+    "body": "Gemini Notebook can already turn your notes, PDFs and other sources into flashcards automatically. On 6 November, Google added three upgrades. First, cards can now show images, so diagrams and photos can be part of what you revise. Second, there is an optional stopwatch to time how fast you recall each answer. Third, the Android and iOS apps can now send study reminders so you do not skip revision. Google has not clearly said which plans get these first, so open the app and check your flashcards section.",
+    "why": "Picture-based cards are great for biology diagrams, maps and maths figures, and timed recall is good practice for speed-based exams like JEE, NEET or bank and SSC tests.",
+    "source_name": "Jetstream (Gemini Notebook announcement)",
+    "source_url": "https://jetstream.blog/en/gemini-notebook-flashcards-new-features-rollout/"
+   },
+   {
+    "headline": "Google's Dreambeans app launches in India with Hindi and 12 more Indian languages",
+    "body": "Dreambeans is an experimental app from Google Labs. Each morning it makes a few short, illustrated stories based on things in your connected Google apps, such as Calendar, Gmail, Photos, Search and YouTube. You do not need to type a prompt. India is the first country outside the US to get it. It works on Android and iOS, in English plus 13 Indian languages including Hindi, Tamil, Telugu, Bengali and Marathi, but one language at a time. You need a personal Google account and must be 18 or older. You choose which apps to connect and can delete your data.",
+    "why": "It shows big AI companies are now building for Indian-language users first. Before you connect Gmail or Photos to any AI app, think about what personal data you are comfortable sharing.",
+    "source_name": "TechCrunch",
+    "source_url": "https://techcrunch.com/2026/11/02/google-takes-dreambeans-to-india-in-bid-to-bring-ai-generated-personal-stories-to-the-masses/"
+   },
+   {
+    "headline": "Claude helps scientists map a tiny virus structure, but also makes mistakes",
+    "body": "Anthropic's biology team used its Claude AI to help build the first 3D picture of a 'vault particle', a hollow, barrel-like structure, from a virus that infects bacteria. Claude cut one lab step from about three days to 90 minutes. But it also got things wrong: one bad suggestion for a lab additive delayed the work by two weeks, and it made a mirror-image error in a map. The results are shared as a preprint, which means other experts have not reviewed them yet.",
+    "why": "AI can save huge time in research and projects, but you still need to check its work. For students doing lab work or final-year projects, treat AI as a fast helper, not the final judge.",
+    "source_name": "The Neuron",
+    "source_url": "https://www.theneuron.ai/news/claude-anthropic-40-year-old-cell-mystery/"
+   }
+  ],
+  "tip": {
+   "title": "Turn any chapter into smart flashcards",
+   "body": "Use this with Gemini Notebook, ChatGPT or Claude to make exam-ready flashcards from your own notes. Ask for picture ideas too, so you can add diagrams to the cards.",
+   "prompt": "Here are my notes on [chapter/topic] for [exam name, e.g. NEET / Class 12 boards]: [paste notes]. Make 15 flashcards. Each card should have a short question on the front and a 1-2 line answer on the back. Mark 5 of them as 'hard'. For any card where a diagram would help, suggest what picture I should add. Finally, give me a 7-day revision schedule using these cards, 20 minutes a day."
+  },
+  "tags": [
+   "Gemini",
+   "Flashcards",
+   "Dreambeans",
+   "Google",
+   "Claude",
+   "StudyTips",
+   "IndianLanguages"
+  ],
+  "slug": "gemini-notebook-flashcards-get-images-dreambeans-comes"
+ },
+ {
   "date": "2026-11-06",
   "title": "ChatGPT Can Now Make GIFs, AI Job Hiring Jumps 32% and More",
   "summary": "Today's AI news in simple words: ChatGPT now turns photos into GIFs, Naukri says AI/ML hiring is up 32%, and India warns banks about AI-powered cyber attacks.",
