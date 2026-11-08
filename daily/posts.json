@@ -1,5 +1,49 @@
 [
  {
+  "date": "2026-11-08",
+  "title": "Gemini Omni Now Makes 15-Second Videos, 89% of Young Indians Want AI",
+  "summary": "Today's AI news in simple words: Google's video AI makes longer clips, a report on young Indians and AI, and a lesson after Claude deleted a professor's files.",
+  "intro": "Happy Sunday! Today we look at Google's upgraded video AI, a new report on how young Indians want to use AI, and one simple habit that can save your files when you let AI work on them.",
+  "news": [
+   {
+    "headline": "Google's Gemini Omni 1.2 Flash can now make 15-second AI videos",
+    "body": "Google has made its video model Gemini Omni 1.2 Flash generally available. It can now create clips up to 15 seconds long, up from 10 seconds in the earlier preview. You can also edit a clip by chatting, for example asking it to change the background, swap a product or fix the lighting, instead of starting again. It is rolling out in Google Vids, Flow and Google Ads, and in the Gemini app for Google AI Ultra subscribers. For developers, the price drops by about 30% to roughly $0.07 per second of 720p video. Every video carries an invisible SynthID watermark.",
+    "why": "Small businesses can make short product clips or reels without a camera crew. Check what your Google account or plan includes before paying for anything, and always label AI-made videos honestly.",
+    "source_name": "The Next Web",
+    "source_url": "https://thenextweb.com/news/google-gemini-omni-1-2-flash-video-15-seconds-price-cut"
+   },
+   {
+    "headline": "Report: 89% of young Indians want to use AI for study or work within a year",
+    "body": "A new report from Ayre Think Tank, shared by news agency IANS on 5 November, looks at AI and young people across 56 Commonwealth countries. It says nearly 89% of young Indians want to use AI for education or work within the next year, and more than 60% feel confident using it. India has about 382 million people aged 15 to 29. The report estimates AI could add around $79 billion to India's GDP over ten years. It also warns that about 30% of young people are not in work, education or training, and asks for cheaper access, local-language tools and skills linked to real jobs.",
+    "why": "Most of your classmates and job competitors plan to use AI soon. Learning to use it well, and showing that skill on your resume, can help you stand out.",
+    "source_name": "Free Press Journal (IANS)",
+    "source_url": "https://www.freepressjournal.in/tech/ai-could-add-79-billion-to-indias-gdp-in-10-years-as-89-of-young-indians-show-interest-in-using-artificial-intelligence"
+   },
+   {
+    "headline": "Claude deleted a professor's lecture notes, and a backup saved him",
+    "body": "William Baude, a law professor at the University of Chicago, asked Anthropic's Claude to simply update page numbers in his old lecture notes. He left it running and went for lunch. When he came back, the AI had deleted his current syllabus and a full year of lecture notes. Claude then admitted the mistake and apologised. Luckily, Baude got his files back from Dropbox, which keeps older copies of files. The story spread widely this week as a warning about letting AI tools change files on their own.",
+    "why": "If you let any AI tool edit your assignments, project files or business records, keep a backup copy first, for example in Google Drive or OneDrive, and check its work before you trust it.",
+    "source_name": "Runtime Wire",
+    "source_url": "https://runtimewire.com/article/claude-deleted-law-lecture-notes-renumbering-pages"
+   }
+  ],
+  "tip": {
+   "title": "Plan a 15-second product video with AI",
+   "body": "Inspired by today's Gemini Omni story: before you make any AI or phone video for your shop or side business, ask a chatbot to plan it shot by shot. A clear plan gives much better results.",
+   "prompt": "I run a small [type of business, e.g. home bakery / mobile repair shop] in [city]. Write a plan for a 15-second Instagram reel to promote [product or offer]. Split it into 3-4 short shots with timing, what the viewer sees, and one line of on-screen text for each. Add a simple caption in English and in Hinglish, and 5 hashtags. Keep it honest, no fake claims."
+  },
+  "tags": [
+   "Gemini",
+   "AIVideo",
+   "Google",
+   "Claude",
+   "IndiaYouth",
+   "Backup",
+   "SmallBusiness"
+  ],
+  "slug": "gemini-omni-now-makes-15-second-videos-89-of-young"
+ },
+ {
   "date": "2026-11-07",
   "title": "Gemini Notebook Flashcards Get Images, Dreambeans Comes to India",
   "summary": "Today's AI news in simple words: Gemini Notebook flashcards get images and a timer, Google Dreambeans arrives in India, and Claude speeds up a lab study.",
