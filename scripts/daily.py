@@ -47,7 +47,7 @@ def slugify(s, n=55):
     return s.strip("-") or "ai-update"
 
 
-def seo_title(t, limit=62):
+def seo_title(t, limit=56):
     """Search-result title: full headline + brand if it fits, else the leading clauses."""
     t = t.strip()
     for c in (f"{t} | LearnAIFast", t):
