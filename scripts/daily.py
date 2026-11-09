@@ -47,6 +47,23 @@ def slugify(s, n=55):
     return s.strip("-") or "ai-update"
 
 
+def seo_title(t, limit=62):
+    """Search-result title: full headline + brand if it fits, else the leading clauses."""
+    t = t.strip()
+    for c in (f"{t} | LearnAIFast", t):
+        if len(c) <= limit:
+            return c
+    parts = re.split(r"(?i),\s+|\s+and\s+(?=more\b)", t)
+    out = parts[0]
+    for x in parts[1:]:
+        if len(out) + 2 + len(x) > limit or x.lower() == "more":
+            break
+        out += ", " + x
+    if len(out) > limit:
+        out = out[:limit - 1].rsplit(" ", 1)[0] + "…"
+    return out if len(out) + 14 > limit else out + " | LearnAIFast"
+
+
 def nice(d):
     d = dt.date.fromisoformat(d)
     return f"{d.day} {d.strftime('%B %Y')}"
@@ -164,7 +181,7 @@ def build_post(p, prev, nxt, header, footer):
 """
     out = DAILY / f"{p['date']}-{p['slug']}" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(head(f"{p['title']} | LearnAIFast Daily", p["summary"], url, ld) + body, encoding="utf-8")
+    out.write_text(head(seo_title(p['title']), p["summary"], url, ld) + body, encoding="utf-8")
 
 
 def card(p):

@@ -46,3 +46,7 @@ Commit and push to `main`. GitHub Pages updates the site in about a minute.
 ## Copyright
 
 Only upload papers that are publicly available or shared with you by students. Always fill in the Source row. Remove any paper promptly if the university asks.
+
+## After editing data.js
+
+Run `python3 scripts/papers_index.py`. It writes the paper list into `papers/index.html` as plain links so Google can find every paper page.
