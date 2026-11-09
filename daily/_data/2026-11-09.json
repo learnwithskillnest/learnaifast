@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-09",
+  "title": "India Plans Its Own AI Chip in 2 Years, Fake Job Scam Alert and More",
+  "summary": "Today's AI news in simple words: India aims to build its own AI chip, a study on how AI is helping Indian workers, and how to spot fake AI-era job scams.",
+  "intro": "Good morning and happy Monday! Today we look at India's plan to make its own AI chip, a new study on how Indian employees are using AI at work, and a safety guide every student and job seeker should read.",
+  "news": [
+    {
+      "headline": "India wants its own AI chip (GPU) in about 24 months",
+      "body": "AI tools like ChatGPT and Gemini run on powerful chips called GPUs. Today India buys almost all of these from foreign companies. MeitY Secretary S. Krishnan has said India should have a GPU chip of its own, and that the project will take roughly 24 months under the country's next semiconductor push, often called Semicon 2.0. Separately, the IndiaAI Mission has relaxed the rules for data centres that want to rent AI computing power to the government's shared pool, so more Indian companies can join. This pool already offers subsidised computing to startups, MSMEs, researchers and students.",
+      "why": "A home-grown chip and a bigger shared computing pool could make AI cheaper to build in India. Students and small startups working on AI projects can check the IndiaAI portal for subsidised computing.",
+      "source_name": "CareerIndia",
+      "source_url": "https://www.careerindia.com/news/india-ai-jobs-2026-gpu-targets-compute-tenders-career-skills-011-68293.html"
+    },
+    {
+      "headline": "Cognizant study: 97% of Indian employees say AI helps them work faster",
+      "body": "IT company Cognizant surveyed 700 employees and 75 senior leaders across 10 industries in India. Almost all employees, 97%, said AI made them more productive, with an average boost of about 15%. About 74% of Indian employees had finished some AI training, compared with 56% globally. But leaders said only about 36% of staff actually have access to AI tools at work, and many companies have not yet seen lower costs or higher revenue. The study estimates AI-driven productivity could add $28 billion to $84 billion a year to India's GDP in the near term.",
+      "why": "Employers value people who can actually use AI tools well, not just people who have done a course. Practise using AI on real tasks and mention concrete examples in your resume and interviews.",
+      "source_name": "Communications Today",
+      "source_url": "https://www.communicationstoday.co.in/ai-could-add-up-to-84b-to-indias-annual-gdp-cognizant/"
+    },
+    {
+      "headline": "Students warned about AI deepfake calls and fake placement drives",
+      "body": "A new safety guide for Indian students and job seekers lists the tricks scammers now use with AI. These include cloned voices of relatives or bank staff, edited videos of well-known people, and fake recruiters. A common trap is a fake placement drive on WhatsApp or Telegram that asks for a refundable security deposit, sells offer letters or pays you for small tasks before asking for money. The advice: never share your OTP, UPI PIN or passwords, never install unknown APK files, and remember that caller ID and logos can be faked. If money is lost, act fast and report it at 1930 or cybercrime.gov.in.",
+      "why": "Real companies never ask you to pay for a job or an interview. If an offer feels urgent or asks for money, stop, check the company's official website, and talk to someone you trust.",
+      "source_name": "CareerIndia",
+      "source_url": "https://www.careerindia.com/features/ai-deepfake-bank-fraud-safety-guide-for-indian-students-2026-011-68211.html"
+    }
+  ],
+  "tip": {
+    "title": "Check if a job offer is a scam with AI",
+    "body": "Inspired by today's scam warning: before you reply to any job message on WhatsApp, Telegram or email, paste it into a chatbot and ask it to look for red flags. Remove your phone number, address and any personal details first.",
+    "prompt": "I received this job offer message: [paste the message, with my personal details removed]. Act as a careful career advisor in India. List any red flags that suggest it could be a scam (for example payment requests, urgency, unofficial email IDs). Tell me 3 steps to verify if the company and recruiter are real. Explain in simple English and also in Hinglish."
+  },
+  "tags": ["IndiaAI", "AIChip", "Jobs", "Cognizant", "ScamAlert", "Deepfake", "Students"]
+}
