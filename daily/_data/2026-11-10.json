@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-10",
+  "title": "Claude Fable 5.2 Launches, Nasscom Warns Freshers and More",
+  "summary": "Today's AI news in simple words: Anthropic's new Claude Fable 5.2 model, Nasscom's warning for engineering freshers, and Claude's new money tool.",
+  "intro": "Good morning! Today we explain Anthropic's newest Claude model, what India's IT industry body is saying about jobs for freshers, and a new Claude tool that reads bank accounts, with a simple safety lesson for everyone.",
+  "news": [
+    {
+      "headline": "Anthropic launches Claude Fable 5.2, its most powerful public model",
+      "body": "On 9 November, Anthropic released two new models: Claude Fable 5.2 and Claude Mythos 5.2. Both are built on the same base model. Fable 5.2 is for the public and has safety blocks for risky hacking and biology tasks. Mythos 5.2 has fewer limits, so only approved cybersecurity and science researchers can use it. Anthropic says the new models are faster and better at coding, reasoning and reading images than the 5.1 versions. Paid users get Fable 5.2 inside the Claude app, and developers can use it on Claude's platform and big cloud services like AWS, Google Cloud and Azure.",
+      "why": "These are very advanced and costly models made for big technical projects. For daily study or office work, the regular Claude models are usually enough, so do not feel you must pay to try this one.",
+      "source_name": "Fortune",
+      "source_url": "https://fortune.com/2026/11/09/anthropic-debuts-updated-claude-fable-and-mythos-models-undercutting-price-of-openais-gpt-6-astra-by-up-to-80/"
+    },
+    {
+      "headline": "Nasscom chief says AI is making entry-level IT jobs harder to get",
+      "body": "Rajesh Nambiar, president of Nasscom, the body that represents India's IT companies, told Nikkei Asia that fresh engineering graduates could find it harder to get tech jobs. The reason is that AI now does a lot of basic coding and testing work that freshers used to do. Nasscom still expects India's tech sector to have about 6 million direct jobs in FY26, a small rise of about 2.3%. Nambiar said Nasscom is working with the UGC and other agencies on a joint AI curriculum for undergraduate courses, which could take around six months to be approved.",
+      "why": "If you are a student or fresher, basic coding alone may not be enough. Build real projects that use AI tools, learn to check and fix AI-written code, and show this work on your resume and GitHub.",
+      "source_name": "AI Weekly (summary of Nikkei Asia interview)",
+      "source_url": "https://aiweekly.co/alerts/nasscom-chief-warns-ai-is-squeezing-indias-it-freshers-out"
+    },
+    {
+      "headline": "Claude can now read your bank accounts to explain your spending (US only)",
+      "body": "Anthropic has launched a beta tool called Personal Finance inside Claude. Users connect their bank and credit card accounts through a service called Plaid, and then ask questions like where their money went last month. Claude groups spending into categories, spots duplicate charges and surprise fees, and explains terms like APR. Anthropic says the access is read-only, so Claude cannot move or invest money, and these chats are not used to train its models. For now it is only for Pro, Max and Ultra users in the United States.",
+      "why": "This tool is not in India yet. Whenever any app asks to link your bank, read what it can see, and never type OTPs, UPI PINs, card numbers or passwords into any AI chatbot.",
+      "source_name": "TechCrunch",
+      "source_url": "https://techcrunch.com/2026/11/05/claude-can-now-analyze-your-spending-with-its-new-personal-finance-tool/"
+    }
+  ],
+  "tip": {
+    "title": "Make your resume stand out in the AI era",
+    "body": "Since AI now does a lot of basic coding work, freshers need to show they can build and check real things. Use this prompt in ChatGPT, Gemini or Claude to turn your projects into strong resume points.",
+    "prompt": "I am a [your degree, e.g. B.Tech CSE] fresher applying for [job role] jobs in India. Here are my projects: [project 1 in 1-2 lines], [project 2 in 1-2 lines]. Rewrite each project as 2 resume bullet points that show the problem, what I built, the tools I used (including any AI tools) and the result. Then suggest one small project I can finish in 2 weeks to show I can use AI tools well and check their output."
+  },
+  "tags": ["Claude", "Anthropic", "Nasscom", "Jobs", "Freshers", "Safety", "Resume"]
+}
