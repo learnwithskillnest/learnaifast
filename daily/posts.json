@@ -1,5 +1,48 @@
 [
  {
+  "date": "2026-11-11",
+  "title": "Gemini Can Now Book Rides in India, ChatGPT Business Profiles and More",
+  "summary": "Today's AI news in simple words: Gemini app tasks expand to India, ChatGPT launches business profiles, and Claude gets Sheets and Whiteboards.",
+  "intro": "Good morning! Today's news is all about AI doing real work for you: booking rides, answering questions about shops, and building spreadsheets.",
+  "news": [
+   {
+    "headline": "Gemini's task automation is expanding to India",
+    "body": "Google's November update for Android brings more 'Gemini Intelligence' features. The biggest one for us: task automation is expanding to India, the UK and Japan. This means you can ask Gemini to do a job across your apps, like ordering food, booking a cab or making a reservation, instead of tapping through each app yourself. For now it works on supported phones such as the Pixel 10 series and select new Samsung and Motorola models. Google says it is for users aged 18 and above, in select languages, and heavy use may need a subscription.",
+    "why": "If you have a supported phone, you can save time on daily errands. Always check the final order or booking before you confirm payment.",
+    "source_name": "Google Blog",
+    "source_url": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/"
+   },
+   {
+    "headline": "ChatGPT launches business profiles, a bit like Google Business Profile",
+    "body": "OpenAI has started a new 'Business Hub' in beta. Companies can create a verified business profile and keep details about their products and services up to date, so ChatGPT gives correct answers when people ask about them. Some eligible businesses can also set up a special business agent that answers customer questions inside ChatGPT. The hub shows simple numbers like profile views, mentions and website clicks. OpenAI has not yet shared full details on eligibility, pricing or which countries get it first.",
+    "why": "More people now search for shops and services by asking ChatGPT. Small businesses in India should watch for this and keep their website and online details accurate.",
+    "source_name": "TechCrunch",
+    "source_url": "https://techcrunch.com/2026/11/10/openai-rolls-out-new-business-profiles-making-chatgpt-just-a-little-bit-more-like-google/"
+   },
+   {
+    "headline": "Claude gets Sheets, Whiteboards and a meeting helper",
+    "body": "Anthropic has added new office-style tools to Claude. Claude Sheets lets you build and edit spreadsheets with Claude, including tabs, formulas and dropdowns, and it lists every change it makes. Claude Whiteboards is a shared board for planning timelines and ideas, which can be turned into a doc or slides. Claude Meetings, for Team and Enterprise plans, can join a Google Meet call, take notes and draft action items. Sheets and Whiteboards are in beta on paid plans for web, desktop and mobile.",
+    "why": "AI is moving from just chatting to making real work files. Learning to plan, track and present work with AI tools is a useful skill for any job seeker.",
+    "source_name": "TechCrunch",
+    "source_url": "https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/"
+   }
+  ],
+  "tip": {
+   "title": "Make a simple monthly home budget with AI",
+   "body": "AI tools can now build spreadsheets for you. Use this prompt in any AI chat to get a ready budget table you can copy into Google Sheets or Excel.",
+   "prompt": "Make a simple monthly budget table for a family in [city] with a total income of Rs [amount]. Include rows for rent, groceries, electricity, mobile and internet, travel, school or college fees, EMI, savings and emergency fund. Add columns for Planned, Actual and Difference, with a formula for Difference. Then give me 3 easy tips to save money, in [English/Hinglish]."
+  },
+  "tags": [
+   "Gemini",
+   "ChatGPT",
+   "Claude",
+   "Android",
+   "SmallBusiness",
+   "AITools"
+  ],
+  "slug": "gemini-can-now-book-rides-in-india-chatgpt-business"
+ },
+ {
   "date": "2026-11-10",
   "title": "Claude Fable 5.2 Launches, Nasscom Warns Freshers and More",
   "summary": "Today's AI news in simple words: Anthropic's new Claude Fable 5.2 model, Nasscom's warning for engineering freshers, and Claude's new money tool.",
