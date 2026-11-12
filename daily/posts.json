@@ -1,5 +1,48 @@
 [
  {
+  "date": "2026-11-12",
+  "title": "Google Launches Gemini 4 Carbon, Better Hindi Voice Typing and More",
+  "summary": "Today's AI news in simple words: Google's Gemini 4 Carbon arrives, ElevenLabs improves Hindi speech-to-text, and Gemini shows what it remembers.",
+  "intro": "Good morning! Today we look at Google's most powerful new model, better AI transcription for Hindi speakers, and a new way to check what an AI remembers about you.",
+  "news": [
+   {
+    "headline": "Google launches Gemini 4 Carbon, its most powerful model so far",
+    "body": "Google has released Gemini 4 Carbon, a new top model that sits above Gemini 4 Argon. Google says Carbon is meant for the hardest jobs: long coding tasks, finding bugs, scientific research, and detailed work like reports and spreadsheets. It takes more time and checks its own work before answering. In the Gemini app, Carbon is only for Google AI Ultra subscribers for now, while Argon stays available on AI Pro and higher plans. Developers can use it through the paid Gemini API at a lower introductory price until 30 November.",
+    "why": "Most students and small businesses do not need Carbon for daily tasks. The free and cheaper Gemini models are still fine for notes, emails and study help.",
+    "source_name": "Google Blog",
+    "source_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/"
+   },
+   {
+    "headline": "ElevenLabs' new speech-to-text gets much better at Hindi",
+    "body": "ElevenLabs, a popular AI voice company, has launched Scribe v3 and Scribe v3 Live. These tools turn speech into written text. The company says Scribe v3 makes 27% fewer word mistakes than the older version across 102 languages, and the Live version makes 43% fewer mistakes. It can also label who is speaking in a meeting. ElevenLabs says Indian customers asked for Hindi to be as good as English, even when people mix languages mid-sentence, and the Live model improved Hindi accuracy by 36%. It also offers data storage inside India for business customers.",
+    "why": "Better Hinglish transcription helps students record lectures, and helps call centres and shops that talk to customers in mixed Hindi and English.",
+    "source_name": "ElevenLabs Blog",
+    "source_url": "https://elevenlabs.io/blog/scribe-v3"
+   },
+   {
+    "headline": "Gemini now shows a 'Memory summary' of what it knows about you",
+    "body": "Google is rolling out a new Memory summary in the Gemini app. It is one page where you can see, edit and delete the things Gemini has learned about you from past chats. The details are grouped into sections like work projects, travel, entertainment and fitness. You can add or remove facts by typing, and there is a history view of changes. For now it is only for paid Google AI subscribers using US English on the web, so most Indian users will need to wait.",
+    "why": "It is a good reminder to check what any AI app remembers about you. Avoid sharing passwords, Aadhaar or bank details in AI chats.",
+    "source_name": "9to5Google",
+    "source_url": "https://9to5google.com/2026/11/09/google-gemini-memory-summary"
+   }
+  ],
+  "tip": {
+   "title": "Turn a Hinglish voice note into clean notes",
+   "body": "Record your lecture or meeting, get a transcript from any speech-to-text app, then paste it into ChatGPT, Gemini or Claude with this prompt.",
+   "prompt": "Here is a transcript of a [lecture/meeting] in mixed Hindi and English: [paste transcript]. Please fix spelling mistakes, write clear notes in simple English with headings, list [5] key points, and add a short Hindi summary at the end."
+  },
+  "tags": [
+   "Gemini",
+   "Google",
+   "ElevenLabs",
+   "Hindi",
+   "SpeechToText",
+   "Privacy"
+  ],
+  "slug": "google-launches-gemini-4-carbon-better-hindi-voice"
+ },
+ {
   "date": "2026-11-11",
   "title": "Gemini Can Now Book Rides in India, ChatGPT Business Profiles and More",
   "summary": "Today's AI news in simple words: Gemini app tasks expand to India, ChatGPT launches business profiles, and Claude gets Sheets and Whiteboards.",
