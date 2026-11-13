@@ -1,5 +1,56 @@
 [
  {
+  "date": "2026-11-13",
+  "title": "ChatGPT Retires Old Voice Modes, UP AI Hackathon and More",
+  "summary": "Today's AI news in simple words: ChatGPT moves everyone to its new voice, a UP AI hackathon for students, Google's DNA AI and a Gemini home update.",
+  "intro": "Happy Friday! Today we have a big change in how ChatGPT talks to you, a hackathon with cash prizes for UP students, and two Google updates explained simply.",
+  "news": [
+   {
+    "headline": "ChatGPT will switch off its old voice modes on December 11",
+    "body": "OpenAI is removing the Advanced and Standard voice options from ChatGPT on December 11, 2026. Everyone using them will move to the newer Live voice, powered by GPT-Live, which OpenAI launched in July. The big difference: GPT-Live can listen and talk at the same time, so it feels more like a real phone call. The older voices waited for you to finish speaking first. Your old voice chats will stay in your history, and you can continue them by typing or speaking. Live video and screen-sharing will stay on the old Advanced voice until GPT-Live supports them.",
+    "why": "If you practise spoken English or mock interviews with ChatGPT voice, try the new Live voice now so the switch does not surprise you. Interrupting it mid-answer is now normal, so use that to ask quick follow-ups.",
+    "source_name": "ANI",
+    "source_url": "https://www.aninews.in/news/business/openai-to-discontinue-old-chatgpt-voice-modes-from-dec-11-users-to-shift-to-live-voice-mode20261111102711/"
+   },
+   {
+    "headline": "UP launches AI Kaushal Hackathon 2026 with Rs 1 lakh prizes",
+    "body": "The Uttar Pradesh government and InMobi have launched the AI Kaushal Hackathon 2026, with IIIT Lucknow as the academic partner. Students, startups and professionals based in UP can register until November 20. Teams first submit an AI use case. Shortlisted teams get mentoring from experts, then build their idea in a 24-hour on-site round at IIIT Lucknow on December 8-9. The top five teams will each win Rs 1 lakh. The best prototypes may also be tested with UP government departments and industry partners.",
+    "why": "For students in UP, this is a real chance to build a portfolio project, meet mentors and maybe win prize money. Even if you are not in UP, it shows that solving a local problem with AI is a strong way to get noticed.",
+    "source_name": "Daily Prabhat (ANI)",
+    "source_url": "https://www.dailyprabhat.com/inmobi-uttar-pradesh-government-launch-ai-kaushal-hackathon-2026-registrations-open-until-november-20/"
+   },
+   {
+    "headline": "Google DeepMind's AlphaGenome 2 reads DNA to study disease",
+    "body": "Google DeepMind has released AlphaGenome 2, an AI model that predicts how small changes in our DNA affect what happens inside cells. It was trained on more than 100 million single-cell profiles from 68 types of body tissue. In one test on immune cells, it found the change actually causing an effect 30% of the time, up from 16% for the earlier version. It is only for non-commercial research for now and is not meant for diagnosing patients.",
+    "why": "This is not a tool for everyday users, but it shows where AI careers are growing: biology, health research and data science. Biotech and life-science students can start learning basic Python and data skills to join this field.",
+    "source_name": "Google DeepMind",
+    "source_url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/"
+   },
+   {
+    "headline": "Gemini for Home gets faster timers and picture answers on smart displays",
+    "body": "Google has released a new update for Gemini for Home, the assistant that is replacing Google Assistant on Nest speakers and displays. It makes smart home controls better and sets, checks and cancels timers and alarms faster. Smart displays like the Nest Hub can now show images with answers, and broadcasts to other speakers play faster. Older Nest cameras also get fixes. For now the update is only for people in Google's early access programme, and Google has not shared a wider rollout date.",
+    "why": "If your family or shop uses a Nest speaker or Nest Hub, these changes will reach you later. For small shops, quick voice timers and alarms are a simple, free way to manage daily tasks hands-free.",
+    "source_name": "Android Police",
+    "source_url": "https://www.androidpolice.com/gemini-for-home-nov-2026-update/"
+   }
+  ],
+  "tip": {
+   "title": "Turn a local problem into a hackathon idea",
+   "body": "Hackathon judges love ideas that solve a real problem near you. Use this prompt to turn something you see every day into a clear AI project plan you can submit.",
+   "prompt": "I am a [year/branch] student in [city]. Help me turn this local problem into an AI hackathon idea: [describe the problem, e.g. long queues at the ration shop]. Give me: 1) a one-line project title, 2) who it helps, 3) how AI solves it in simple steps, 4) free tools I can use to build a basic demo in 24 hours, and 5) a 3-sentence pitch for judges."
+  },
+  "tags": [
+   "ChatGPT",
+   "VoiceAI",
+   "Hackathon",
+   "UttarPradesh",
+   "DeepMind",
+   "Gemini",
+   "Students"
+  ],
+  "slug": "chatgpt-retires-old-voice-modes-up-ai-hackathon-and"
+ },
+ {
   "date": "2026-11-12",
   "title": "Google Launches Gemini 4 Carbon, Better Hindi Voice Typing and More",
   "summary": "Today's AI news in simple words: Google's Gemini 4 Carbon arrives, ElevenLabs improves Hindi speech-to-text, and Gemini shows what it remembers.",

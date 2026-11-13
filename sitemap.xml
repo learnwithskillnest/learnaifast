@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://learnaifast.in/</loc><lastmod>2026-11-12</lastmod><priority>1.0</priority></url>
-  <url><loc>https://learnaifast.in/daily/</loc><lastmod>2026-11-12</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://learnaifast.in/</loc><lastmod>2026-11-13</lastmod><priority>1.0</priority></url>
+  <url><loc>https://learnaifast.in/daily/</loc><lastmod>2026-11-13</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://learnaifast.in/daily/2026-11-13-chatgpt-retires-old-voice-modes-up-ai-hackathon-and/</loc><lastmod>2026-11-13</lastmod><priority>0.7</priority></url>
   <url><loc>https://learnaifast.in/daily/2026-11-12-google-launches-gemini-4-carbon-better-hindi-voice/</loc><lastmod>2026-11-12</lastmod><priority>0.7</priority></url>
   <url><loc>https://learnaifast.in/daily/2026-11-11-gemini-can-now-book-rides-in-india-chatgpt-business/</loc><lastmod>2026-11-11</lastmod><priority>0.7</priority></url>
   <url><loc>https://learnaifast.in/daily/2026-11-10-claude-fable-5-2-launches-nasscom-warns-freshers-and/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
