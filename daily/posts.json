@@ -1,5 +1,55 @@
 [
  {
+  "date": "2026-11-14",
+  "title": "Gemini 4 Hydrogen Arrives, ChatGPT Gets a Wallet and More",
+  "summary": "Today's AI news in simple words: Google's fast new Gemini 4 Hydrogen, ChatGPT Wallet for AI shopping, a Rs 49 lakh deepfake scam and Claude for factories.",
+  "intro": "Happy Saturday! Today we look at a faster Gemini model you may already be using, a new way for ChatGPT to pay for things, and an important scam warning to share with your family.",
+  "news": [
+   {
+    "headline": "Google launches Gemini 4 Hydrogen, a fast everyday model",
+    "body": "Google released Gemini 4 Hydrogen on November 12. It is a quick, low-cost member of the Gemini 4 family and replaces Gemini 3.8 Flash as Google's everyday model. Free Gemini app users cannot pick it directly, but the app may use it automatically when a question needs it. People on paid plans like Google AI Plus and AI Pro can choose it. It is also becoming the default model behind AI Mode in Google Search, and developers can try it in the Gemini API, including the free tier.",
+    "why": "You may notice faster and smarter answers in Gemini and Google Search without paying anything. Students building small apps can test it free in Google AI Studio.",
+    "source_name": "The AI Career Lab",
+    "source_url": "https://theaicareerlab.com/blog/what-is-gemini-4-hydrogen-2026"
+   },
+   {
+    "headline": "OpenAI launches ChatGPT Wallet so AI agents can pay for you",
+    "body": "OpenAI has launched ChatGPT Wallet, built with Visa, Mastercard and American Express. The idea is simple: you save your card once inside ChatGPT. Later, when ChatGPT's agent finds something to buy for you, like a product or a booking, it asks you to approve the purchase. You do not need to type your card details again each time. Every purchase still needs your approval. The reports do not say when, or if, it will come to India.",
+    "why": "AI that shops for you is coming fast. Small online sellers should keep product details, prices and policies clear on their websites so AI agents can read them. As a user, never approve a payment you did not ask for.",
+    "source_name": "Digital Transactions",
+    "source_url": "https://www.digitaltransactions.net/new-news-brief-headline-for-web-openai-launches-chatgpt-wallet-and-other-digital-transactions-news-briefs-from-11-13-26/"
+   },
+   {
+    "headline": "Fake AI video of the Finance Minister cost a Kerala woman Rs 49.2 lakh",
+    "body": "A 45-year-old woman from Kozhikode, Kerala saw a Facebook video that seemed to show Union Finance Minister Nirmala Sitharaman praising an online trading platform with high returns. The video was fake. She clicked its link, followed the scammers' instructions and sent Rs 49.2 lakh to several bank accounts between July and September. The promised profits never came. Kozhikode Rural Cyber Crime Police registered a case on November 11 and are trying to trace and freeze the accounts.",
+    "why": "Famous faces in an ad do not prove anything, because AI can fake them easily. If you or a family member is cheated online, call 1930 or report at cybercrime.gov.in as quickly as possible.",
+    "source_name": "Organiser",
+    "source_url": "https://organiser.org/2026/11/13/426021/bharat/fact-check-fake-ai-video-of-nirmala-sitharaman-promises-high-trading-returns-kerala-woman-duped-of-rs-49-2-lakh/"
+   },
+   {
+    "headline": "Anthropic launches Claude for Manufacturing",
+    "body": "Anthropic has released Claude for Manufacturing, a plugin with 17 ready-made skills for factory work. It can help prepare price quotes, investigate quality problems, write production reports, diagnose maintenance issues and help with sourcing. It reads a company's existing records and connects to tools like Microsoft 365, Oracle NetSuite, Infor and Autodesk Fusion. It does not control machines. For now it is for Claude Team and Enterprise plans, and a company admin has to install it.",
+    "why": "Even if you run a small workshop, the idea is useful: AI can turn messy production notes into quotes and reports. Engineering students should learn how AI fits into shop-floor work.",
+    "source_name": "Unite.AI",
+    "source_url": "https://www.unite.ai/anthropic-launches-claude-for-manufacturing-with-17-workflow-skills/"
+   }
+  ],
+  "tip": {
+   "title": "Explain a scam video to your parents in Hindi",
+   "body": "Scams often target parents and grandparents. Ask AI to write a short, kind WhatsApp message in Hindi that explains how fake investment videos work and what to do.",
+   "prompt": "Write a short WhatsApp message in simple Hindi for my [parents/grandparents]. Explain that AI can make fake videos of famous people like [name of a celebrity or minister] promising high returns. Give 4 easy warning signs, tell them never to click links in such ads, and remind them to call 1930 if money is lost. Keep it warm, under 120 words, no scary language."
+  },
+  "tags": [
+   "Gemini",
+   "ChatGPT",
+   "Deepfake",
+   "CyberSafety",
+   "Claude",
+   "AINews"
+  ],
+  "slug": "gemini-4-hydrogen-arrives-chatgpt-gets-a-wallet-and"
+ },
+ {
   "date": "2026-11-13",
   "title": "ChatGPT Retires Old Voice Modes, UP AI Hackathon and More",
   "summary": "Today's AI news in simple words: ChatGPT moves everyone to its new voice, a UP AI hackathon for students, Google's DNA AI and a Gemini home update.",
