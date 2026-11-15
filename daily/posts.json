@@ -1,5 +1,55 @@
 [
  {
+  "date": "2026-11-15",
+  "title": "Nonprofits Sue to Pause Advanced AI, KVS Gets an AI Bot and More",
+  "summary": "Today's AI news in simple words: a lawsuit to freeze top AI models, a new AI bot for Kendriya Vidyalayas, Gemini in more Gmail accounts and a US money feature.",
+  "intro": "Happy Sunday! Today we explain a big court case about the future of AI, a new AI tool for Kendriya Vidyalayas, and two Gemini updates, one of which you can use in Gmail soon.",
+  "news": [
+   {
+    "headline": "Four nonprofits ask a US court to pause more powerful AI models",
+    "body": "On November 12, four nonprofit groups, including Public Citizen and the Alliance for Secure AI, filed a case in San Francisco Superior Court. It names OpenAI, Anthropic, Google, Meta and SpaceX's AI unit. The groups want an urgent court order that stops these companies from building or releasing AI systems stronger than the ones they have today. They argue under California's unfair competition law that advanced AI is a public danger, pointing to risks like AI-powered cyberattacks. The case has only been filed. No judge has decided anything yet, and the tools you use today keep working.",
+    "why": "This is a sign that AI safety is becoming a legal and policy topic, not just a tech one. Students preparing for UPSC, law or policy careers should follow how courts and governments handle it.",
+    "source_name": "Just Security",
+    "source_url": "https://www.justsecurity.org/164494/nonprofits-lawsuit-freeze-frontier-ai-development/"
+   },
+   {
+    "headline": "Kendriya Vidyalayas get 'Samiksha', an AI bot to track school data",
+    "body": "Union Education Minister Pralhad Joshi launched three digital tools for Kendriya Vidyalaya Sangathan on November 12 in New Delhi. The main one is an AI-based Vidya Samiksha Kendra with a bot called Samiksha. It reads data on student and staff attendance, marks, school buildings and admissions, shows it on live dashboards, spots gaps and suggests what to fix. KVS also launched KVS-Samvaad, an app and portal for parents, and a new alumni portal. The minister said the system should reach every KV and later other government schools too.",
+    "why": "If your child studies in a KV, parent communication may move to the KVS-Samvaad app. For teachers and job seekers, it shows that schools now need staff who can read data dashboards and use AI tools.",
+    "source_name": "PIB",
+    "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2335366&reg=48&lang=2"
+   },
+   {
+    "headline": "Gemini email summaries and 'Help me write' come to all Workspace users",
+    "body": "Google is expanding two Gemini features in Gmail. The first gives a short AI summary at the top of long email threads. The second, 'Help me write', drafts or polishes an email from a short instruction. Earlier, only some paid Google Workspace plans had them. Now they are rolling out to all Workspace customers, Workspace Individual users and personal Google accounts of people aged 18 and above with Gmail smart features turned on. The rollout started on November 10 and can take up to 15 days. The features are on by default, and you or your office admin can switch them off.",
+    "why": "Small business owners and office workers can reply to customers faster and skip reading long email chains. Always read the AI draft once before you hit send.",
+    "source_name": "Google Workspace Updates",
+    "source_url": "https://workspaceupdates.googleblog.com/2026/11/expanding-gemini-in-gmail-to-more-Google-Workspace-users.html"
+   },
+   {
+    "headline": "Gemini can now read your Google Wallet to explain spending (US only)",
+    "body": "Google has connected Google Wallet to the Gemini app in the US. After you link it in settings, you can ask Gemini where your money went. It can draw spending charts, find old subscriptions you forgot about, flag price increases and suggest a holiday budget from last year's spending. Users can link bank accounts and cards for more detail. Gemini can only read this data. It cannot pay, move money or invest, and you can turn access off at any time. Reports note it can still make mistakes, like counting a refund as an expense.",
+    "why": "It is not in India yet, but it shows where AI money tools are heading. Until then, you can paste your own monthly expenses into any free AI chatbot to get a simple spending summary, without sharing bank logins.",
+    "source_name": "Analytics Insight",
+    "source_url": "https://www.analyticsinsight.net/news/google-adds-personal-finance-insights-to-gemini-through-google-wallet"
+   }
+  ],
+  "tip": {
+   "title": "Reply to a customer email in 30 seconds",
+   "body": "Gemini's 'Help me write' is coming to more Gmail accounts, but this prompt works in any free AI chatbot today. Paste the customer's message and get a polite, short reply you can edit.",
+   "prompt": "I run a small [type of business] in [city]. A customer sent me this email: [paste email]. Write a polite, short reply in simple English (under 100 words). Thank them, answer their question about [topic], and end with a clear next step. Also give me the same reply in Hinglish."
+  },
+  "tags": [
+   "AISafety",
+   "KVS",
+   "Gemini",
+   "Gmail",
+   "SmallBusiness",
+   "IndiaAI"
+  ],
+  "slug": "nonprofits-sue-to-pause-advanced-ai-kvs-gets-an-ai-bot"
+ },
+ {
   "date": "2026-11-14",
   "title": "Gemini 4 Hydrogen Arrives, ChatGPT Gets a Wallet and More",
   "summary": "Today's AI news in simple words: Google's fast new Gemini 4 Hydrogen, ChatGPT Wallet for AI shopping, a Rs 49 lakh deepfake scam and Claude for factories.",
