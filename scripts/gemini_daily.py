@@ -6,7 +6,7 @@ Needs only the Python standard library and one secret:
 
     GEMINI_API_KEY   your key from https://aistudio.google.com/apikey
     GEMINI_MODEL     optional, default "gemini-3.8-flash"
-    DRY_RUN=1        optional, write the JSON but do not publish
+    DRY_RUN=1        optional, test: print the post but write and publish nothing
 
 Steps:
   1. Stop if today's post (IST date) already exists in daily/posts.json.
@@ -206,7 +206,7 @@ def main():
         sys.exit("GEMINI_API_KEY is not set (add it in GitHub: Settings > Secrets and variables > Actions).")
     today = dt.datetime.now(IST).date()
     posts = json.loads(POSTS.read_text(encoding="utf-8")) if POSTS.exists() else []
-    if any(p["date"] == today.isoformat() for p in posts):
+    if any(p["date"] == today.isoformat() for p in posts) and not os.environ.get("DRY_RUN"):
         print(f"already published for {today}")
         return
     avoid = recent(posts, today=today)
@@ -232,12 +232,13 @@ def main():
     else:
         sys.exit("Could not produce a good post after 3 tries; nothing was published.")
 
+    if os.environ.get("DRY_RUN"):
+        print(json.dumps(post, indent=2, ensure_ascii=False))
+        log("DRY_RUN: test only, nothing written or published")
+        return
     out = ROOT / "daily" / "_data" / f"{today.isoformat()}.json"
     out.write_text(json.dumps(post, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     log("wrote", out.relative_to(ROOT))
-    if os.environ.get("DRY_RUN"):
-        print(json.dumps(post, indent=2, ensure_ascii=False))
-        return
     subprocess.run([sys.executable, str(ROOT / "scripts" / "daily.py"), str(out)], check=True)
 
 

@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "2 1 * * *"   # 01:02 UTC = 6:32 AM IST, every day
   workflow_dispatch:       # "Run workflow" button for manual runs
+    inputs:
+      test:
+        description: "Test only: show the post in the log, publish nothing"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -28,14 +33,17 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
+          DRY_RUN: ${{ inputs.test && '1' || '' }}
         run: python3 scripts/gemini_daily.py
 
       - name: Check the build
+        if: ${{ !inputs.test }}
         run: |
           python3 -c "import xml.dom.minidom as m; m.parse('sitemap.xml'); m.parse('daily/feed.xml')"
           grep -q "DAILY:START" index.html
 
       - name: Commit and push
+        if: ${{ !inputs.test }}
         id: push
         run: |
           if [ -z "$(git status --porcelain daily index.html sitemap.xml)" ]; then
