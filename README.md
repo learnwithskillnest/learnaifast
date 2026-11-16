@@ -77,6 +77,8 @@ Any static host works (GitHub Pages, Netlify, Cloudflare Pages, Hostinger). For 
 1. Write `daily/_data/YYYY-MM-DD.json` (format documented at the top of `scripts/daily.py`).
 2. Run `python3 scripts/daily.py daily/_data/YYYY-MM-DD.json`.
 
-The script writes the permanent post page `/daily/<date>-<slug>/`, rebuilds `/daily/` (latest on top, archive below), replaces the "Today's AI update" block at the top of the homepage (between `<!-- DAILY:START -->` and `<!-- DAILY:END -->`), and rebuilds `daily/feed.xml` (RSS) and the daily entries in `sitemap.xml`. A scheduled task runs this automatically every morning.
+The script writes the permanent post page `/daily/<date>-<slug>/`, rebuilds `/daily/` (latest on top, archive below), replaces the "Today's AI update" block at the top of the homepage (between `<!-- DAILY:START -->` and `<!-- DAILY:END -->`), and rebuilds `daily/feed.xml` (RSS) and the daily entries in `sitemap.xml`. It runs automatically every morning at 6:32 AM IST through GitHub Actions (`.github/workflows/daily.yml`), with no Claude involved: `scripts/gemini_daily.py` uses the Gemini API with Google Search to research the news, keeps only source links that Google search actually returned, writes the JSON, checks it, and runs `daily.py`. If it can't produce at least 3 good, sourced items after 3 tries, it publishes nothing and the run fails (GitHub emails you).
+
+Setup: add a repository secret `GEMINI_API_KEY` (Settings > Secrets and variables > Actions). Optional repository variable `GEMINI_MODEL` (default `gemini-3.8-flash`). Run it by hand from the Actions tab > "Daily AI Update (Gemini)" > Run workflow. It skips any day that already has a post.
 
 Extra post on the same day: add `"edition": 2` (and optionally `"time": "HH:MM"` IST) to the JSON and save it as `daily/_data/YYYY-MM-DD-2.json`. It sits on top of the morning post instead of replacing it.

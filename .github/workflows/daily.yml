@@ -1,0 +1,64 @@
+name: Daily AI Update (Gemini)
+
+on:
+  schedule:
+    - cron: "2 1 * * *"   # 01:02 UTC = 6:32 AM IST, every day
+  workflow_dispatch:       # "Run workflow" button for manual runs
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: daily-ai-update
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Write and build today's post with Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.8-flash' }}
+        run: python3 scripts/gemini_daily.py
+
+      - name: Check the build
+        run: |
+          python3 -c "import xml.dom.minidom as m; m.parse('sitemap.xml'); m.parse('daily/feed.xml')"
+          grep -q "DAILY:START" index.html
+
+      - name: Commit and push
+        id: push
+        run: |
+          if [ -z "$(git status --porcelain daily index.html sitemap.xml)" ]; then
+            echo "Nothing new to publish."; echo "changed=no" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          git config user.name "learnwithskillnest"
+          git config user.email "learnwithskillnest@gmail.com"
+          git add daily index.html sitemap.xml
+          git commit -m "Daily AI update $(TZ=Asia/Kolkata date +%F)"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "changed=yes" >> "$GITHUB_OUTPUT"
+
+      - name: Ask GitHub Pages to rebuild
+        if: steps.push.outputs.changed == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages rebuild request skipped (the push usually triggers it anyway)."
+
+      - name: Ping IndexNow (Bing)
+        if: steps.push.outputs.changed == 'yes'
+        run: |
+          URL=$(python3 -c "import json;p=json.load(open('daily/posts.json'))[0];print(f\"https://learnaifast.in/daily/{p['date']}-{p['slug']}/\")")
+          echo "Post: $URL"
+          curl -s -o /dev/null -w "IndexNow: %{http_code}\n" \
+            "https://api.indexnow.org/indexnow?url=${URL}&key=ab93c0f67fd6a2593d4b04a85b0d137b" || true
