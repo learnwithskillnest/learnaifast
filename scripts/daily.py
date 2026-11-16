@@ -181,6 +181,7 @@ def build_post(p, prev, nxt, header, footer):
 
 {footer}
 <script src="/assets/site.js" defer></script>
+<script src="/assets/wa.js" defer></script>
 </body>
 </html>
 """
@@ -232,6 +233,7 @@ def build_hub(posts, header, footer):
 
 {footer}
 <script src="/assets/site.js" defer></script>
+<script src="/assets/wa.js" defer></script>
 </body>
 </html>
 """
