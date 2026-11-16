@@ -14,7 +14,9 @@ The JSON file holds one day's post:
      "source_name": "...", "source_url": "https://..."}
   ],
   "tip":   {"title": "...", "body": "...", "prompt": "..."},   # prompt of the day
-  "tags":  ["ChatGPT", "Gemini", ...]
+  "tags":  ["ChatGPT", "Gemini", ...],
+  "edition": 2,                               # optional: extra post on the same day (default 1)
+  "time": "15:00"                             # optional: IST publish time (default 08:00)
 }
 
 What it does (idempotent, re-running the same day overwrites that day):
@@ -31,6 +33,9 @@ import pathlib
 import re
 import shutil
 import sys
+
+ed = lambda p: int(p.get("edition") or 1)
+ts = lambda p: p.get("time") or "08:00"
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://learnaifast.in"
@@ -133,7 +138,7 @@ def build_post(p, prev, nxt, header, footer):
     ld = {"@context": "https://schema.org", "@graph": [ORG, {
         "@type": "NewsArticle", "headline": p["title"][:110], "description": p["summary"],
         "url": url, "mainEntityOfPage": url, "image": f"{SITE}/og-image.png",
-        "datePublished": f"{p['date']}T08:00:00+05:30", "dateModified": f"{p['date']}T08:00:00+05:30",
+        "datePublished": f"{p['date']}T{ts(p)}:00+05:30", "dateModified": f"{p['date']}T{ts(p)}:00+05:30",
         "inLanguage": "en-IN", "keywords": ", ".join(p.get("tags", [])),
         "author": {"@id": f"{SITE}/#org"}, "publisher": {"@id": f"{SITE}/#org"}}, {
         "@type": "BreadcrumbList", "itemListElement": [
@@ -262,7 +267,7 @@ def build_home_block(p):
 def build_feed(posts):
     items = []
     for p in posts[:30]:
-        d = dt.datetime.fromisoformat(f"{p['date']}T08:00:00+05:30")
+        d = dt.datetime.fromisoformat(f"{p['date']}T{ts(p)}:00+05:30")
         items.append(f"""  <item>
     <title>{e(p['title'])}</title>
     <link>{post_url(p)}</link>
@@ -307,11 +312,12 @@ def main():
     src["slug"] = src.get("slug") or slugify(src["title"])
 
     posts = json.loads(INDEX.read_text(encoding="utf-8")) if INDEX.exists() else []
-    for old in [p for p in posts if p["date"] == src["date"] and p["slug"] != src["slug"]]:
+    same = lambda p: p["date"] == src["date"] and ed(p) == ed(src)  # one post per date+edition
+    for old in [p for p in posts if same(p) and p["slug"] != src["slug"]]:
         shutil.rmtree(DAILY / f"{old['date']}-{old['slug']}", ignore_errors=True)
-    posts = [p for p in posts if p["date"] != src["date"]]
+    posts = [p for p in posts if not same(p)]
     posts.append(src)
-    posts.sort(key=lambda p: p["date"], reverse=True)
+    posts.sort(key=lambda p: (p["date"], ed(p)), reverse=True)
     INDEX.write_text(json.dumps(posts, indent=1, ensure_ascii=False), encoding="utf-8")
 
     header, footer = shell_parts()

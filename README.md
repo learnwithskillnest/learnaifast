@@ -78,3 +78,5 @@ Any static host works (GitHub Pages, Netlify, Cloudflare Pages, Hostinger). For 
 2. Run `python3 scripts/daily.py daily/_data/YYYY-MM-DD.json`.
 
 The script writes the permanent post page `/daily/<date>-<slug>/`, rebuilds `/daily/` (latest on top, archive below), replaces the "Today's AI update" block at the top of the homepage (between `<!-- DAILY:START -->` and `<!-- DAILY:END -->`), and rebuilds `daily/feed.xml` (RSS) and the daily entries in `sitemap.xml`. A scheduled task runs this automatically every morning.
+
+Extra post on the same day: add `"edition": 2` (and optionally `"time": "HH:MM"` IST) to the JSON and save it as `daily/_data/YYYY-MM-DD-2.json`. It sits on top of the morning post instead of replacing it.

@@ -1,6 +1,59 @@
 [
  {
   "date": "2026-11-16",
+  "edition": 2,
+  "time": "11:00",
+  "title": "Police Warn About AI Photo Apps, India-Singapore Hackathon and More",
+  "summary": "Today's AI news in simple words: a police warning on AI photo apps, a student hackathon with internships, Excel's new data cleaner and filler-free voice typing.",
+  "intro": "Here is a second AI update for today. We start with a safety warning about viral AI photo apps, then look at a hackathon for Indian students and two handy new tools for office work and typing.",
+  "news": [
+   {
+    "headline": "Haryana Police warn people about uploading photos to unknown AI apps",
+    "body": "AI photo trends like retro portraits and Ghibli-style pictures are very popular on social media right now. On November 15, Sirsa police in Haryana issued a public advisory about them. Superintendent of Police Deepak Saharan said criminals can take photos and videos people share online and use them to make fake profiles, edited videos and cloned voices. These can then be used for fraud, identity theft or blackmail. The police asked people not to upload their personal photos, their children's pictures or any private details to AI apps they do not know or trust.",
+    "why": "Before you try a viral AI photo filter, check who made the app and what it does with your pictures. Never upload children's photos or ID documents, and report any fraud on 1930 or cybercrime.gov.in.",
+    "source_name": "UNI India",
+    "source_url": "https://www.uniindia.com/north-india/crime-haryana-deepfake-fraud/246241"
+   },
+   {
+    "headline": "Singapore-India Hackathon brings 120 students together, with internships on offer",
+    "body": "The fourth Singapore-India Hackathon is running from November 15 to 17 at Singapore Management University. It is organised with India's AICTE and the Education Ministry's Innovation Cell. 120 students from 55 colleges, including IIT Kharagpur, work in 20 mixed teams of Indian and Singaporean students. The four tracks are emerging technology, fintech, climate action and social innovation. Teams compete for S$88,000 in prize money. More than 10 companies, such as Singtel and Singapore Airlines, are meeting students to offer projects and internships, and four postgraduate scholarships at SMU are open to past and present participants.",
+    "why": "Hackathons like this can lead to internships and study abroad chances. Watch AICTE and your college innovation cell for the next edition, and start building small projects now so you have something to show.",
+    "source_name": "The Tribune (ANI)",
+    "source_url": "https://www.tribuneindia.com/news/business/singapore-india-hackathon-brings-together-120-student-innovators-and-opens-pathways-to-careers-and-further-study"
+   },
+   {
+    "headline": "Copilot in Excel can now clean messy data for you",
+    "body": "Microsoft's November Copilot update adds a 'clean data' skill in Excel. It finds problems like mixed capital letters, dates written in different formats and wrong labels, then suggests fixes. You review each change and approve it before anything is applied. Copilot search can also now find text inside scanned PDFs, and PowerPoint gets a skill that asks you questions about your idea before drafting slides. The Excel clean data skill needs a paid Microsoft 365 Copilot licence, so most students and home users will not see it yet.",
+    "why": "Cleaning data is a common task in office and data analyst jobs. Even without Copilot, you can learn the same steps with free AI chatbots (see today's prompt below).",
+    "source_name": "Geeky Gadgets",
+    "source_url": "https://www.geeky-gadgets.com/microsoft-copilot-features-november-2026/"
+   },
+   {
+    "headline": "Google's new 'Rambler' voice typing removes 'um' and 'uh' for you",
+    "body": "Google's November Pixel Drop adds Rambler, a voice typing feature in Gemini Intelligence. You speak naturally, and it removes filler words like 'um', cleans up the sentence and formats it into clear text you can check and send. It starts on Pixel 10 phones, and Google says Gemini Intelligence is coming to more phones, including Samsung's Galaxy S26 series. The same update says message conversation summaries now support Hindi along with a few other languages.",
+    "why": "Clean voice typing can save time when you write long WhatsApp messages, emails or notes. If your phone does not have it yet, you can paste your rough voice text into any AI chatbot and ask it to tidy it up.",
+    "source_name": "FoneArena",
+    "source_url": "https://www.fonearena.com/blog/496833/google-november-2026-pixel-drop.html"
+   }
+  ],
+  "tip": {
+   "title": "Clean a messy customer or sales list with AI",
+   "body": "No Copilot licence? Paste a small sample of your list into ChatGPT, Gemini or Claude and ask it to find and fix problems. Remove phone numbers and other private details first.",
+   "prompt": "Here is a sample of my [customer / sales / attendance] list from Excel:\n[paste 10-20 rows, without phone numbers or addresses]\n\nFind problems like spelling differences, mixed date formats, extra spaces and duplicates. Show me a table of each problem and the fix, then give me the Excel formulas or steps to fix the whole sheet myself."
+  },
+  "tags": [
+   "CyberSafety",
+   "Deepfake",
+   "Hackathon",
+   "Students",
+   "Excel",
+   "Copilot",
+   "VoiceTyping"
+  ],
+  "slug": "police-warn-about-ai-photo-apps-india-singapore"
+ },
+ {
+  "date": "2026-11-16",
   "title": "AI-Built Apps Leak User Data, Karnataka Adds AI Classes and More",
   "summary": "Today's AI news in simple words: a data leak in apps made with Lovable, AI lessons for Class 9 in Karnataka, India joins an AI pact and WhatsApp's AI plans.",
   "intro": "Good morning! Today we start with an important warning for anyone building apps with AI tools, then look at AI classes in Karnataka schools, a new AI deal India signed, and what WhatsApp's new boss plans next.",
