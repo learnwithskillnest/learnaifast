@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-16",
+  "title": "AI-Built Apps Leak User Data, Karnataka Adds AI Classes and More",
+  "summary": "Today's AI news in simple words: a data leak in apps made with Lovable, AI lessons for Class 9 in Karnataka, India joins an AI pact and WhatsApp's AI plans.",
+  "intro": "Good morning! Today we start with an important warning for anyone building apps with AI tools, then look at AI classes in Karnataka schools, a new AI deal India signed, and what WhatsApp's new boss plans next.",
+  "news": [
+    {
+      "headline": "Thousands of apps made with AI builder Lovable left user data open",
+      "body": "Lovable is a popular tool that builds websites and apps from a simple text prompt. German security firm Crissy Field checked 159,041 Lovable projects. Of the 34,545 that used a Supabase database, 24,664 showed their data to anyone, with no login needed. Exposed data included email addresses, over 200,000 private chat messages, more than 1,000 passport records, and restaurant and event orders. Lovable itself was not hacked. The problem was missing access rules (called Row Level Security) in each app's database. Lovable called it a known, industry-wide setup issue.",
+      "why": "If you or your business built a booking form, shop or app with an AI builder, ask an expert to check who can read your database before you collect customer details. 'Easy to build' does not mean 'safe by default'.",
+      "source_name": "Cybernews",
+      "source_url": "https://cybernews.com/security/lovable-ai-apps-expose-personal-information/"
+    },
+    {
+      "headline": "Karnataka brings AI lessons to Class 9 in 1,800 government schools",
+      "body": "Karnataka's school education department is adding an AI subject for Class 9 students in 1,800 government high schools from the 2026-27 year. It is a skill (vocational) subject under the national NSQF framework. Students will learn AI basics, Python, working with data, and simple ideas behind computer vision, language AI and generative AI, with maths topics like statistics and probability. Each school will hire one AI guest teacher on Rs 20,000 a month. Students can take it in place of a third language. Officials say AI learning may later extend up to Class 12.",
+      "why": "Government school students will get early, hands-on AI and coding practice. Graduates with a computer science or IT degree and one year of work experience can look out for these guest teacher posts.",
+      "source_name": "Elets digitalLEARNING",
+      "source_url": "https://digitallearning.eletsonline.com/2026/11/karnataka-ai-curriculum-class-9/"
+    },
+    {
+      "headline": "India signs new US-led pact to protect AI supply chains",
+      "body": "On November 15 in San Francisco, the United States and eight partners, including India, Japan, Australia, the UK and South Korea, signed a new declaration under the 'Pax Silica' plan. India first joined Pax Silica in February at the AI Impact Summit in Delhi. The new step says countries will list the AI technology and infrastructure that most needs protection, work together to keep supplies of chips, minerals and energy safe, and build shared AI industry and investment hubs. Working groups will handle the details. The main aim is to depend less on China.",
+      "why": "This can bring more chip, data centre and electronics work to India over time. For UPSC and other exam aspirants, Pax Silica is a current affairs topic worth noting.",
+      "source_name": "Poland Insight",
+      "source_url": "https://polandinsight.com/us-partners-ai-supply-chain-declaration-38006/"
+    },
+    {
+      "headline": "WhatsApp's new CEO Kunal Shah shares plans for AI and payments",
+      "body": "Kunal Shah, the CRED founder who became WhatsApp's global CEO in June, posted his three big plans for the app. First, richer chats. Second, more services inside WhatsApp, like bill payments, loans and eSIMs, with banking and telecom partners. Third, using AI to handle bookings and appointments for users. He did not share partner names or dates. WhatsApp's bill payment feature already launched in India in September, and Meta's Muse AI agent is still on a waitlist for Indian users.",
+      "why": "Small businesses on WhatsApp should get ready for customers booking appointments through AI in chat. Keep your WhatsApp Business catalogue, timings and prices up to date so AI can find them.",
+      "source_name": "MediaNama",
+      "source_url": "https://www.medianama.com/2026/11/223-ai-finance-services-kunal-shah-whatsapp/"
+    }
+  ],
+  "tip": {
+    "title": "Learn your first Python lesson with AI as a tutor",
+    "body": "Karnataka's Class 9 students will start with Python. You can too. Paste this into ChatGPT, Gemini or Claude and learn one small step a day, in English or Hinglish.",
+    "prompt": "Act as a patient Python teacher for a beginner in Class [your class or 'college']. Teach me [topic, e.g. variables and print] in [English/Hinglish] using one example from daily Indian life, like [cricket scores / shop bills]. Keep it under 150 words, then give me 3 small practice questions and wait for my answers before checking them."
+  },
+  "tags": ["Lovable", "DataSafety", "Karnataka", "AIEducation", "PaxSilica", "WhatsApp", "Python"]
+}
