@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-17",
+  "title": "Cognizant Says Fresher Jobs Are Changing, Gemini Writes Scripts",
+  "summary": "Today's AI news in simple words: Cognizant on how AI is changing fresher jobs, a Hinglish sales AI, Gemini in Apps Script and Odisha students' AI app.",
+  "intro": "Good morning! Today's update is mostly about jobs and work: what AI means for freshers, a new Indian AI built for sales calls, and an easy way to automate Google Sheets.",
+  "news": [
+    {
+      "headline": "Cognizant India chief: fresher jobs are changing, not disappearing",
+      "body": "In an interview with Business Today, Cognizant India head Rajesh Varrier said AI is changing what entry-level staff do. A Cognizant and Pearson study found Indian companies think AI already does about 37% of entry-level tasks. But 94% of HR leaders expect AI to create new entry-level roles. Freshers will spend less time on routine tasks and more time checking AI's work and handling unusual cases. Cognizant has said it plans to hire about 24,000 to 25,000 freshers in 2026, around 20% more than last year. About 46,000 of its employees have finished at least one AI certification.",
+      "why": "For job seekers, the message is clear: knowing how to use AI tools and check their answers is becoming a basic skill that recruiters look for.",
+      "source_name": "Business Today",
+      "source_url": "https://www.businesstoday.in/technology/news/story/freshers-are-not-disappearing-their-jobs-are-changing-cognizant-india-chief-on-ai-hiring-567581-2026-11-16"
+    },
+    {
+      "headline": "Noida startup SquadStack launches Maya, an AI built for sales calls in Hinglish",
+      "body": "SquadStack.ai has launched Maya, a language model made only for live sales calls. It works in Hindi, English and Hinglish and runs inside the company's voice AI agents used by banks, lenders, insurers, ed-tech and e-commerce firms. The company says Maya learned from more than 40 crore past sales conversations. In SquadStack's own test, Maya scored higher than several big global models, but these results are from the company and have not been checked independently. Maya is in closed beta for sales teams in India and is hosted on servers in India.",
+      "why": "It shows Indian startups are building AI that understands how Indians really talk. Students interested in sales or customer support should expect to work alongside such AI agents.",
+      "source_name": "Elets CIO",
+      "source_url": "https://cio.eletsonline.com/artificial-intelligence/squadstack-maya-sales-llm/76952/"
+    },
+    {
+      "headline": "Gemini can now write Google Apps Script for you",
+      "body": "Google has made Gemini in Apps Script generally available. Apps Script is the tool that automates Google Sheets, Gmail, Docs and other Workspace apps. Now you can describe a task in plain words, such as sending a reminder email every Monday, and Gemini writes the script. It can also set up timed triggers and explain and fix errors with a 'Fix errors' button. It is for paid plans, including Workspace Business Standard and Plus, Enterprise, and Google AI Pro and Ultra. The rollout started on November 12 and can take up to 15 days.",
+      "why": "Small businesses using Google Workspace can automate boring tasks like follow-up emails or daily sales reports without hiring a programmer.",
+      "source_name": "Google Workspace Updates",
+      "source_url": "http://workspaceupdates.googleblog.com/2026/11/customize-and-extend-workspace-with-apps-script.html"
+    },
+    {
+      "headline": "Odisha students show their AI money app at Singapore FinTech Festival",
+      "body": "Eight students from Odisha are part of a 20-member student group at the Singapore FinTech Festival 2026, which runs from November 15 to 20. They will show ArthaPath AI, an AI-based financial wellness helper that aims to help people manage their expenses. The team got the chance after winning a capstone project contest under the BharatNetra initiative. This programme is run by the Odisha government together with the Global Finance & Technology Network (GFTN).",
+      "why": "College projects built with AI can open doors to global events. Look out for state-run contests and programmes like this in your own state.",
+      "source_name": "UNI India",
+      "source_url": "https://www.uniindia.com/east-india/event-odisha-young-innovators-singapore/247705"
+    }
+  ],
+  "tip": {
+    "title": "Practise checking AI's work, the skill freshers now need",
+    "body": "Companies want freshers who can spot mistakes in AI answers. Use this prompt to practise. Ask AI to make a small task with hidden errors, then find them yourself.",
+    "prompt": "I am a fresher preparing for a [job role, e.g. data analyst / customer support / software tester] job. Create a short piece of work an AI might produce for this role, like a [report / email / code / data summary], and secretly include 3 mistakes. Do not tell me where they are. After I list the mistakes I found, check my answer and explain any I missed in simple English."
+  },
+  "tags": ["AIJobs", "Freshers", "Gemini", "AppsScript", "IndianStartups", "Hinglish", "Odisha"]
+}
